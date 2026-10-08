@@ -31,7 +31,7 @@ export const hero = {
   accent: "grow.",
   body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
   image: heroOpenFloor,
-  imageAlt: "The open floor at Shalimar Coworking, with desks, pendant lights and glass-walled offices",
+  imageAlt: "The open floor at Shalimar Coworking, with shared desks, pendant lights and glass-walled offices",
   primary: { label: "Book a tour", href: "/#contact" },
   secondary: { label: "See pricing", href: "/#pricing" },
 };

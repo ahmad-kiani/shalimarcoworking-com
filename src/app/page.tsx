@@ -27,23 +27,26 @@ export default function Home() {
             sizes="100vw"
             placeholder="blur"
             quality={90}
-            className="object-cover object-[50%_60%]"
+            className="object-cover object-[50%_62%]"
           />
-          {/* Darken the photo so the headline stays readable, most on the left where the text sits. */}
-          <div className="absolute inset-0 bg-ink/60 sm:bg-transparent sm:bg-linear-to-r sm:from-ink/90 sm:via-ink/60 sm:to-ink/20" aria-hidden="true" />
-          <div className="absolute inset-0 bg-linear-to-t from-ink/60 via-transparent to-ink/50" aria-hidden="true" />
-          <div className={`${container} relative w-full`}>
+          {/* Only a soft shadow behind the text and header; the rest of the photo is left as shot. */}
+          <div
+            className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-black/10 sm:bg-linear-to-r sm:from-black/65 sm:via-black/25 sm:to-transparent"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black/40 to-transparent" aria-hidden="true" />
+          <div className={`${container} relative w-full [text-shadow:0_2px_12px_rgb(0_0_0/0.45)]`}>
             <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6rem]">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/85 sm:text-xl">{hero.body}</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream sm:text-xl">{hero.body}</p>
+            <div className="mt-10 flex flex-col gap-3 [text-shadow:none] sm:flex-row sm:gap-4">
               <a href={hero.primary.href} className={`${btn} bg-brass text-ink hover:bg-brass-light`}>
                 {hero.primary.label}
               </a>
-              <a href={hero.secondary.href} className={`${btn} border border-cream/70 hover:bg-cream hover:text-ink`}>
+              <a href={hero.secondary.href} className={`${btn} border border-cream bg-black/20 hover:bg-cream hover:text-ink`}>
                 {hero.secondary.label}
               </a>
             </div>
