@@ -85,7 +85,7 @@ export const pricing = {
   eyebrow: "Pricing",
   title: ["Plans that grow", "with your"],
   accent: "work.",
-  note: "All prices in PKR. Final terms are confirmed on your tour.",
+  note: "All prices in PKR. Discounts are available on long-term and annual plans. Final terms are confirmed on your tour.",
   plans: [
     {
       name: "Hot Desk",
