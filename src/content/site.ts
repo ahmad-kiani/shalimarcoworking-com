@@ -30,8 +30,8 @@ export const hero = {
 
 export const marquee = [
   "ATS Centre, Blue Area",
-  "10 private offices",
-  "2 conference rooms",
+  "Private offices for 2–3 people",
+  "Complimentary tea & coffee",
   "Virtual office from PKR 5,000 a month",
   "Book a tour",
 ];
@@ -46,7 +46,7 @@ export const why = {
     },
     {
       title: "Rooms worth inviting clients to",
-      body: "Two conference rooms for client calls, team meetings and workshops, bookable by the hour.",
+      body: "Conference rooms for client calls, team meetings and workshops, bookable by the hour.",
     },
     {
       title: "An address in Blue Area",
@@ -61,8 +61,8 @@ export const amenities = {
   items: [
     { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
     { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },
-    { icon: "door", title: "Private offices", body: "Ten private offices for two or three people, with the quiet to focus." },
-    { icon: "people", title: "Conference rooms", body: "Two well-equipped rooms for meetings, client calls and workshops." },
+    { icon: "door", title: "Private offices", body: "Private offices for two or three people, with the quiet to focus." },
+    { icon: "people", title: "Conference rooms", body: "Well-equipped rooms for meetings, client calls and workshops." },
     { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
     { icon: "wifi", title: "Internet & equipment", body: "Fast, reliable internet across the floor, with laptops and headphones available if you need them." },
     { icon: "cup", title: "Tea & coffee", body: "Complimentary tea and coffee, all day, for everyone working here." },
@@ -75,8 +75,8 @@ export const spaces = {
   title: ["Four spaces, each built for", "a different way of working."],
   items: [
     { name: "The Open Floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
-    { name: "Private Offices", meta: "10 offices · 2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
-    { name: "Conference Rooms", meta: "2 rooms", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
+    { name: "Private Offices", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
+    { name: "Conference Rooms", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
     { name: "Community Areas", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
 };
@@ -115,7 +115,7 @@ export const pricing = {
   extras: [
     {
       name: "Conference Room",
-      body: "Book one of our two conference rooms for meetings, calls and workshops.",
+      body: "Book a conference room for meetings, calls and workshops.",
       price: "2,500",
       unit: "hour",
       cta: "Book a room",
