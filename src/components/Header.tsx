@@ -25,18 +25,12 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
     };
   }, [open]);
 
-  // Smoked glass throughout: lighter over the hero photo, deeper once scrolled over the page.
-  // The open mobile menu uses cream so it matches the menu panel below it.
-  const tone = open
-    ? "bg-cream text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)]"
-    : alwaysSolid || scrolled
-      ? "bg-ink/85 text-cream shadow-[0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-md"
-      : "bg-black/35 text-cream shadow-[0_1px_0_rgb(255_255_255/0.08)] backdrop-blur-md";
+  const solid = alwaysSolid || scrolled || open;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
-        tone
+        solid ? "bg-cream/95 text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)] backdrop-blur" : "text-cream"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 lg:h-20">
@@ -73,7 +67,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
             className={`flex size-11 items-center justify-center rounded-full lg:hidden ${
-              open ? "bg-ink text-cream" : "bg-white/15 text-cream"
+              solid ? "bg-ink text-cream" : "bg-white/15 text-cream backdrop-blur"
             }`}
           >
             <Icon name={open ? "close" : "menu"} className="size-5" />
