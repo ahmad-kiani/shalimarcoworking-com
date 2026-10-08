@@ -114,11 +114,11 @@ export default function Home() {
         <section id="pricing" className="bg-ink-soft py-20 text-cream sm:py-28">
           <div className={container}>
             <SectionHeading eyebrow={pricing.eyebrow} lines={pricing.title} accent={pricing.accent} dark />
-            <ul className="mt-14 grid gap-5 md:grid-cols-3">
+            <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {pricing.plans.map((plan) => (
-                <li key={plan.name} className="flex flex-col rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10">
+                <li key={plan.name} className="flex flex-col rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:last:col-span-2 lg:last:col-span-1">
                   <h3 className="font-serif text-3xl">{plan.name}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70">{plan.body}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70 lg:min-h-[3.25em]">{plan.body}</p>
                   <p className="mt-6 flex flex-wrap items-baseline gap-x-1.5 border-b border-cream/10 pb-6">
                     <span className="text-sm text-cream/70">PKR</span>
                     <span className="text-4xl font-light">{plan.price}</span>
@@ -138,7 +138,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <ul className="mt-5 grid gap-5 md:grid-cols-2">
+            <ul className="mt-5 grid gap-5 lg:grid-cols-2">
               {pricing.extras.map((extra) => (
                 <li
                   key={extra.name}

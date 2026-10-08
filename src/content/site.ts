@@ -116,7 +116,7 @@ export const pricing = {
       body: "A private office for two or three people.",
       price: "38,000",
       unit: "seat / month",
-      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
+      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
   ],

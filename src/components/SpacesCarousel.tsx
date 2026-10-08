@@ -18,7 +18,7 @@ export default function SpacesCarousel() {
 
   return (
     <div>
-      <div className="mb-8 hidden justify-end gap-3 sm:flex">
+      <div className="mb-8 hidden justify-end gap-3 sm:flex lg:hidden">
         {(["arrowLeft", "arrowRight"] as const).map((name, i) => (
           <button
             key={name}
@@ -37,11 +37,11 @@ export default function SpacesCarousel() {
         className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 [&::-webkit-scrollbar]:hidden"
       >
         {spaces.items.map((space) => (
-          <li key={space.name} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]">
+          <li key={space.name} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-3.75rem)/4)]">
             <Photo label={space.name} image={space.image} alt={space.alt} className="aspect-[4/3.4]" />
-            <div className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <div className="mt-5">
               <h3 className="font-serif text-3xl">{space.name}</h3>
-              <span className="text-[11px] font-medium tracking-[0.2em] text-garden uppercase">{space.meta}</span>
+              <p className="mt-1 text-[11px] font-medium tracking-[0.2em] text-garden uppercase">{space.meta}</p>
             </div>
             <p className="mt-3 text-[15px] leading-relaxed text-muted">{space.body}</p>
           </li>
