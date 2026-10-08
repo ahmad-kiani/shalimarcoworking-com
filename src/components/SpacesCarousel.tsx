@@ -38,7 +38,7 @@ export default function SpacesCarousel() {
       >
         {spaces.items.map((space) => (
           <li key={space.name} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]">
-            <Photo label={space.name} className="aspect-[4/3.4]" />
+            <Photo label={space.name} image={space.image} alt={space.alt} className="aspect-[4/3.4]" />
             <div className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h3 className="font-serif text-3xl">{space.name}</h3>
               <span className="text-[11px] font-medium tracking-[0.2em] text-garden uppercase">{space.meta}</span>

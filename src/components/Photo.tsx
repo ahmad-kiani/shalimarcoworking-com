@@ -1,5 +1,26 @@
-// Stand-in for a real photo: a garden-green panel with a lattice pattern.
-export default function Photo({ label, className = "" }: { label: string; className?: string }) {
+import Image, { type StaticImageData } from "next/image";
+
+// A space photo, or a garden-green placeholder panel when no photo is set.
+export default function Photo({
+  label,
+  image,
+  alt,
+  sizes = "(min-width: 1024px) 400px, (min-width: 640px) 46vw, 82vw",
+  className = "",
+}: {
+  label: string;
+  image?: StaticImageData;
+  alt?: string;
+  sizes?: string;
+  className?: string;
+}) {
+  if (image) {
+    return (
+      <div className={`relative overflow-hidden bg-sand ${className}`}>
+        <Image src={image} alt={alt ?? label} fill sizes={sizes} placeholder="blur" className="object-cover" />
+      </div>
+    );
+  }
   return (
     <div
       role="img"

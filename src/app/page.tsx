@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -17,7 +18,18 @@ export default function Home() {
       <Header />
       <main id="top">
         {/* Hero */}
-        <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 text-cream">
+        <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-ink pt-24 pb-16 text-cream">
+          <Image
+            src={hero.image}
+            alt={hero.imageAlt}
+            fill
+            preload
+            sizes="100vw"
+            placeholder="blur"
+            className="object-cover object-[50%_72%]"
+          />
+          {/* Darken the photo so the headline stays readable, most on the left where the text sits. */}
+          <div className="absolute inset-0 bg-ink/60 sm:bg-transparent sm:bg-linear-to-r sm:from-ink/85 sm:via-ink/50 sm:to-ink/5" aria-hidden="true" />
           <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
             <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6.5rem]">
