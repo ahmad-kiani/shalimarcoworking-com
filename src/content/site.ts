@@ -42,7 +42,7 @@ export const why = {
   points: [
     {
       title: "Ready to work from day one",
-      body: "High-speed internet, ergonomic furniture, and laptops and headphones available. Heated in winter and cooled in summer.",
+      body: "High-speed internet, ergonomic furniture, complimentary tea and coffee all day, and laptops and headphones if you need them. Heated in winter, cooled in summer.",
     },
     {
       title: "Rooms worth inviting clients to",
@@ -61,11 +61,11 @@ export const amenities = {
   items: [
     { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
     { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },
-    { icon: "door", title: "Private offices", body: "Ten private offices for teams of two to six, with the quiet to focus." },
+    { icon: "door", title: "Private offices", body: "Ten private offices for two or three people, with the quiet to focus." },
     { icon: "people", title: "Conference rooms", body: "Two well-equipped rooms for meetings, client calls and workshops." },
     { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
-    { icon: "headphones", title: "Laptops & headphones", body: "Equipment available for freelancers and contractors who need it." },
-    { icon: "wifi", title: "High-speed internet", body: "Fast, reliable internet across the whole floor, ready when you sit down." },
+    { icon: "wifi", title: "Internet & equipment", body: "Fast, reliable internet across the floor, with laptops and headphones available if you need them." },
+    { icon: "cup", title: "Tea & coffee", body: "Complimentary tea and coffee, all day, for everyone working here." },
     { icon: "calendar", title: "Community & events", body: "Shared lounges, networking events and workshops to meet other members." },
   ],
 };
@@ -75,7 +75,7 @@ export const spaces = {
   title: ["Four spaces, each built for", "a different way of working."],
   items: [
     { name: "The Open Floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
-    { name: "Private Offices", meta: "10 offices · 2–6 seats", body: "Your own room within the space, for teams that need privacy and focus. Good for startups, agencies and small firms." },
+    { name: "Private Offices", meta: "10 offices · 2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
     { name: "Conference Rooms", meta: "2 rooms", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
     { name: "Community Areas", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
@@ -92,7 +92,7 @@ export const pricing = {
       body: "Any open seat on the shared floor.",
       price: "27,000",
       unit: "month",
-      features: ["Shared workstations", "High-speed internet", "Community areas", "Networking events"],
+      features: ["Shared workstations", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
     {
@@ -100,15 +100,15 @@ export const pricing = {
       body: "A desk that's yours, every working day.",
       price: "29,000",
       unit: "month",
-      features: ["Your own fixed desk", "High-speed internet", "Community areas", "Networking events"],
+      features: ["Your own fixed desk", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
     {
       name: "Private Office",
-      body: "A private office for teams of two to six.",
+      body: "A private office for two or three people.",
       price: "38,000",
       unit: "seat / month",
-      features: ["Private room for 2–6 people", "High-speed internet", "Community areas", "Networking events"],
+      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
   ],
