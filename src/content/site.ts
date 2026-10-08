@@ -85,7 +85,7 @@ export const pricing = {
   eyebrow: "Pricing",
   title: ["Plans that grow", "with your"],
   accent: "work.",
-  note: "All prices in PKR. Preferential rates are available on 6- and 12-month agreements. Final terms are confirmed on your tour.",
+  note: "All prices in PKR. Final terms are confirmed on your tour.",
   plans: [
     {
       name: "Hot Desk",
