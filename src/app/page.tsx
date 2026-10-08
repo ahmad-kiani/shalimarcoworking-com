@@ -1,11 +1,11 @@
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
-import Logo from "@/components/Logo";
 import Mark from "@/components/Mark";
 import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
-import { amenities, contact, hero, location, marquee, nav, pricing, site, spaces, why } from "@/content/site";
+import { amenities, contact, hero, location, marquee, pricing, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const btn =
@@ -59,7 +59,7 @@ export default function Home() {
                   key={p.title}
                   className="border-b border-ink/15 py-8 md:border-b-0 md:px-8 md:py-10 md:not-first:border-l md:first:pl-0"
                 >
-                  <span className="font-serif text-4xl text-brass italic">0{i + 1}</span>
+                  <span className="font-serif text-4xl text-brass-dark italic">0{i + 1}</span>
                   <h3 className="mt-4 text-xl font-semibold">{p.title}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
                 </li>
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="mt-12 grid overflow-hidden rounded-sm bg-sand lg:grid-cols-[4fr_8fr]">
               <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
                 <div>
-                  <p className="leading-relaxed text-muted">{location.body}</p>
+                  <p className="leading-relaxed text-ink/80">{location.body}</p>
                   <address className="mt-6 text-lg leading-relaxed not-italic">
                     {site.address[0]}
                     <br />
@@ -229,35 +229,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-ink pb-[calc(2rem+env(safe-area-inset-bottom))] text-cream">
-        <div className={container}>
-          <div className="flex flex-col gap-10 border-t border-cream/10 pt-12 md:flex-row md:items-start md:justify-between">
-            <Logo large />
-            <nav aria-label="Footer">
-              <ul className="grid grid-cols-2 gap-x-12 sm:grid-cols-3">
-                {nav.map((item) => (
-                  <li key={item.href}>
-                    <a href={item.href} className="flex min-h-11 items-center text-cream/75 hover:text-cream">
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="text-sm text-cream/75">
-              <a href={`tel:${site.phoneHref}`} className="flex min-h-11 items-center hover:text-cream">
-                {site.phone}
-              </a>
-              <a href={`mailto:${site.email}`} className="flex min-h-11 items-center hover:text-cream">
-                {site.email}
-              </a>
-            </div>
-          </div>
-          <p className="mt-12 border-t border-cream/10 pt-6 text-sm text-cream/50">
-            © 2026 {site.name} {site.tagline} · ATS Centre, Blue Area, Islamabad
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

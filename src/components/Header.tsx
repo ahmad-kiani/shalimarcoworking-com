@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { nav, site } from "@/content/site";
 import Icon from "./Icon";
 import Logo from "./Logo";
 
-export default function Header() {
+export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,7 +25,7 @@ export default function Header() {
     };
   }, [open]);
 
-  const solid = scrolled || open;
+  const solid = alwaysSolid || scrolled || open;
 
   return (
     <header
@@ -33,32 +34,32 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 lg:h-20">
-        <a href="#top" className="flex min-h-11 items-center" aria-label={`${site.name} ${site.tagline}, back to top`}>
+        <Link href="/" className="flex min-h-11 items-center" aria-label={`${site.name} ${site.tagline}, home`}>
           <Logo />
-        </a>
+        </Link>
 
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {nav.map((item) => (
               <li key={item.href}>
-                <a
+                <Link
                   href={item.href}
                   className="flex min-h-11 items-center px-4 text-[15px] opacity-85 transition-opacity hover:opacity-100"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className="hidden min-h-11 items-center rounded-sm bg-brass px-5 text-xs font-semibold tracking-[0.14em] text-ink uppercase transition-colors hover:bg-brass-light sm:flex"
           >
             Book a tour
-          </a>
+          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -82,23 +83,23 @@ export default function Header() {
         <ul className="divide-y divide-ink/10 border-b border-ink/10">
           {nav.map((item) => (
             <li key={item.href}>
-              <a
+              <Link
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="flex min-h-16 items-center font-serif text-3xl"
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           onClick={() => setOpen(false)}
           className="mt-8 flex min-h-13 items-center justify-center rounded-sm bg-brass text-sm font-semibold tracking-[0.14em] text-ink uppercase"
         >
           Book a tour
-        </a>
+        </Link>
         <p className="mt-8 text-sm text-muted">
           <a href={`tel:${site.phoneHref}`} className="block py-2">{site.phone}</a>
           <a href={`mailto:${site.email}`} className="block py-2">{site.email}</a>

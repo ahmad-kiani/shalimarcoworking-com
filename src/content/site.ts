@@ -12,20 +12,20 @@ export const site = {
 };
 
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Amenities", href: "#amenities" },
-  { label: "Spaces", href: "#spaces" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Location", href: "#location" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Amenities", href: "/#amenities" },
+  { label: "Spaces", href: "/#spaces" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Location", href: "/#location" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const hero = {
   lead: ["Room to think.", "Space to"],
   accent: "grow.",
   body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
-  primary: { label: "Book a tour", href: "#contact" },
-  secondary: { label: "See pricing", href: "#pricing" },
+  primary: { label: "Book a tour", href: "/#contact" },
+  secondary: { label: "See pricing", href: "/#pricing" },
 };
 
 export const marquee = [
@@ -135,6 +135,11 @@ export const location = {
   title: ["In the heart of", "Blue Area."],
   body: "Find us on the first floor of ATS Centre, in Islamabad's main business district. Call ahead and we'll show you around.",
 };
+
+export const legal = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Accessibility Statement", href: "/accessibility-statement" },
+];
 
 export const contact = {
   eyebrow: "Visit Shalimar",

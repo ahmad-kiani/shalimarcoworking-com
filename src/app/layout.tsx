@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
       <body className="font-sans">{children}</body>
     </html>
   );
