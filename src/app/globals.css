@@ -13,6 +13,8 @@
   --color-garden-deep: #163529;
   --color-brass: #c08a3e;
   --color-brass-light: #d9a95f;
+  /* Brass dark enough for text on cream (4.9:1). */
+  --color-brass-dark: #8a5f22;
   --color-muted: #5f665f;
 }
 
@@ -52,7 +54,7 @@ textarea {
 
 /* Show the empty select prompt in the same faded tone as placeholders. */
 select:has(option[value=""]:checked) {
-  color: rgb(29 33 31 / 0.4);
+  color: rgb(29 33 31 / 0.55);
 }
 
 @keyframes marquee {

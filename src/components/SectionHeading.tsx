@@ -10,9 +10,11 @@ export default function SectionHeading({
   accent?: string;
   dark?: boolean;
 }) {
+  const accentColor = dark ? "text-brass" : "text-brass-dark";
+
   return (
     <div className="grid gap-6 lg:grid-cols-[5fr_7fr] lg:items-end">
-      <p className="flex items-center gap-4 text-xs font-medium tracking-[0.3em] text-brass uppercase lg:pb-3">
+      <p className={`flex items-center gap-4 text-xs font-medium tracking-[0.3em] uppercase lg:pb-3 ${dark ? "text-brass-light" : "text-brass-dark"}`}>
         <span className="h-px w-8 bg-brass" aria-hidden="true" />
         {eyebrow}
       </p>
@@ -22,11 +24,11 @@ export default function SectionHeading({
         }`}
       >
         {lines.map((line, i) => (
-          <span key={i} className={i === lines.length - 1 && !accent ? "text-brass italic" : ""}>
+          <span key={i} className={i === lines.length - 1 && !accent ? `${accentColor} italic` : ""}>
             {line}{" "}
           </span>
         ))}
-        {accent && <span className="text-brass italic">{accent}</span>}
+        {accent && <span className={`${accentColor} italic`}>{accent}</span>}
       </h2>
     </div>
   );
