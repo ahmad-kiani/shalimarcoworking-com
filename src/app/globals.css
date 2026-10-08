@@ -77,8 +77,41 @@ select:has(option[value=""]:checked) {
   background-size: 48px 48px;
 }
 
+/* Hero entrance: the photo eases out of a slight zoom, then the text rises in one line at a time. */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animate-rise-in {
+  animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .animate-hero-zoom,
+  .animate-rise-in {
+    animation: none;
   }
 }

@@ -26,7 +26,7 @@ export default function Home() {
             sizes="100vw"
             placeholder="blur"
             quality={90}
-            className="object-cover object-[50%_62%]"
+            className="animate-hero-zoom object-cover object-[50%_62%]"
           />
           {/* Only a soft shadow behind the text and header; the rest of the photo is left as shot. */}
           <div
@@ -35,13 +35,13 @@ export default function Home() {
           />
           <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black/40 to-transparent" aria-hidden="true" />
           <div className={`${container} relative w-full [text-shadow:0_2px_12px_rgb(0_0_0/0.45)]`}>
-            <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6rem]">
+            <h1 className="animate-rise-in max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6rem]">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
-            <p className="mt-8 max-w-2xl rounded-xl border border-white/10 bg-black/35 px-5 py-4 text-lg leading-relaxed text-cream shadow-[0_8px_32px_rgb(0_0_0/0.25)] backdrop-blur-md [text-shadow:none] sm:px-6 sm:py-5 sm:text-xl">{hero.body}</p>
-            <div className="mt-10 flex flex-col gap-3 [text-shadow:none] sm:flex-row sm:gap-4">
+            <p className="animate-rise-in mt-8 max-w-2xl rounded-xl [animation-delay:150ms] border border-white/10 bg-black/35 px-5 py-4 text-lg leading-relaxed text-cream shadow-[0_8px_32px_rgb(0_0_0/0.25)] backdrop-blur-md [text-shadow:none] sm:px-6 sm:py-5 sm:text-xl">{hero.body}</p>
+            <div className="animate-rise-in mt-10 flex flex-col gap-3 [animation-delay:300ms] [text-shadow:none] sm:flex-row sm:gap-4">
               <a href={hero.primary.href} className={`${btn} bg-brass text-ink hover:bg-brass-light`}>
                 {hero.primary.label}
               </a>
