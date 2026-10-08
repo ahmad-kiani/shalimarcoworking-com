@@ -41,7 +41,7 @@ export default function Home() {
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
-            <p className="mt-8 max-w-2xl rounded-xl border border-white/15 bg-white/10 px-5 py-4 text-lg leading-relaxed text-cream shadow-[0_8px_32px_rgb(0_0_0/0.25)] backdrop-blur-md [text-shadow:none] sm:px-6 sm:py-5 sm:text-xl">{hero.body}</p>
+            <p className="mt-8 max-w-2xl rounded-xl border border-white/10 bg-black/35 px-5 py-4 text-lg leading-relaxed text-cream shadow-[0_8px_32px_rgb(0_0_0/0.25)] backdrop-blur-md [text-shadow:none] sm:px-6 sm:py-5 sm:text-xl">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 [text-shadow:none] sm:flex-row sm:gap-4">
               <a href={hero.primary.href} className={`${btn} bg-brass text-ink hover:bg-brass-light`}>
                 {hero.primary.label}
