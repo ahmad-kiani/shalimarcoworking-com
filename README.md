@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shalimar Coworking
 
-## Getting Started
+Website for Shalimar Coworking, built with Next.js and deployed on Vercel.
 
-First, run the development server:
+**Live:** https://shalimarcoworking-com.vercel.app/
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- React 19
+- TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com)
+- ESLint
+- Hosted on [Vercel](https://vercel.com)
+
+## Getting started
+
+Requires Node.js 20 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. The page reloads as you edit.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | What it does                         |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the local dev server           |
+| `npm run build` | Create a production build            |
+| `npm run start` | Serve the production build locally   |
+| `npm run lint`  | Run ESLint                           |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx    Shared layout for every page (header, footer, fonts, metadata)
+    page.tsx      Homepage (/)
+    globals.css   Global styles and Tailwind setup
+public/           Static files such as images and icons, served from /
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To add a page, create a folder under `src/app/` with a `page.tsx` inside it. For example, `src/app/about/page.tsx` becomes `/about`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Vercel deploys every push to `main` to production automatically. Pull requests and other branches get preview deployments.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Commit messages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This repo uses [Conventional Commits](https://www.conventionalcommits.org):
+
+- `feat:` for a new feature or page
+- `fix:` for a bug fix
+- `refactor:` for code changes that don't change behaviour
+- `chore:` for tooling, dependencies and config
+- `docs:` for documentation only
+
+Example: `feat: add pricing page`
