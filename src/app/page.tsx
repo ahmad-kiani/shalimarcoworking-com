@@ -17,15 +17,27 @@ export default function Home() {
     <>
       <Header />
       <main id="top">
-        {/* Hero: text then photo on phones and tablets; text left, photo panel right on desktop. */}
-        <section className="relative flex flex-col overflow-hidden bg-ink pt-28 text-cream lg:min-h-[100dvh] lg:flex-row lg:items-center lg:pt-24 lg:pb-16">
-          <div className={`${container} relative z-10 w-full`}>
-            <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[5.4rem] xl:text-[6rem]">
+        {/* Hero */}
+        <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-ink pt-24 pb-16 text-cream">
+          <Image
+            src={hero.image}
+            alt={hero.imageAlt}
+            fill
+            preload
+            sizes="100vw"
+            placeholder="blur"
+            className="object-cover object-[50%_68%]"
+          />
+          {/* Darken the photo so the headline stays readable, most on the left where the text sits. */}
+          <div className="absolute inset-0 bg-ink/60 sm:bg-transparent sm:bg-linear-to-r sm:from-ink/90 sm:via-ink/60 sm:to-ink/20" aria-hidden="true" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink/60 via-transparent to-ink/50" aria-hidden="true" />
+          <div className={`${container} relative w-full`}>
+            <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6rem]">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/85 sm:text-xl lg:max-w-[50%]">{hero.body}</p>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/85 sm:text-xl">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <a href={hero.primary.href} className={`${btn} bg-brass text-ink hover:bg-brass-light`}>
                 {hero.primary.label}
@@ -34,24 +46,6 @@ export default function Home() {
                 {hero.secondary.label}
               </a>
             </div>
-          </div>
-          <div className="relative mt-14 aspect-[4/3] w-full sm:aspect-[16/10] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:aspect-auto lg:w-[46%]">
-            <Image
-              src={hero.image}
-              alt={hero.imageAlt}
-              fill
-              preload
-              sizes="(min-width: 1024px) 46vw, 100vw"
-              placeholder="blur"
-              className="object-cover object-[58%_68%] lg:object-[58%_60%]"
-            />
-            {/* Fade the photo into the dark page: from above on small screens, from the left on desktop. */}
-            <div
-              className="absolute inset-0 bg-linear-to-b from-ink via-transparent to-transparent lg:bg-linear-to-r lg:via-ink/10"
-              aria-hidden="true"
-            />
-            {/* Keeps the desktop header readable over the bright ceiling. */}
-            <div className="absolute inset-x-0 top-0 hidden h-40 bg-linear-to-b from-ink/70 to-transparent lg:block" aria-hidden="true" />
           </div>
         </section>
 

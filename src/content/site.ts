@@ -1,6 +1,6 @@
 // Every piece of copy on the page lives here.
 
-import heroReception from "@/assets/photos/hero-reception.webp";
+import heroConferenceRoom from "@/assets/photos/hero-conference-room.webp";
 import spaceConferenceRoom from "@/assets/photos/space-conference-room.webp";
 import spaceLounge from "@/assets/photos/space-lounge.webp";
 import spaceOpenFloor from "@/assets/photos/space-open-floor.webp";
@@ -30,8 +30,8 @@ export const hero = {
   lead: ["Room to think.", "Space to"],
   accent: "grow.",
   body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
-  image: heroReception,
-  imageAlt: "Shalimar Coworking reception desk with a gold sign under pendant lights",
+  image: heroConferenceRoom,
+  imageAlt: "Conference room at Shalimar Coworking with a long meeting table and windows onto greenery",
   primary: { label: "Book a tour", href: "/#contact" },
   secondary: { label: "See pricing", href: "/#pricing" },
 };
@@ -84,7 +84,7 @@ export const spaces = {
   items: [
     { name: "The Open Floor", image: spaceOpenFloor, alt: "Shared desks with monitors on the open floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
     { name: "Private Offices", image: spacePrivateOffice, alt: "A glass-walled private office with desks for a small team", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
-    { name: "Conference Rooms", image: spaceConferenceRoom, alt: "Conference room with a long meeting table and chairs", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
+    { name: "Conference Rooms", image: spaceConferenceRoom, alt: "Glass-walled conference room with a meeting table", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
     { name: "Community Areas", image: spaceLounge, alt: "Lounge with leather sofas and armchairs", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
 };
