@@ -26,7 +26,8 @@ export default function Home() {
             preload
             sizes="100vw"
             placeholder="blur"
-            className="object-cover object-[50%_68%]"
+            quality={90}
+            className="object-cover object-[50%_60%]"
           />
           {/* Darken the photo so the headline stays readable, most on the left where the text sits. */}
           <div className="absolute inset-0 bg-ink/60 sm:bg-transparent sm:bg-linear-to-r sm:from-ink/90 sm:via-ink/60 sm:to-ink/20" aria-hidden="true" />
