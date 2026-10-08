@@ -2,6 +2,7 @@ import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
 import Logo from "@/components/Logo";
+import Mark from "@/components/Mark";
 import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
 import { amenities, contact, hero, location, marquee, nav, pricing, site, spaces, why } from "@/content/site";
@@ -42,7 +43,7 @@ export default function Home() {
             {[...marquee, ...marquee].map((text, i) => (
               <span key={i} className="flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl">
                 <span className="px-8">{text}</span>
-                <span className="text-brass not-italic">✦</span>
+                <Mark className="h-6 w-auto shrink-0 text-brass sm:h-7" />
               </span>
             ))}
           </div>
