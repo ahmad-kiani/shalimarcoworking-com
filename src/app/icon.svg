@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Shalimar mark (three linked diamonds) from shalimarcoworking.com, in brass on ink -->
+  <rect width="200" height="200" rx="40" fill="#1d211f"/>
+  <path transform="translate(100 102) scale(0.92) translate(-100.3 -98.1)" fill="#d9a95f" stroke="#d9a95f" stroke-width="3" stroke-linejoin="round" d="M58.043 79.385l.003.003-37.421 37.421 42.272 42.266 37.416-37.416 37.422 37.416L180 116.809l-79.684-79.691-42.273 42.267zm4.854 69.989l-32.57-32.565 32.57-32.57 32.565 32.57-32.565 32.565zM170.3 116.809l-32.566 32.565-32.571-32.565 32.571-32.57 32.566 32.57zm-69.984-4.854l-32.571-32.57 32.571-32.565 32.566 32.565-32.566 32.57z"/>
+</svg>
