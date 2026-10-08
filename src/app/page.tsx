@@ -31,7 +31,7 @@ export default function Home() {
           />
           {/* Only a soft shadow behind the text and header; the rest of the photo is left as shot. */}
           <div
-            className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-black/10 sm:bg-linear-to-r sm:from-black/55 sm:via-black/25 sm:to-transparent"
+            className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-black/10 sm:bg-linear-to-r sm:from-black/75 sm:via-black/40 sm:via-55% sm:to-transparent"
             aria-hidden="true"
           />
           <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black/40 to-transparent" aria-hidden="true" />
