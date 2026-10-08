@@ -1,37 +1,40 @@
+<div align="center">
+
 # Shalimar Coworking
 
-Website for Shalimar Coworking, built with Next.js and deployed on Vercel.
+**WORK. MEET. GROW.**
 
-**Live:** https://shalimarcoworking-com.vercel.app/
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Vercel](https://img.shields.io/badge/Hosted_on-Vercel-000000?logo=vercel&logoColor=white)](https://shalimarcoworking-com.vercel.app/)
 
-## Tech stack
+The website for Shalimar Coworking.
 
-- [Next.js 16](https://nextjs.org) (App Router)
-- React 19
-- TypeScript
-- [Tailwind CSS v4](https://tailwindcss.com)
-- ESLint
-- Hosted on [Vercel](https://vercel.com)
+[Live site](https://shalimarcoworking-com.vercel.app/) · [Next.js docs](https://nextjs.org/docs) · [Tailwind docs](https://tailwindcss.com/docs)
 
-## Getting started
+</div>
 
-Requires Node.js 20 or newer.
+---
+
+## What it is
+
+A Next.js site that uses the App Router and is styled with Tailwind CSS. Pages are prerendered as static HTML at build time, so they load fast and need no server of their own. Vercel builds and hosts it, and every push to `main` goes live.
+
+## Quickstart
+
+Requires Node.js 20 or newer and npm.
 
 ```bash
-npm install
-npm run dev
+git clone https://github.com/ahmad-kiani/shalimarcoworking-com.git
+cd shalimarcoworking-com
+
+npm install                  # dependencies
+npm run dev                  # dev server on :3000, reloads on save
 ```
 
-Open http://localhost:3000. The page reloads as you edit.
-
-## Scripts
-
-| Command         | What it does                         |
-| --------------- | ------------------------------------ |
-| `npm run dev`   | Start the local dev server           |
-| `npm run build` | Create a production build            |
-| `npm run start` | Serve the production build locally   |
-| `npm run lint`  | Run ESLint                           |
+Open http://localhost:3000.
 
 ## Project structure
 
@@ -44,20 +47,32 @@ src/
 public/           Static files such as images and icons, served from /
 ```
 
-To add a page, create a folder under `src/app/` with a `page.tsx` inside it. For example, `src/app/about/page.tsx` becomes `/about`.
+Each folder under `src/app/` that has a `page.tsx` becomes a route, so `src/app/about/page.tsx` serves `/about`.
+
+## Development
+
+```bash
+npm run lint             # ESLint
+npm run build            # production build, which also type-checks
+npm run start            # serve that build on :3000
+```
+
+Run `npm run build` before you push. Vercel runs the same build, and a failed build won't go live.
 
 ## Deployment
 
-Vercel deploys every push to `main` to production automatically. Pull requests and other branches get preview deployments.
+Vercel watches this repo. Every push to `main` deploys to production at [shalimarcoworking-com.vercel.app](https://shalimarcoworking-com.vercel.app/). Other branches and pull requests get their own preview URL. There's nothing to run by hand.
 
 ## Commit messages
 
 This repo uses [Conventional Commits](https://www.conventionalcommits.org):
 
-- `feat:` for a new feature or page
-- `fix:` for a bug fix
-- `refactor:` for code changes that don't change behaviour
-- `chore:` for tooling, dependencies and config
-- `docs:` for documentation only
+| Prefix      | Use for                                     |
+| ----------- | ------------------------------------------- |
+| `feat:`     | a new page, section or feature              |
+| `fix:`      | a bug fix                                   |
+| `refactor:` | code changes that don't change behaviour    |
+| `chore:`    | tooling, dependencies and config            |
+| `docs:`     | documentation only                          |
 
 Example: `feat: add pricing page`
