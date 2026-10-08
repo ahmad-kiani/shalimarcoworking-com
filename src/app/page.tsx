@@ -3,10 +3,9 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
-import Mark from "@/components/Mark";
 import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
-import { amenities, contact, hero, location, marquee, pricing, site, spaces, why } from "@/content/site";
+import { amenities, contact, hero, location, pricing, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const btn =
@@ -52,18 +51,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Marquee */}
-        <div className="overflow-hidden bg-garden py-5 text-cream" aria-label={marquee.join(", ")}>
-          <div className="animate-marquee flex w-max" aria-hidden="true">
-            {[...marquee, ...marquee].map((text, i) => (
-              <span key={i} className="flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl">
-                <span className="px-8">{text}</span>
-                <Mark className="h-6 w-auto shrink-0 text-brass sm:h-7" />
-              </span>
-            ))}
-          </div>
-        </div>
 
         {/* Why */}
         <section id="about" className="py-20 sm:py-28">

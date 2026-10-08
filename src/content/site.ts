@@ -36,14 +36,6 @@ export const hero = {
   secondary: { label: "See pricing", href: "/#pricing" },
 };
 
-export const marquee = [
-  "ATS Centre, Blue Area",
-  "Private offices for 2–3 people",
-  "Complimentary tea & coffee",
-  "Virtual office from PKR 5,000 a month",
-  "Book a tour",
-];
-
 export const why = {
   eyebrow: "Why Shalimar",
   title: ["A workspace laid out like a garden:", "calm, ordered,", "made to stay in."],
