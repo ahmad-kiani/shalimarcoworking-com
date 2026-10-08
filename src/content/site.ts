@@ -1,43 +1,39 @@
-// Every piece of copy on the page lives here. Values in [brackets] are
-// placeholders waiting for real Shalimar details.
+// Every piece of copy on the page lives here.
 
 export const site = {
   name: "Shalimar",
   tagline: "Coworking",
-  location: "[Area, City]",
-  address: ["[Floor, Building, Street]", "[Area, City, Postcode]"],
-  email: "hello@shalimarcoworking.com",
-  phone: "+92 300 0000000",
-  phoneHref: "+923000000000",
-  hours: { label: "Members · 9 AM to 9 PM", days: "Monday to Saturday" },
-  socials: [
-    { label: "Instagram", href: "#" },
-    { label: "LinkedIn", href: "#" },
-    { label: "Facebook", href: "#" },
-  ],
+  location: "Blue Area, Islamabad",
+  address: ["Office 1, Floor 1, ATS Centre", "Blue Area, Islamabad, Pakistan"],
+  email: "info@shalimarcoworking.com",
+  phone: "+92 314 5323372",
+  phoneHref: "+923145323372",
+  mapQuery: "ATS Centre, Blue Area, Islamabad",
 };
 
 export const nav = [
   { label: "About", href: "#about" },
   { label: "Amenities", href: "#amenities" },
   { label: "Spaces", href: "#spaces" },
-  { label: "Membership", href: "#membership" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Location", href: "#location" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const hero = {
   lead: ["Room to think.", "Space to"],
   accent: "grow.",
-  body: `Private offices, dedicated desks and meeting rooms in ${site.location}. Built for founders, small teams and independent professionals who want a calm room, a proper address and a space they're proud to bring clients to.`,
+  body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
   primary: { label: "Book a tour", href: "#contact" },
-  secondary: { label: "Try a day pass", href: "#membership" },
+  secondary: { label: "See pricing", href: "#pricing" },
 };
 
 export const marquee = [
-  "Founding memberships now open",
-  "Limited desks available",
-  "Day passes from day one",
-  "Book a tour this week",
+  "ATS Centre, Blue Area",
+  "10 private offices",
+  "2 conference rooms",
+  "Virtual office from PKR 5,000 a month",
+  "Book a tour",
 ];
 
 export const why = {
@@ -45,16 +41,16 @@ export const why = {
   title: ["A workspace laid out like a garden:", "calm, ordered,", "made to stay in."],
   points: [
     {
-      title: "Quiet enough to focus",
-      body: "Phone booths for calls, quiet hours across the floor and desks spaced so you can hear yourself think.",
+      title: "Ready to work from day one",
+      body: "High-speed internet, ergonomic furniture, and laptops and headphones available. Heated in winter and cooled in summer.",
     },
     {
       title: "Rooms worth inviting clients to",
-      body: "Meeting rooms set up before you arrive, with screens, whiteboards and tea on request. Bookable by the hour.",
+      body: "Two conference rooms for client calls, team meetings and workshops, bookable by the hour.",
     },
     {
-      title: "An address that works for you",
-      body: `A registered business address in ${site.location}, with mail and courier handled at the front desk.`,
+      title: "An address in Blue Area",
+      body: "Work from Islamabad's business district, or use our virtual office for a professional address without the desk.",
     },
   ],
 };
@@ -63,14 +59,14 @@ export const amenities = {
   eyebrow: "Amenities",
   title: ["Everything a working day needs,", "already taken care of."],
   items: [
-    { icon: "desk", title: "Hot desks & day passes", body: "Drop in for a day or a week. Open seating, café access and no commitment." },
-    { icon: "chair", title: "Dedicated desks", body: "Your own desk in the open hall, with storage and an ergonomic chair." },
-    { icon: "door", title: "Private offices", body: "Lockable, furnished offices for teams of two to eight, with your own signage." },
-    { icon: "people", title: "Meeting rooms", body: "Rooms for four to ten people, bookable by the hour, plus phone booths for calls." },
-    { icon: "cup", title: "In-house café", body: "Coffee, tea and snacks through the day. Tea is on the house for members." },
-    { icon: "wifi", title: "Backup power & fast internet", body: "Generator and UPS backup with more than one internet provider, so outages don't stop work." },
-    { icon: "shield", title: "Secure access", body: "Biometric entry, CCTV and a staffed front desk during working hours." },
-    { icon: "pin", title: "Central location", body: "Easy to reach for your team and your clients, with parking nearby." },
+    { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
+    { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },
+    { icon: "door", title: "Private offices", body: "Ten private offices for teams of two to six, with the quiet to focus." },
+    { icon: "people", title: "Conference rooms", body: "Two well-equipped rooms for meetings, client calls and workshops." },
+    { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
+    { icon: "headphones", title: "Laptops & headphones", body: "Equipment available for freelancers and contractors who need it." },
+    { icon: "wifi", title: "High-speed internet", body: "Fast, reliable internet across the whole floor, ready when you sit down." },
+    { icon: "calendar", title: "Community & events", body: "Shared lounges, networking events and workshops to meet other members." },
   ],
 };
 
@@ -78,61 +74,71 @@ export const spaces = {
   eyebrow: "Our spaces",
   title: ["Four spaces, each built for", "a different way of working."],
   items: [
-    { name: "The Open Hall", meta: "[00] desks", body: "A bright shared floor with hot desks and dedicated desks. Good for solo work, remote professionals and day-pass visitors." },
-    { name: "Private Offices", meta: "[0] offices · 2–8 seats", body: "Lockable offices with daylight, storage and your own signage. Good for startup teams, agencies and small firms." },
-    { name: "Meeting Rooms", meta: "4–10 seats", body: "Set up for pitches, reviews and workshops, with screens and whiteboards. Bookable by the hour." },
-    { name: "Phone Booths", meta: "[0] booths", body: "Soundproofed booths for calls and interviews, so the open floor stays quiet." },
+    { name: "The Open Floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
+    { name: "Private Offices", meta: "10 offices · 2–6 seats", body: "Your own room within the space, for teams that need privacy and focus. Good for startups, agencies and small firms." },
+    { name: "Conference Rooms", meta: "2 rooms", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
+    { name: "Community Areas", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
 };
 
-export const membership = {
-  eyebrow: "Membership",
+export const pricing = {
+  eyebrow: "Pricing",
   title: ["Plans that grow", "with your"],
   accent: "work.",
-  note: "Prices in PKR, including utilities and amenities. Final terms are shared on your tour.",
+  note: "All prices in PKR. Final terms are confirmed on your tour.",
   plans: [
     {
-      name: "Day Pass",
-      body: "A desk for a day, whenever you need one.",
-      from: true,
-      price: "[0,000]",
-      unit: "day",
-      features: ["Open-floor seating", "Café access", "Complimentary tea", "High-speed Wi-Fi"],
-      cta: "Reserve a day",
-    },
-    {
       name: "Hot Desk",
-      body: "Any open seat, every working day.",
-      from: false,
-      price: "[00,000]",
+      body: "Any open seat on the shared floor.",
+      price: "27,000",
       unit: "month",
-      features: ["Open-floor seating", "Lounge & café access", "4 hrs meeting room credit / month", "Biometric entry"],
+      features: ["Shared workstations", "High-speed internet", "Community areas", "Networking events"],
       cta: "Enquire",
     },
     {
       name: "Dedicated Desk",
-      body: "A desk that's yours, with storage and a business address.",
-      from: false,
-      price: "[00,000]",
+      body: "A desk that's yours, every working day.",
+      price: "29,000",
       unit: "month",
-      features: ["Your own desk & storage", "Registered business address", "8 hrs meeting room credit / month", "Mail & courier handling"],
-      cta: "Apply",
-      featured: true,
+      features: ["Your own fixed desk", "High-speed internet", "Community areas", "Networking events"],
+      cta: "Enquire",
     },
     {
       name: "Private Office",
-      body: "A furnished, lockable office for your team.",
-      from: true,
-      price: "[000,000]",
-      unit: "month",
-      features: ["Lockable private office", "Custom signage", "Dedicated storage", "Priority room booking"],
+      body: "A private office for teams of two to six.",
+      price: "38,000",
+      unit: "seat / month",
+      features: ["Private room for 2–6 people", "High-speed internet", "Community areas", "Networking events"],
       cta: "Enquire",
     },
   ],
+  extras: [
+    {
+      name: "Conference Room",
+      body: "Book one of our two conference rooms for meetings, calls and workshops.",
+      price: "2,500",
+      unit: "hour",
+      cta: "Book a room",
+    },
+    {
+      name: "Virtual Office",
+      body: "A professional address at ATS Centre, Blue Area, without renting a desk.",
+      price: "5,000",
+      unit: "month",
+      cta: "Enquire",
+    },
+  ],
+};
+
+export const location = {
+  eyebrow: "Location",
+  title: ["In the heart of", "Blue Area."],
+  body: "Find us on the first floor of ATS Centre, in Islamabad's main business district. Call ahead and we'll show you around.",
 };
 
 export const contact = {
   eyebrow: "Visit Shalimar",
   title: "Come and see it for yourself.",
-  interests: ["Day pass", "Hot desk", "Dedicated desk", "Private office", "Meeting room", "Something else"],
+  visit: "Call or email to book a tour of the space.",
+  interests: ["Hot desk", "Dedicated desk", "Private office", "Conference room", "Virtual office", "Something else"],
 };

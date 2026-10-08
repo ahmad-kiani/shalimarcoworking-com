@@ -49,6 +49,28 @@ const paths: Record<string, React.ReactNode> = {
       <circle cx="12" cy="9" r="2.5" />
     </>
   ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="1.5" />
+      <path d="M3.5 6l8.5 7 8.5-7" />
+    </>
+  ),
+  headphones: (
+    <>
+      <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+      <rect x="3" y="14" width="4" height="6" rx="1.5" />
+      <rect x="17" y="14" width="4" height="6" rx="1.5" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="3" y="5" width="18" height="16" rx="1.5" />
+      <path d="M3 10h18M8 3v4M16 3v4" />
+    </>
+  ),
+  phone: (
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z" />
+  ),
   arrowLeft: <path d="M19 12H5M11 6l-6 6 6 6" />,
   arrowRight: <path d="M5 12h14M13 6l6 6-6 6" />,
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,

@@ -4,7 +4,7 @@ import Icon from "@/components/Icon";
 import Logo from "@/components/Logo";
 import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
-import { amenities, contact, hero, marquee, membership, nav, site, spaces, why } from "@/content/site";
+import { amenities, contact, hero, location, marquee, nav, pricing, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const btn =
@@ -93,29 +93,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Membership */}
-        <section id="membership" className="bg-ink-soft py-20 text-cream sm:py-28">
+        {/* Pricing */}
+        <section id="pricing" className="bg-ink-soft py-20 text-cream sm:py-28">
           <div className={container}>
-            <SectionHeading eyebrow={membership.eyebrow} lines={membership.title} accent={membership.accent} dark />
-            <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {membership.plans.map((plan) => (
-                <li
-                  key={plan.name}
-                  className={`relative flex flex-col rounded-sm p-7 ${
-                    plan.featured ? "bg-ink-card ring-2 ring-brass" : "bg-ink-card/70 ring-1 ring-cream/10"
-                  }`}
-                >
-                  {plan.featured && (
-                    <span className="absolute -top-3 right-6 rounded-sm bg-brass px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-ink uppercase">
-                      Most popular
-                    </span>
-                  )}
+            <SectionHeading eyebrow={pricing.eyebrow} lines={pricing.title} accent={pricing.accent} dark />
+            <ul className="mt-14 grid gap-5 md:grid-cols-3">
+              {pricing.plans.map((plan) => (
+                <li key={plan.name} className="flex flex-col rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10">
                   <h3 className="font-serif text-3xl">{plan.name}</h3>
-                  <p className="mt-3 min-h-12 text-[15px] leading-relaxed text-cream/70">{plan.body}</p>
-                  <p className="mt-6 text-xs text-cream/60">{plan.from ? "Starting from" : " "}</p>
-                  <p className="mt-1 flex items-baseline gap-1.5 border-b border-cream/10 pb-6">
+                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70">{plan.body}</p>
+                  <p className="mt-6 flex flex-wrap items-baseline gap-x-1.5 border-b border-cream/10 pb-6">
                     <span className="text-sm text-cream/70">PKR</span>
-                    <span className="text-3xl font-light">{plan.price}</span>
+                    <span className="text-4xl font-light">{plan.price}</span>
                     <span className="text-sm text-cream/60">/ {plan.unit}</span>
                   </p>
                   <ul className="mt-6 flex-1 space-y-3 text-[15px] text-cream/85">
@@ -126,18 +115,74 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#contact"
-                    className={`${btn} mt-8 ${
-                      plan.featured ? "bg-brass text-ink hover:bg-brass-light" : "border border-cream/40 hover:bg-cream hover:text-ink"
-                    }`}
-                  >
+                  <a href="#contact" className={`${btn} mt-8 border border-cream/40 hover:bg-cream hover:text-ink`}>
                     {plan.cta}
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm text-cream/60">{membership.note}</p>
+            <ul className="mt-5 grid gap-5 md:grid-cols-2">
+              {pricing.extras.map((extra) => (
+                <li
+                  key={extra.name}
+                  className="flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div>
+                    <h3 className="font-serif text-3xl">{extra.name}</h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-cream/70">{extra.body}</p>
+                    <p className="mt-4 flex items-baseline gap-1.5">
+                      <span className="text-sm text-cream/70">PKR</span>
+                      <span className="text-3xl font-light">{extra.price}</span>
+                      <span className="text-sm text-cream/60">/ {extra.unit}</span>
+                    </p>
+                  </div>
+                  <a href="#contact" className={`${btn} shrink-0 bg-brass text-ink hover:bg-brass-light`}>
+                    {extra.cta}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-sm text-cream/60">{pricing.note}</p>
+          </div>
+        </section>
+
+        {/* Location */}
+        <section id="location" className="py-20 sm:py-28">
+          <div className={container}>
+            <SectionHeading eyebrow={location.eyebrow} lines={location.title} />
+            <div className="mt-12 grid overflow-hidden rounded-sm bg-sand lg:grid-cols-[4fr_8fr]">
+              <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
+                <div>
+                  <p className="leading-relaxed text-muted">{location.body}</p>
+                  <address className="mt-6 text-lg leading-relaxed not-italic">
+                    {site.address[0]}
+                    <br />
+                    {site.address[1]}
+                  </address>
+                </div>
+                <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${btn} bg-garden text-cream hover:bg-garden-deep`}
+                  >
+                    Get directions
+                  </a>
+                  <a href={`tel:${site.phoneHref}`} className={`${btn} gap-2 border border-ink/30 hover:bg-ink hover:text-cream`}>
+                    <Icon name="phone" className="size-4" />
+                    {site.phone}
+                  </a>
+                </div>
+              </div>
+              <iframe
+                title={`Map showing ${site.mapQuery}`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-80 w-full border-0 sm:h-96 lg:h-full lg:min-h-[28rem]"
+              />
+            </div>
           </div>
         </section>
 
@@ -150,8 +195,9 @@ export default function Home() {
                 {contact.eyebrow}
               </p>
               <h2 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl">{contact.title}</h2>
+              <p className="mt-6 text-cream/70">{contact.visit}</p>
               <dl className="mt-10 grid gap-8 sm:grid-cols-2">
-                <div>
+                <div className="sm:col-span-2">
                   <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Address</dt>
                   <dd className="mt-2 leading-relaxed">
                     {site.address[0]}
@@ -160,11 +206,11 @@ export default function Home() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Hours</dt>
-                  <dd className="mt-2 leading-relaxed">
-                    {site.hours.label}
-                    <br />
-                    <span className="text-cream/60">{site.hours.days}</span>
+                  <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Phone</dt>
+                  <dd className="mt-1">
+                    <a href={`tel:${site.phoneHref}`} className="inline-flex min-h-11 items-center underline-offset-4 hover:underline">
+                      {site.phone}
+                    </a>
                   </dd>
                 </div>
                 <div>
@@ -172,14 +218,6 @@ export default function Home() {
                   <dd className="mt-1">
                     <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:underline">
                       {site.email}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Phone</dt>
-                  <dd className="mt-1">
-                    <a href={`tel:${site.phoneHref}`} className="inline-flex min-h-11 items-center underline-offset-4 hover:underline">
-                      {site.phone}
                     </a>
                   </dd>
                 </div>
@@ -192,7 +230,7 @@ export default function Home() {
 
       <footer className="bg-ink pb-[calc(2rem+env(safe-area-inset-bottom))] text-cream">
         <div className={container}>
-          <div className="flex border-t border-cream/10 pt-12 flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="flex flex-col gap-10 border-t border-cream/10 pt-12 md:flex-row md:items-start md:justify-between">
             <Logo large />
             <nav aria-label="Footer">
               <ul className="grid grid-cols-2 gap-x-12 sm:grid-cols-3">
@@ -205,18 +243,17 @@ export default function Home() {
                 ))}
               </ul>
             </nav>
-            <ul className="-mx-2 flex gap-2">
-              {site.socials.map((s) => (
-                <li key={s.label}>
-                  <a href={s.href} className="flex min-h-11 items-center px-2 text-sm text-cream/75 hover:text-cream">
-                    {s.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="text-sm text-cream/75">
+              <a href={`tel:${site.phoneHref}`} className="flex min-h-11 items-center hover:text-cream">
+                {site.phone}
+              </a>
+              <a href={`mailto:${site.email}`} className="flex min-h-11 items-center hover:text-cream">
+                {site.email}
+              </a>
+            </div>
           </div>
           <p className="mt-12 border-t border-cream/10 pt-6 text-sm text-cream/50">
-            © 2026 {site.name} {site.tagline}
+            © 2026 {site.name} {site.tagline} · ATS Centre, Blue Area, Islamabad
           </p>
         </div>
       </footer>

@@ -15,9 +15,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Shalimar Coworking | Private Offices, Desks & Meeting Rooms",
+  title: "Shalimar Coworking | Coworking Space in Blue Area, Islamabad",
   description:
-    "Private offices, dedicated desks and meeting rooms at Shalimar Coworking. Book a tour or try a day pass.",
+    "Hot desks, dedicated desks, private offices, conference rooms and virtual offices at ATS Centre, Blue Area, Islamabad. Book a tour.",
 };
 
 export const viewport: Viewport = {
