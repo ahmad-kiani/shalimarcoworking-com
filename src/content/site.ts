@@ -1,6 +1,6 @@
 // Every piece of copy on the page lives here.
 
-import heroOpenFloor from "@/assets/photos/hero-open-floor.webp";
+import heroReception from "@/assets/photos/hero-reception.webp";
 import spaceConferenceRoom from "@/assets/photos/space-conference-room.webp";
 import spaceLounge from "@/assets/photos/space-lounge.webp";
 import spaceOpenFloor from "@/assets/photos/space-open-floor.webp";
@@ -30,8 +30,8 @@ export const hero = {
   lead: ["Room to think.", "Space to"],
   accent: "grow.",
   body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
-  image: heroOpenFloor,
-  imageAlt: "Rows of desks on the open floor at Shalimar Coworking",
+  image: heroReception,
+  imageAlt: "Shalimar Coworking reception desk with a gold sign under pendant lights",
   primary: { label: "Book a tour", href: "/#contact" },
   secondary: { label: "See pricing", href: "/#pricing" },
 };
