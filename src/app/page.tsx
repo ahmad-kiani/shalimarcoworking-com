@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Pricing from "@/components/Pricing";
 import Icon from "@/components/Icon";
 import Mark from "@/components/Mark";
-import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
@@ -135,7 +134,16 @@ export default function Home() {
         {/* Location */}
         <section id="location" className="py-20 sm:py-28">
           <div className={container}>
-            <SectionHeading eyebrow={location.eyebrow} lines={location.title} />
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="flex items-center justify-center gap-4 text-xs font-medium tracking-[0.3em] text-brass-dark uppercase">
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+                {location.eyebrow}
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+              </p>
+              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+                {location.title[0]} <span className="text-brass-dark italic">{location.title[1]}</span>
+              </h2>
+            </div>
             <div className="mt-12 grid overflow-hidden rounded-sm bg-sand lg:grid-cols-[4fr_8fr]">
               <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
                 <div>
@@ -151,7 +159,7 @@ export default function Home() {
                     href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${btn} bg-garden text-cream hover:bg-garden-deep`}
+                    className={`${btn} bg-brass text-ink hover:bg-brass-light`}
                   >
                     Get directions
                   </a>
