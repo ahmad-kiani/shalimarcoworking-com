@@ -17,6 +17,10 @@ export const whatsapp = {
   message: "Hi Shalimar, I'd like to know more about your coworking spaces.",
 };
 
+// A wa.me link that opens a chat with Shalimar with `message` already typed.
+export const whatsappLink = (message: string = whatsapp.message) =>
+  `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(message)}`;
+
 export const nav = [
   { label: "About", href: "/#about" },
   { label: "Amenities", href: "/#amenities" },

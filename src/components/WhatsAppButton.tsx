@@ -1,8 +1,8 @@
-import { whatsapp } from "@/content/site";
+import { whatsappLink } from "@/content/site";
 
 // Official WhatsApp glyph (Simple Icons, CC0) in WhatsApp's brand green.
 export default function WhatsAppButton() {
-  const href = `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(whatsapp.message)}`;
+  const href = whatsappLink();
 
   return (
     <a

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { pricing } from "@/content/site";
+import { pricing, whatsappLink } from "@/content/site";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
 const annual = (n: number) => Math.round(n * (1 - pricing.annualDiscount));
@@ -110,7 +110,13 @@ export default function Pricing() {
               </p>
 
               <a
-                href="#contact"
+                href={whatsappLink(
+                  `Hi Shalimar, I'm interested in the ${plan.name} plan (PKR ${fmt(shown)} / ${plan.unit}${
+                    yearly ? ", paid annually" : ""
+                  }). Could you share more details?`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${btn} mt-7 ${
                   featured
                     ? "bg-ink text-cream hover:bg-ink-soft"
@@ -160,7 +166,14 @@ export default function Pricing() {
                 <span className="text-sm text-cream/60">/ {item.unit}</span>
               </p>
             </div>
-            <a href="#contact" className={`${btn} shrink-0 bg-brass text-ink hover:bg-brass-light`}>
+            <a
+              href={whatsappLink(
+                `Hi Shalimar, I'm interested in the ${item.name} (PKR ${fmt(item.price)} / ${item.unit}). Could you share more details?`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${btn} shrink-0 bg-brass text-ink hover:bg-brass-light`}
+            >
               {item.cta}
             </a>
           </li>
