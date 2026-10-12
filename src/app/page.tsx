@@ -28,7 +28,12 @@ export default function Home() {
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/85 sm:text-xl">{hero.body}</p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <a href={hero.primary.href} className={`${btn} bg-brass text-ink hover:bg-brass-light`}>
+              <a
+                href={hero.primary.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${btn} bg-brass text-ink hover:bg-brass-light`}
+              >
                 {hero.primary.label}
               </a>
               <a href={hero.secondary.href} className={`${btn} border border-cream/70 hover:bg-cream hover:text-ink`}>

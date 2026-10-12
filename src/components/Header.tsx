@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { nav, site } from "@/content/site";
+import { nav, site, tourLink } from "@/content/site";
 import Icon from "./Icon";
 import Logo from "./Logo";
 
@@ -54,12 +54,14 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/#contact"
+          <a
+            href={tourLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden min-h-11 items-center rounded-sm bg-brass px-5 text-xs font-semibold tracking-[0.14em] text-ink uppercase transition-colors hover:bg-brass-light sm:flex"
           >
             Book a tour
-          </Link>
+          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -93,13 +95,15 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
             </li>
           ))}
         </ul>
-        <Link
-          href="/#contact"
+        <a
+          href={tourLink}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => setOpen(false)}
           className="mt-8 flex min-h-13 items-center justify-center rounded-sm bg-brass text-sm font-semibold tracking-[0.14em] text-ink uppercase"
         >
           Book a tour
-        </Link>
+        </a>
         <p className="mt-8 text-sm text-muted">
           <a href={`tel:${site.phoneHref}`} className="block py-2">{site.phone}</a>
           <a href={`mailto:${site.email}`} className="block py-2">{site.email}</a>
