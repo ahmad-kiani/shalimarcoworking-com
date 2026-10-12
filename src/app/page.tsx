@@ -72,10 +72,8 @@ export default function Home() {
             <ul className="mt-16 grid gap-10 md:grid-cols-3 md:gap-0">
               {why.points.map((p) => (
                 <li key={p.title} className="md:px-10 md:first:pl-0 md:last:pr-0 md:not-first:border-l md:not-first:border-ink/12">
-                  <span className="grid size-13 place-items-center rounded-full bg-brass/15 text-brass-dark ring-1 ring-brass/35">
-                    <Icon name={p.icon} className="size-6" />
-                  </span>
-                  <h3 className="mt-6 font-serif text-[1.85rem] leading-tight">{p.title}</h3>
+                  <Icon name={p.icon} className="size-7 text-brass-dark" />
+                  <h3 className="mt-5 font-serif text-[1.85rem] leading-tight">{p.title}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
                 </li>
               ))}
