@@ -88,7 +88,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="mt-8 flex min-h-12 w-full items-center justify-center rounded-sm bg-garden px-8 text-xs font-semibold tracking-[0.16em] text-cream uppercase transition-colors hover:bg-garden-deep active:scale-[0.98] sm:w-auto"
+        className="mt-8 flex min-h-12 w-full items-center justify-center rounded-sm bg-brass px-8 text-xs font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:bg-brass-light active:scale-[0.98] sm:w-auto"
       >
         Send enquiry
       </button>
