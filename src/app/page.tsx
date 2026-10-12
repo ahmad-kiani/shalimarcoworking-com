@@ -20,7 +20,8 @@ export default function Home() {
         <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 short:pt-20 short:pb-10 text-cream">
           <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
-            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[6.5rem] short:text-5xl!">
+            {/* On laptops the headline also shrinks with the window height, so short screens (e.g. 150% scaling) keep room around it. */}
+            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[clamp(4rem,12.5svh,6.5rem)] short:text-5xl!">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
