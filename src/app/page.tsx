@@ -1,11 +1,11 @@
-import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
+import Mark from "@/components/Mark";
 import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
-import { amenities, contact, hero, location, pricing, site, spaces, why } from "@/content/site";
+import { amenities, contact, hero, location, marquee, pricing, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const btn =
@@ -17,40 +17,37 @@ export default function Home() {
       <Header />
       <main id="top">
         {/* Hero */}
-        <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-ink pt-24 pb-16 text-cream">
-          <Image
-            src={hero.image}
-            alt={hero.imageAlt}
-            fill
-            preload
-            sizes="100vw"
-            placeholder="blur"
-            quality={90}
-            className="animate-hero-zoom object-cover object-[50%_62%]"
-          />
-          {/* Only a soft shadow behind the text and header; the rest of the photo is left as shot. */}
-          <div
-            className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-black/10 sm:bg-linear-to-r sm:from-black/55 sm:via-black/25 sm:to-transparent"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black/40 to-transparent" aria-hidden="true" />
-          <div className={`${container} relative w-full [text-shadow:0_2px_12px_rgb(0_0_0/0.45)]`}>
-            <h1 className="animate-rise-in max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6rem]">
+        <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 text-cream">
+          <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40" aria-hidden="true" />
+          <div className={`${container} relative w-full`}>
+            <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6.5rem]">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
-            <p className="animate-rise-in mt-8 max-w-2xl rounded-xl [animation-delay:150ms] border border-white/10 bg-black/35 px-5 py-4 text-lg leading-relaxed text-cream shadow-[0_8px_32px_rgb(0_0_0/0.25)] backdrop-blur-md [text-shadow:none] sm:px-6 sm:py-5 sm:text-xl">{hero.body}</p>
-            <div className="animate-rise-in mt-10 flex flex-col gap-3 [animation-delay:300ms] [text-shadow:none] sm:flex-row sm:gap-4">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/85 sm:text-xl">{hero.body}</p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <a href={hero.primary.href} className={`${btn} bg-brass text-ink hover:bg-brass-light`}>
                 {hero.primary.label}
               </a>
-              <a href={hero.secondary.href} className={`${btn} border border-cream bg-black/20 hover:bg-cream hover:text-ink`}>
+              <a href={hero.secondary.href} className={`${btn} border border-cream/70 hover:bg-cream hover:text-ink`}>
                 {hero.secondary.label}
               </a>
             </div>
           </div>
         </section>
+
+        {/* Marquee */}
+        <div className="overflow-hidden bg-garden py-5 text-cream" aria-label={marquee.join(", ")}>
+          <div className="animate-marquee flex w-max" aria-hidden="true">
+            {[...marquee, ...marquee].map((text, i) => (
+              <span key={i} className="flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl">
+                <span className="px-8">{text}</span>
+                <Mark className="h-6 w-auto shrink-0 text-brass sm:h-7" />
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* Why */}
         <section id="about" className="py-20 sm:py-28">
@@ -101,11 +98,11 @@ export default function Home() {
         <section id="pricing" className="bg-ink-soft py-20 text-cream sm:py-28">
           <div className={container}>
             <SectionHeading eyebrow={pricing.eyebrow} lines={pricing.title} accent={pricing.accent} dark />
-            <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-14 grid gap-5 md:grid-cols-3">
               {pricing.plans.map((plan) => (
-                <li key={plan.name} className="flex flex-col rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:last:col-span-2 lg:last:col-span-1">
+                <li key={plan.name} className="flex flex-col rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10">
                   <h3 className="font-serif text-3xl">{plan.name}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70 lg:min-h-[3.25em]">{plan.body}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70">{plan.body}</p>
                   <p className="mt-6 flex flex-wrap items-baseline gap-x-1.5 border-b border-cream/10 pb-6">
                     <span className="text-sm text-cream/70">PKR</span>
                     <span className="text-4xl font-light">{plan.price}</span>
@@ -125,7 +122,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <ul className="mt-5 grid gap-5 lg:grid-cols-2">
+            <ul className="mt-5 grid gap-5 md:grid-cols-2">
               {pricing.extras.map((extra) => (
                 <li
                   key={extra.name}

@@ -4,8 +4,6 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  // 90 is used for the hero photo; everything else uses the default 75.
-  images: { qualities: [75, 90] },
   // Old Wix URLs, so existing links and search results still land somewhere useful.
   redirects() {
     return [

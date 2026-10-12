@@ -1,11 +1,5 @@
 // Every piece of copy on the page lives here.
 
-import heroOpenFloor from "@/assets/photos/hero-open-floor.webp";
-import spaceConferenceRoom from "@/assets/photos/space-conference-room.webp";
-import spaceLounge from "@/assets/photos/space-lounge.webp";
-import spaceOpenFloor from "@/assets/photos/space-open-floor.webp";
-import spacePrivateOffice from "@/assets/photos/space-private-office.webp";
-
 export const site = {
   name: "Shalimar",
   tagline: "Coworking",
@@ -30,11 +24,17 @@ export const hero = {
   lead: ["Room to think.", "Space to"],
   accent: "grow.",
   body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
-  image: heroOpenFloor,
-  imageAlt: "The open floor at Shalimar Coworking, with shared desks, pendant lights and glass-walled offices",
   primary: { label: "Book a tour", href: "/#contact" },
   secondary: { label: "See pricing", href: "/#pricing" },
 };
+
+export const marquee = [
+  "ATS Centre, Blue Area",
+  "Private offices for 2–3 people",
+  "Complimentary tea & coffee",
+  "Virtual office from PKR 5,000 a month",
+  "Book a tour",
+];
 
 export const why = {
   eyebrow: "Why Shalimar",
@@ -74,10 +74,10 @@ export const spaces = {
   eyebrow: "Our spaces",
   title: ["Four spaces, each built for", "a different way of working."],
   items: [
-    { name: "The Open Floor", image: spaceOpenFloor, alt: "Shared desks with monitors on the open floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
-    { name: "Private Offices", image: spacePrivateOffice, alt: "A glass-walled private office with desks for a small team", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
-    { name: "Conference Rooms", image: spaceConferenceRoom, alt: "Conference room with a long meeting table and chairs", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
-    { name: "Community Areas", image: spaceLounge, alt: "Lounge with leather sofas and armchairs", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
+    { name: "The Open Floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
+    { name: "Private Offices", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
+    { name: "Conference Rooms", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
+    { name: "Community Areas", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
 };
 
@@ -108,7 +108,7 @@ export const pricing = {
       body: "A private office for two or three people.",
       price: "38,000",
       unit: "seat / month",
-      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
+      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
   ],

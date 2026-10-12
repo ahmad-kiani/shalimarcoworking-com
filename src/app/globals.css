@@ -57,6 +57,16 @@ select:has(option[value=""]:checked) {
   color: rgb(29 33 31 / 0.55);
 }
 
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
 /* Soft lattice overlay on photo placeholders, a nod to Mughal jali screens.
    It sits on a pseudo-element so it doesn't replace the element's own gradient. */
 .jali {
@@ -77,41 +87,11 @@ select:has(option[value=""]:checked) {
   background-size: 48px 48px;
 }
 
-/* Hero entrance: the photo eases out of a slight zoom, then the text rises in one line at a time. */
-@keyframes hero-zoom {
-  from {
-    transform: scale(1.08);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.animate-hero-zoom {
-  animation: hero-zoom 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-.animate-rise-in {
-  animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .animate-hero-zoom,
-  .animate-rise-in {
+  .animate-marquee {
     animation: none;
   }
 }
