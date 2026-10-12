@@ -17,16 +17,16 @@ export default function Home() {
       <Header />
       <main id="top">
         {/* Hero */}
-        <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 text-cream">
+        <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 short:pt-20 short:pb-10 text-cream">
           <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
-            <h1 className="max-w-4xl font-serif text-[3.2rem] leading-[1.02] sm:text-7xl lg:text-[6.5rem]">
+            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[6.5rem] short:text-5xl!">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/85 sm:text-xl">{hero.body}</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed min-[360px]:mt-8 min-[360px]:text-lg text-cream/85 sm:text-xl short:mt-4! short:max-w-[30rem] short:text-base!">{hero.body}</p>
+            <div className="mt-8 flex flex-col gap-3 min-[360px]:mt-10 sm:flex-row sm:gap-4 short:mt-6!">
               <a
                 href={hero.primary.href}
                 target="_blank"
@@ -45,7 +45,8 @@ export default function Home() {
         {/* Marquee */}
         <div className="overflow-hidden bg-garden py-5 text-cream" aria-label={marquee.join(", ")}>
           <div className="animate-marquee flex w-max" aria-hidden="true">
-            {[...marquee, ...marquee].map((text, i) => (
+            {/* Four copies: the strip slides by half, which must stay wider than the widest screen. */}
+            {[...marquee, ...marquee, ...marquee, ...marquee].map((text, i) => (
               <span key={i} className="flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl">
                 <span className="px-8">{text}</span>
                 <Mark className="h-6 w-auto shrink-0 text-brass sm:h-7" />
@@ -63,16 +64,16 @@ export default function Home() {
                 {why.eyebrow}
                 <span className="h-px w-7 bg-brass" aria-hidden="true" />
               </p>
-              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+              <h2 className="mt-5 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl lg:text-[4rem]">
                 {why.title[0]} {why.title[1]} <span className="text-brass-dark italic">{why.title[2]}</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted">{why.intro}</p>
+              <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-muted">{why.intro}</p>
             </div>
             <ul className="mt-16 grid gap-10 md:grid-cols-3 md:gap-0">
               {why.points.map((p) => (
-                <li key={p.title} className="md:px-10 md:first:pl-0 md:last:pr-0 md:not-first:border-l md:not-first:border-ink/12">
+                <li key={p.title} className="md:px-6 lg:px-10 md:first:pl-0 md:last:pr-0 md:not-first:border-l md:not-first:border-ink/12">
                   <Icon name={p.icon} className="size-7 text-brass-dark" />
-                  <h3 className="mt-5 font-serif text-[1.85rem] leading-tight">{p.title}</h3>
+                  <h3 className="mt-5 font-serif text-[1.85rem] leading-tight md:min-h-[2.5em] md:text-[1.6rem] lg:text-[1.85rem]">{p.title}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
                 </li>
               ))}
@@ -89,17 +90,17 @@ export default function Home() {
                 {amenities.eyebrow}
                 <span className="h-px w-7 bg-brass" aria-hidden="true" />
               </p>
-              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+              <h2 className="mt-5 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl lg:text-[4rem]">
                 {amenities.title[0]} <span className="text-brass italic">{amenities.title[1]}</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-cream/70">{amenities.intro}</p>
+              <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-cream/70">{amenities.intro}</p>
             </div>
-            <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="mt-14 grid gap-4 min-[520px]:grid-cols-2 lg:grid-cols-4">
               {amenities.items.map((a) => (
-                <li key={a.title} className="rounded-sm bg-ink-card p-6 sm:p-7">
+                <li key={a.title} className="rounded-sm bg-ink-card p-6 sm:p-7 lg:p-6 xl:p-7">
                   <Icon name={a.icon} className="size-7 text-brass" />
-                  <h3 className="mt-5 font-serif text-[1.75rem] leading-tight">{a.title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70">{a.body}</p>
+                  <h3 className="mt-5 font-serif text-[1.75rem] leading-tight lg:text-[1.5rem] xl:text-[1.75rem]">{a.title}</h3>
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-cream/70">{a.body}</p>
                 </li>
               ))}
             </ul>
@@ -115,12 +116,12 @@ export default function Home() {
                 {spaces.eyebrow}
                 <span className="h-px w-7 bg-brass" aria-hidden="true" />
               </p>
-              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+              <h2 className="mt-5 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl lg:text-[4rem]">
                 {spaces.title[0]} <span className="text-brass-dark italic">{spaces.title[1]}</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted">{spaces.intro}</p>
+              <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-muted">{spaces.intro}</p>
             </div>
-            <div className="mt-14">
+            <div className="mt-10">
               <SpacesCarousel />
             </div>
           </div>
@@ -140,15 +141,15 @@ export default function Home() {
                 {location.eyebrow}
                 <span className="h-px w-7 bg-brass" aria-hidden="true" />
               </p>
-              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+              <h2 className="mt-5 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl lg:text-[4rem]">
                 {location.title[0]} <span className="text-brass-dark italic">{location.title[1]}</span>
               </h2>
             </div>
-            <div className="mt-12 grid overflow-hidden rounded-sm bg-[#f2ebdf] lg:grid-cols-[4fr_8fr]">
-              <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
+            <div className="mt-12 grid overflow-hidden rounded-sm bg-[#f2ebdf] lg:grid-cols-[5fr_7fr] xl:grid-cols-[4fr_8fr]">
+              <div className="flex flex-col justify-between gap-8 p-6 min-[375px]:p-7 sm:p-10">
                 <div>
                   <p className="leading-relaxed text-ink/80">{location.body}</p>
-                  <address className="mt-6 text-lg leading-relaxed not-italic">
+                  <address className="mt-6 text-base leading-relaxed not-italic min-[375px]:text-lg">
                     {site.address[0]}
                     <br />
                     {site.address[1]}
@@ -163,7 +164,7 @@ export default function Home() {
                   >
                     Get directions
                   </a>
-                  <a href={`tel:${site.phoneHref}`} className={`${btn} gap-2 border border-ink/30 hover:bg-ink hover:text-cream`}>
+                  <a href={`tel:${site.phoneHref}`} className={`${btn} gap-2 border border-ink/30 whitespace-nowrap max-[359px]:px-5 hover:bg-ink hover:text-cream`}>
                     <Icon name="phone" className="size-4" />
                     {site.phone}
                   </a>
@@ -188,10 +189,10 @@ export default function Home() {
                 <span className="h-px w-8 bg-brass" aria-hidden="true" />
                 {contact.eyebrow}
               </p>
-              <h2 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl">{contact.title}</h2>
+              <h2 className="mt-6 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl">{contact.title}</h2>
               <p className="mt-6 text-cream/70">{contact.visit}</p>
-              <dl className="mt-10 grid gap-8 sm:grid-cols-2">
-                <div className="sm:col-span-2">
+              <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                <div className="sm:col-span-2 lg:col-span-1 xl:col-span-2">
                   <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Address</dt>
                   <dd className="mt-2 leading-relaxed">
                     {site.address[0]}
@@ -210,7 +211,7 @@ export default function Home() {
                 <div>
                   <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Email</dt>
                   <dd className="mt-1">
-                    <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:underline">
+                    <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center [overflow-wrap:anywhere] underline-offset-4 hover:underline">
                       {site.email}
                     </a>
                   </dd>

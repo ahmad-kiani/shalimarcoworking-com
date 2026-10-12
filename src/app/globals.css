@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Phones turned sideways: short and wide. */
+@custom-variant short (@media (orientation: landscape) and (max-height: 31.25rem));
+
 @theme inline {
   --font-sans: var(--font-inter);
   --font-serif: var(--font-instrument-serif);
@@ -23,6 +26,14 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
   -webkit-text-size-adjust: 100%;
+}
+
+/* Large monitors and TVs: scale the whole rem-based layout with the screen
+   (16px at 1920 wide, 32px at 3840) instead of leaving a small island. */
+@media (min-width: 1920px) {
+  html {
+    font-size: clamp(100%, 0.8333vw, 200%);
+  }
 }
 
 body {
@@ -85,7 +96,7 @@ select:has(option[value=""]:checked) {
     radial-gradient(circle at 50% 50%, rgb(255 255 255 / 0.045) 0 22%, transparent 23%),
     linear-gradient(45deg, rgb(255 255 255 / 0.025) 25%, transparent 25% 75%, rgb(255 255 255 / 0.025) 75%),
     linear-gradient(-45deg, rgb(255 255 255 / 0.025) 25%, transparent 25% 75%, rgb(255 255 255 / 0.025) 75%);
-  background-size: 48px 48px;
+  background-size: 3rem 3rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

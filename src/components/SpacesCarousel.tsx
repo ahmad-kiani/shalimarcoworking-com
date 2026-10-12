@@ -12,13 +12,13 @@ export default function SpacesCarousel() {
     const el = track.current;
     if (!el) return;
     const card = el.querySelector("li");
-    const step = card ? card.getBoundingClientRect().width + 20 : el.clientWidth * 0.8;
+    const step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(el).columnGap) : el.clientWidth * 0.8;
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
   return (
     <div>
-      <div className="mb-8 hidden justify-end gap-3 sm:flex">
+      <div className="mb-6 hidden justify-end gap-3 sm:flex">
         {(["arrowLeft", "arrowRight"] as const).map((name, i) => (
           <button
             key={name}
@@ -34,16 +34,16 @@ export default function SpacesCarousel() {
 
       <ul
         ref={track}
-        className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 [&::-webkit-scrollbar]:hidden"
+        className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 xl:mx-[calc(50%-50vw)] xl:scroll-px-[max(2rem,calc(50vw-38rem))] xl:px-[max(2rem,calc(50vw-38rem))] [&::-webkit-scrollbar]:hidden"
       >
         {spaces.items.map((space) => (
-          <li key={space.name} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]">
+          <li key={space.name} className="w-[82%] shrink-0 snap-start min-[520px]:w-[64%] sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]">
             <Photo label={space.name} className="aspect-[4/3.4]" />
-            <div className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <div className="mt-5 flex flex-col items-start gap-1">
               <h3 className="font-serif text-3xl">{space.name}</h3>
-              <span className="text-[11px] font-medium tracking-[0.2em] text-brass-dark uppercase">{space.meta}</span>
+              <span className="text-[0.6875rem] font-medium tracking-[0.2em] text-brass-dark uppercase">{space.meta}</span>
             </div>
-            <p className="mt-3 text-[15px] leading-relaxed text-muted">{space.body}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{space.body}</p>
           </li>
         ))}
       </ul>

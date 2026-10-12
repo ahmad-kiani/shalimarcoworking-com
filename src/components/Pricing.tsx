@@ -11,7 +11,7 @@ const btn =
 
 function Tick() {
   return (
-    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="size-[11px]">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="size-[0.6875rem]">
       <path d="M2.5 6.2 5 8.5l4.5-5" />
     </svg>
   );
@@ -28,10 +28,10 @@ export default function Pricing() {
           {pricing.eyebrow}
           <span className="h-px w-7 bg-brass" aria-hidden="true" />
         </p>
-        <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+        <h2 className="mt-5 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl lg:text-[4rem]">
           {pricing.title} <span className="text-brass italic">{pricing.accent}</span>
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-cream/70">{pricing.intro}</p>
+        <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-cream/70">{pricing.intro}</p>
       </div>
 
       {/* Billing switch */}
@@ -50,14 +50,16 @@ export default function Pricing() {
             role="radio"
             aria-checked={yearly === o.value}
             onClick={() => setYearly(o.value)}
-            className={`flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors ${
+            className={`flex min-h-11 items-center gap-2 rounded-full px-3.5 text-sm min-[360px]:px-5 font-medium transition-colors ${
               yearly === o.value ? "bg-[#f2ebdf] text-ink" : "text-cream/70 hover:text-cream"
             }`}
           >
             {o.label}
             {o.value && (
-              <span className="rounded-full bg-brass-light px-2 py-0.5 text-[11px] font-semibold tracking-wide text-ink">
-                Save {Math.round(pricing.annualDiscount * 100)}%
+              <span className="rounded-full bg-brass-light px-2 py-0.5 text-[0.6875rem] font-semibold tracking-wide text-ink">
+                <span className="max-[359px]:hidden">Save </span>
+                <span className="min-[360px]:hidden">−</span>
+                {Math.round(pricing.annualDiscount * 100)}%
               </span>
             )}
           </button>
@@ -65,7 +67,7 @@ export default function Pricing() {
       </div>
 
       {/* Plans */}
-      <ul className="mt-14 grid gap-5 lg:grid-cols-3 lg:items-stretch">
+      <ul className="mx-auto mt-14 grid max-w-2xl gap-5 lg:max-w-none lg:grid-cols-3 lg:items-stretch">
         {pricing.plans.map((plan) => {
           const featured = "featured" in plan && plan.featured;
           const ribbon = "ribbon" in plan ? plan.ribbon : "";
@@ -73,33 +75,33 @@ export default function Pricing() {
           return (
             <li
               key={plan.name}
-              className={`relative flex flex-col rounded-md p-8 ${
+              className={`relative flex flex-col rounded-md p-6 min-[400px]:p-8 lg:p-7 xl:p-8 ${
                 featured
                   ? "bg-[#f2ebdf] text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] lg:-translate-y-3.5"
                   : "border border-cream/12 bg-ink-card/55"
               } ${ribbon ? "mt-3 lg:mt-0" : ""}`}
             >
               {featured && ribbon && (
-                <span className="absolute -top-3 left-8 rounded-sm bg-brass px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-ink uppercase">
+                <span className="absolute -top-3 left-6 min-[400px]:left-8 lg:left-7 xl:left-8 rounded-sm bg-brass px-3 py-1.5 text-[0.6875rem] font-semibold tracking-[0.18em] text-ink uppercase">
                   {ribbon}
                 </span>
               )}
               <span
-                className={`text-[11px] font-semibold tracking-[0.2em] uppercase ${featured ? "text-brass-dark" : "text-brass-light"}`}
+                className={`text-[0.6875rem] font-semibold tracking-[0.2em] uppercase ${featured ? "text-brass-dark" : "text-brass-light"}`}
               >
                 {plan.tag}
               </span>
               <h3 className="mt-2.5 font-serif text-[2.1rem] leading-tight">{plan.name}</h3>
-              <p className={`mt-2 text-[15px] leading-relaxed lg:min-h-[3.2em] ${featured ? "text-muted" : "text-cream/65"}`}>
+              <p className={`mt-2 text-[0.9375rem] leading-relaxed lg:min-h-[3.2em] ${featured ? "text-muted" : "text-cream/65"}`}>
                 {plan.body}
               </p>
 
               <p className="mt-7 flex flex-wrap items-baseline gap-x-2">
                 <span className={`text-sm tracking-wide ${featured ? "text-muted" : "text-cream/60"}`}>PKR</span>
-                <span className="text-[3.25rem] leading-none font-light tracking-tight tabular-nums">{fmt(shown)}</span>
-                <span className={`text-sm ${featured ? "text-muted" : "text-cream/60"}`}>/ {plan.unit}</span>
+                <span className="text-[2.5rem] leading-none min-[400px]:text-[3.25rem] lg:text-[2.6rem] xl:text-[3.25rem] font-light tracking-tight tabular-nums">{fmt(shown)}</span>
+                <span className={`text-sm whitespace-nowrap lg:basis-full xl:basis-auto ${featured ? "text-muted" : "text-cream/60"}`}>/ {plan.unit}</span>
               </p>
-              <p className={`mt-2 text-[13px] ${featured ? "text-muted" : "text-cream/55"}`}>
+              <p className={`mt-2 text-[0.8125rem] lg:min-h-[2.6em] xl:min-h-0 ${featured ? "text-muted" : "text-cream/55"}`}>
                 {yearly ? (
                   <>
                     billed annually · <s>PKR {fmt(plan.price)}</s> monthly
@@ -127,14 +129,14 @@ export default function Pricing() {
               </a>
 
               <div className={`mt-7 border-t pt-6 ${featured ? "border-ink/12" : "border-cream/12"}`}>
-                <p className={`text-[11px] font-semibold tracking-[0.2em] uppercase ${featured ? "text-muted" : "text-cream/50"}`}>
+                <p className={`text-[0.6875rem] font-semibold tracking-[0.2em] uppercase ${featured ? "text-muted" : "text-cream/50"}`}>
                   Includes
                 </p>
                 <ul className="mt-4 grid gap-3">
                   {plan.features.map((f) => (
-                    <li key={f} className={`flex gap-3 text-[15px] ${featured ? "text-ink" : "text-cream/90"}`}>
+                    <li key={f} className={`flex gap-3 text-[0.9375rem] ${featured ? "text-ink" : "text-cream/90"}`}>
                       <span
-                        className={`mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-full ${
+                        className={`mt-0.5 grid size-4.5 shrink-0 place-items-center rounded-full ${
                           featured ? "bg-brass/15 text-brass-dark" : "bg-brass/18 text-brass-light"
                         }`}
                       >
@@ -151,15 +153,15 @@ export default function Pricing() {
       </ul>
 
       {/* On demand: conference room and virtual office */}
-      <ul className="mt-5 grid gap-5 lg:mt-8 lg:grid-cols-2">
+      <ul className="mx-auto mt-5 grid max-w-2xl gap-5 lg:mt-8 lg:max-w-none lg:grid-cols-2">
         {pricing.onDemand.items.map((item) => (
           <li
             key={item.name}
-            className="flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-center sm:justify-between"
+            className="flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-start xl:flex-row xl:items-end"
           >
             <div>
               <h3 className="font-serif text-3xl">{item.name}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-cream/70">{item.body}</p>
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-cream/70">{item.body}</p>
               <p className="mt-4 flex items-baseline gap-1.5">
                 <span className="text-sm text-cream/70">PKR</span>
                 <span className="text-3xl font-light tabular-nums">{fmt(item.price)}</span>

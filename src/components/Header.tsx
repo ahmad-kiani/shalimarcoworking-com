@@ -33,7 +33,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
         solid ? "bg-cream/95 text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)] backdrop-blur" : "text-cream"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 lg:h-20">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-5 sm:px-8 lg:h-20">
         <Link href="/" className="flex min-h-11 items-center" aria-label={`${site.name} ${site.tagline}, home`}>
           <Logo />
         </Link>
@@ -44,7 +44,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex min-h-11 items-center px-4 text-[15px] opacity-85 transition-opacity hover:opacity-100"
+                  className="flex min-h-11 items-center px-3 text-[0.9375rem] xl:px-4 opacity-85 transition-opacity hover:opacity-100"
                 >
                   {item.label}
                 </Link>
@@ -82,13 +82,13 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
         hidden={!open}
         className="h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-cream px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:px-8 lg:hidden"
       >
-        <ul className="divide-y divide-ink/10 border-b border-ink/10">
+        <ul className="divide-y divide-ink/10 border-b border-ink/10 short:grid short:grid-cols-2 short:gap-x-8 short:divide-y-0 short:border-b-0">
           {nav.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} className="short:border-b short:border-ink/10">
               <Link
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex min-h-16 items-center font-serif text-3xl"
+                className="flex min-h-16 items-center font-serif text-3xl short:min-h-14 short:text-2xl"
               >
                 {item.label}
               </Link>
@@ -100,13 +100,13 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setOpen(false)}
-          className="mt-8 flex min-h-13 items-center justify-center rounded-sm bg-brass text-sm font-semibold tracking-[0.14em] text-ink uppercase"
+          className="mt-8 flex min-h-13 items-center short:mt-5 justify-center rounded-sm bg-brass text-sm font-semibold tracking-[0.14em] text-ink uppercase"
         >
           Book a tour
         </a>
         <p className="mt-8 text-sm text-muted">
-          <a href={`tel:${site.phoneHref}`} className="block py-2">{site.phone}</a>
-          <a href={`mailto:${site.email}`} className="block py-2">{site.email}</a>
+          <a href={`tel:${site.phoneHref}`} className="flex min-h-11 items-center">{site.phone}</a>
+          <a href={`mailto:${site.email}`} className="flex min-h-11 items-center">{site.email}</a>
         </p>
       </div>
     </header>

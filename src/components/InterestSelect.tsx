@@ -110,7 +110,7 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
                 aria-selected={selected}
                 onPointerEnter={() => setActive(i)}
                 onClick={() => choose(i)}
-                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded px-3.5 py-2.5 text-[15.5px] ${
+                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded px-3.5 py-2.5 text-[0.96875rem] ${
                   i === active ? "bg-brass/15" : ""
                 } ${selected ? "font-semibold" : ""}`}
               >

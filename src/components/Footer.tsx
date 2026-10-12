@@ -4,14 +4,14 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink pb-[calc(2rem+env(safe-area-inset-bottom))] text-cream">
+    <footer className="bg-ink pb-[calc(6rem+env(safe-area-inset-bottom))] text-cream lg:pb-[calc(2rem+env(safe-area-inset-bottom))]">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="flex flex-col gap-10 border-t border-cream/10 pt-12 md:flex-row md:items-start md:justify-between">
-          <Link href="/" aria-label={`${site.name} ${site.tagline}, home`}>
+        <div className="grid gap-8 border-t border-cream/10 pt-12 sm:grid-cols-[1fr_auto] sm:gap-x-12 lg:grid-cols-[1fr_auto_auto] lg:gap-x-20">
+          <Link href="/" aria-label={`${site.name} ${site.tagline}, home`} className="w-max sm:col-span-2 lg:col-span-1">
             <Logo large />
           </Link>
           <nav aria-label="Footer">
-            <ul className="grid grid-cols-2 gap-x-12 sm:grid-cols-3">
+            <ul className="grid grid-cols-2 gap-x-8 min-[480px]:grid-cols-3 sm:gap-x-12">
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="flex min-h-11 items-center text-cream/75 hover:text-cream">
@@ -30,7 +30,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-2 border-t border-cream/10 pt-4 text-sm text-cream/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-cream/10 pt-4 text-sm text-cream/50 lg:flex-row lg:items-center lg:justify-between lg:pr-20">
           <p className="py-2">
             © 2026 {site.name} {site.tagline} · ATS Centre, Blue Area, Islamabad
           </p>
