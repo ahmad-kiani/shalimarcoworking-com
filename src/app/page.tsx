@@ -144,10 +144,10 @@ export default function Home() {
                 {location.title[0]} <span className="text-brass-dark italic">{location.title[1]}</span>
               </h2>
             </div>
-            <div className="mt-12 grid overflow-hidden rounded-sm bg-sand lg:grid-cols-[4fr_8fr]">
+            <div className="mt-12 grid overflow-hidden rounded-sm bg-ink text-cream lg:grid-cols-[4fr_8fr]">
               <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
                 <div>
-                  <p className="leading-relaxed text-ink/80">{location.body}</p>
+                  <p className="leading-relaxed text-cream/75">{location.body}</p>
                   <address className="mt-6 text-lg leading-relaxed not-italic">
                     {site.address[0]}
                     <br />
@@ -163,7 +163,7 @@ export default function Home() {
                   >
                     Get directions
                   </a>
-                  <a href={`tel:${site.phoneHref}`} className={`${btn} gap-2 border border-ink/30 hover:bg-ink hover:text-cream`}>
+                  <a href={`tel:${site.phoneHref}`} className={`${btn} gap-2 border border-cream/35 hover:bg-cream hover:text-ink`}>
                     <Icon name="phone" className="size-4" />
                     {site.phone}
                   </a>
