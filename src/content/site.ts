@@ -48,7 +48,7 @@ export const why = {
   points: [
     {
       title: "Ready to work from day one",
-      body: "High-speed internet, ergonomic furniture, complimentary tea and coffee all day, and laptops and headphones if you need them. Heated in winter, cooled in summer.",
+      body: "High-speed internet, ergonomic furniture and complimentary tea and coffee all day. Heated in winter, cooled in summer.",
     },
     {
       title: "Rooms worth inviting clients to",
