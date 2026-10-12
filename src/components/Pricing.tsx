@@ -135,7 +135,7 @@ export default function Pricing() {
                     <li key={f} className={`flex gap-3 text-[15px] ${featured ? "text-ink" : "text-cream/90"}`}>
                       <span
                         className={`mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-full ${
-                          featured ? "bg-garden/12 text-garden" : "bg-brass/18 text-brass-light"
+                          featured ? "bg-brass/15 text-brass-dark" : "bg-brass/18 text-brass-light"
                         }`}
                       >
                         <Tick />

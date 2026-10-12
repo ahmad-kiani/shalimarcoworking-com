@@ -41,7 +41,7 @@ export default function SpacesCarousel() {
             <Photo label={space.name} className="aspect-[4/3.4]" />
             <div className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h3 className="font-serif text-3xl">{space.name}</h3>
-              <span className="text-[11px] font-medium tracking-[0.2em] text-garden uppercase">{space.meta}</span>
+              <span className="text-[11px] font-medium tracking-[0.2em] text-brass-dark uppercase">{space.meta}</span>
             </div>
             <p className="mt-3 text-[15px] leading-relaxed text-muted">{space.body}</p>
           </li>
