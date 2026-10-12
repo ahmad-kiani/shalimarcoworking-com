@@ -58,19 +58,28 @@ export default function Home() {
         {/* Why */}
         <section id="about" className="py-20 sm:py-28">
           <div className={container}>
-            <SectionHeading eyebrow={why.eyebrow} lines={why.title} />
-            <ol className="mt-14 grid border-t border-ink/15 md:grid-cols-3">
-              {why.points.map((p, i) => (
-                <li
-                  key={p.title}
-                  className="border-b border-ink/15 py-8 md:border-b-0 md:px-8 md:py-10 md:not-first:border-l md:first:pl-0"
-                >
-                  <span className="font-serif text-4xl text-brass-dark italic">0{i + 1}</span>
-                  <h3 className="mt-4 text-xl font-semibold">{p.title}</h3>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="flex items-center justify-center gap-4 text-xs font-medium tracking-[0.3em] text-brass-dark uppercase">
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+                {why.eyebrow}
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+              </p>
+              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+                {why.title[0]} {why.title[1]} <span className="text-brass-dark italic">{why.title[2]}</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted">{why.intro}</p>
+            </div>
+            <ul className="mt-16 grid gap-10 md:grid-cols-3 md:gap-0">
+              {why.points.map((p) => (
+                <li key={p.title} className="md:px-10 md:first:pl-0 md:last:pr-0 md:not-first:border-l md:not-first:border-ink/12">
+                  <span className="grid size-13 place-items-center rounded-full bg-brass/15 text-brass-dark ring-1 ring-brass/35">
+                    <Icon name={p.icon} className="size-6" />
+                  </span>
+                  <h3 className="mt-6 font-serif text-[1.85rem] leading-tight">{p.title}</h3>
                   <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </section>
 

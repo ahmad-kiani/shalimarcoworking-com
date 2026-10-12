@@ -53,16 +53,20 @@ export const marquee = [
 export const why = {
   eyebrow: "Why Shalimar",
   title: ["A workspace laid out like a garden:", "calm, ordered,", "made to stay in."],
+  intro: "Everything is set up so you can sit down and get on with your work, in the heart of Islamabad's business district.",
   points: [
     {
+      icon: "desk",
       title: "Ready to work from day one",
       body: "High-speed internet, ergonomic furniture and complimentary tea and coffee all day. Heated in winter, cooled in summer.",
     },
     {
+      icon: "people",
       title: "Rooms worth inviting clients to",
       body: "Conference rooms for client calls, team meetings and workshops, bookable by the hour.",
     },
     {
+      icon: "pin",
       title: "An address in Blue Area",
       body: "Work from Islamabad's business district, or use our virtual office for a professional address without the desk.",
     },
