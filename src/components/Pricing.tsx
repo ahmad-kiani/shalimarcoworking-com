@@ -51,7 +51,7 @@ export default function Pricing() {
             aria-checked={yearly === o.value}
             onClick={() => setYearly(o.value)}
             className={`flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors ${
-              yearly === o.value ? "bg-cream text-ink" : "text-cream/70 hover:text-cream"
+              yearly === o.value ? "bg-[#f2ebdf] text-ink" : "text-cream/70 hover:text-cream"
             }`}
           >
             {o.label}
@@ -75,7 +75,7 @@ export default function Pricing() {
               key={plan.name}
               className={`relative flex flex-col rounded-md p-8 ${
                 featured
-                  ? "bg-cream text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] lg:-translate-y-3.5"
+                  ? "bg-[#f2ebdf] text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] lg:-translate-y-3.5"
                   : "border border-cream/12 bg-ink-card/55"
               } ${ribbon ? "mt-3 lg:mt-0" : ""}`}
             >
