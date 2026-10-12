@@ -67,6 +67,14 @@ export default function PrivacyPolicy() {
         <li>
           <strong>Email.</strong> Messages you send us are stored by our email provider.
         </li>
+        <li>
+          <strong>WhatsApp.</strong> The WhatsApp button opens a chat with us in WhatsApp. Messages you send there are
+          handled by WhatsApp under the{" "}
+          <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+            WhatsApp Privacy Policy
+          </a>
+          .
+        </li>
       </ul>
 
       <h2>How long we keep it</h2>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,7 +29,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }

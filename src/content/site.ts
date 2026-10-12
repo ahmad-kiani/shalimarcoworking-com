@@ -11,6 +11,12 @@ export const site = {
   mapQuery: "ATS Centre, Blue Area, Islamabad",
 };
 
+// Floating WhatsApp button. Temporary test number; swap for the business number after testing.
+export const whatsapp = {
+  number: "923354257775", // country code + number, digits only
+  message: "Hi Shalimar, I'd like to know more about your coworking spaces.",
+};
+
 export const nav = [
   { label: "About", href: "/#about" },
   { label: "Amenities", href: "/#amenities" },
