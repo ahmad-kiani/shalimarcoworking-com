@@ -128,7 +128,7 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="bg-ink-soft py-20 text-cream sm:py-28">
+        <section id="pricing" className="bg-ink py-20 text-cream sm:py-28">
           <Pricing />
         </section>
 
