@@ -1,7 +1,7 @@
 "use client";
 
-import { contact, site } from "@/content/site";
-import Icon from "./Icon";
+import { site } from "@/content/site";
+import InterestSelect from "./InterestSelect";
 
 const field =
   "w-full border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-ink placeholder:text-ink/55 focus:border-garden focus:ring-0 focus:outline-none";
@@ -62,20 +62,12 @@ export default function ContactForm() {
             className={field}
           />
         </label>
-        <label className="sm:col-span-2">
-          <span className={label}>Interested in</span>
-          <span className="relative block">
-            <select name="interest" defaultValue="" className={`${field} appearance-none pr-8`}>
-              <option value="" disabled>
-                Select an option
-              </option>
-              {contact.interests.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-            <Icon name="chevron" className="pointer-events-none absolute top-1/2 right-0 size-4 -translate-y-1/2 text-muted" />
+        <div className="sm:col-span-2">
+          <span id="interest-label" className={label}>
+            Interested in
           </span>
-        </label>
+          <InterestSelect labelId="interest-label" />
+        </div>
         <label className="sm:col-span-2">
           <span className={label}>Note</span>
           <textarea

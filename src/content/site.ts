@@ -171,5 +171,12 @@ export const contact = {
   eyebrow: "Visit Shalimar",
   title: "Come and see it for yourself.",
   visit: "Call or email to book a tour of the space.",
-  interests: ["Hot desk", "Dedicated desk", "Private office", "Conference room", "Virtual office", "Something else"],
+  interests: [
+    { label: "Hot desk", icon: "desk" },
+    { label: "Dedicated desk", icon: "chair" },
+    { label: "Private office", icon: "door" },
+    { label: "Conference room", icon: "people" },
+    { label: "Virtual office", icon: "mail" },
+    { label: "Something else", icon: "dots" },
+  ],
 };
