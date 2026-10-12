@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Stop `next dev` from writing an AGENTS.md file into the project.
+  agentRules: false,
   cacheComponents: true,
   partialPrefetching: true,
   // Old Wix URLs, so existing links and search results still land somewhere useful.
