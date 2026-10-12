@@ -144,7 +144,7 @@ export default function Home() {
                 {location.title[0]} <span className="text-brass-dark italic">{location.title[1]}</span>
               </h2>
             </div>
-            <div className="mt-12 grid overflow-hidden rounded-sm bg-[#f9f5ee] lg:grid-cols-[4fr_8fr]">
+            <div className="mt-12 grid overflow-hidden rounded-sm bg-[#f2ebdf] lg:grid-cols-[4fr_8fr]">
               <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
                 <div>
                   <p className="leading-relaxed text-ink/80">{location.body}</p>
