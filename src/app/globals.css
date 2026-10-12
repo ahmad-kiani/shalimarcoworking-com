@@ -3,6 +3,7 @@
 @theme inline {
   --font-sans: var(--font-inter);
   --font-serif: var(--font-instrument-serif);
+  --font-logo: var(--font-libre-baskerville);
 
   --color-cream: #f5f0e6;
   --color-sand: #e8dfcf;

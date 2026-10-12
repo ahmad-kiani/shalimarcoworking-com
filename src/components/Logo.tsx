@@ -1,14 +1,25 @@
-// Text wordmark until the real Shalimar logo arrives.
+import Mark from "./Mark";
+
+// Lockup: the three-diamond mark, a hairline divider, then the wordmark in Libre Baskerville.
+// "COWORKING" is spread letter by letter so it spans exactly the width of "Shalimar".
 export default function Logo({ large = false }: { large?: boolean }) {
   return (
-    <span className="flex flex-col leading-none">
-      <span className={`font-serif ${large ? "text-6xl" : "text-[28px] lg:text-[32px]"}`}>Shalimar</span>
-      <span
-        className={`font-sans font-medium tracking-[0.42em] text-brass uppercase ${
-          large ? "mt-2 text-xs" : "mt-0.5 text-[9px]"
-        }`}
-      >
-        Coworking
+    <span className={`flex items-center ${large ? "gap-5" : "gap-3"}`}>
+      <Mark className={`w-auto shrink-0 text-brass ${large ? "h-12" : "h-7 lg:h-8"}`} />
+      <span aria-hidden="true" className={`w-px self-stretch bg-current opacity-25 ${large ? "my-1" : "my-1.5"}`} />
+      <span className="inline-grid leading-none">
+        <span className={`font-logo ${large ? "text-5xl" : "text-[24px] lg:text-[26px]"}`}>Shalimar</span>
+        <span
+          aria-hidden="true"
+          className={`flex justify-between font-sans font-semibold text-brass ${
+            large ? "mt-2.5 text-[12px]" : "mt-1.5 text-[8px] lg:text-[8.5px]"
+          }`}
+        >
+          {"COWORKING".split("").map((c, i) => (
+            <span key={i}>{c}</span>
+          ))}
+        </span>
+        <span className="sr-only">Coworking</span>
       </span>
     </span>
   );

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif, Libre_Baskerville } from "next/font/google";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
@@ -15,6 +15,13 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
+// Used only for the "Shalimar" wordmark in the logo.
+const libreBaskerville = Libre_Baskerville({
+  variable: "--font-libre-baskerville",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Shalimar Coworking | Coworking Space in Blue Area, Islamabad",
   description:
@@ -28,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${instrumentSerif.variable} ${libreBaskerville.variable} antialiased`}>
       <body className="font-sans">
         {children}
         <WhatsAppButton />
