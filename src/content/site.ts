@@ -127,10 +127,8 @@ export const pricing = {
     },
   ],
   onDemand: {
-    title: "On demand",
-    note: "No membership needed",
     items: [
-      { name: "Conference Room", body: "For meetings, client calls and workshops.", price: 2500, unit: "hour", cta: "Book a room" },
+      { name: "Conference Room", body: "Book a conference room for meetings, calls and workshops.", price: 2500, unit: "hour", cta: "Book a room" },
       {
         name: "Virtual Office",
         body: "A professional address at ATS Centre, Blue Area, without renting a desk.",

@@ -144,33 +144,28 @@ export default function Pricing() {
         })}
       </ul>
 
-      {/* On demand */}
-      <div className="mt-14 border-t border-cream/12">
-        <div className="flex flex-wrap items-baseline justify-between gap-2 pt-7 pb-2">
-          <h3 className="font-serif text-3xl">{pricing.onDemand.title}</h3>
-          <span className="text-[13px] text-cream/55">{pricing.onDemand.note}</span>
-        </div>
-        <ul>
-          {pricing.onDemand.items.map((item) => (
-            <li
-              key={item.name}
-              className="grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-2 border-b border-cream/12 py-6 lg:grid-cols-[15rem_1fr_auto_auto]"
-            >
-              <h4 className="font-serif text-[1.65rem] leading-tight">{item.name}</h4>
-              <p className="col-span-full text-[15px] leading-relaxed text-cream/65 lg:col-span-1">{item.body}</p>
-              <p className="text-[15px] whitespace-nowrap text-cream/60">
-                PKR <span className="mx-1 text-[1.75rem] font-light text-cream tabular-nums">{fmt(item.price)}</span>/ {item.unit}
+      {/* On demand: conference room and virtual office */}
+      <ul className="mt-5 grid gap-5 lg:mt-8 lg:grid-cols-2">
+        {pricing.onDemand.items.map((item) => (
+          <li
+            key={item.name}
+            className="flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <h3 className="font-serif text-3xl">{item.name}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-cream/70">{item.body}</p>
+              <p className="mt-4 flex items-baseline gap-1.5">
+                <span className="text-sm text-cream/70">PKR</span>
+                <span className="text-3xl font-light tabular-nums">{fmt(item.price)}</span>
+                <span className="text-sm text-cream/60">/ {item.unit}</span>
               </p>
-              <a
-                href="#contact"
-                className="inline-flex min-h-11 items-center justify-self-end text-xs font-semibold tracking-[0.16em] whitespace-nowrap text-brass-light uppercase underline decoration-brass-light/50 underline-offset-[6px] hover:decoration-brass-light"
-              >
-                {item.cta} →
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </div>
+            <a href="#contact" className={`${btn} shrink-0 bg-brass text-ink hover:bg-brass-light`}>
+              {item.cta}
+            </a>
+          </li>
+        ))}
+      </ul>
 
       <ul className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm text-cream/60">
         {pricing.notes.map((n) => (
