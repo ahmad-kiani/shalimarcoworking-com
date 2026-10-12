@@ -1,11 +1,12 @@
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Pricing from "@/components/Pricing";
 import Icon from "@/components/Icon";
 import Mark from "@/components/Mark";
 import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
-import { amenities, contact, hero, location, marquee, pricing, site, spaces, why } from "@/content/site";
+import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const btn =
@@ -96,55 +97,7 @@ export default function Home() {
 
         {/* Pricing */}
         <section id="pricing" className="bg-ink-soft py-20 text-cream sm:py-28">
-          <div className={container}>
-            <SectionHeading eyebrow={pricing.eyebrow} lines={pricing.title} accent={pricing.accent} dark />
-            <ul className="mt-14 grid gap-5 md:grid-cols-3">
-              {pricing.plans.map((plan) => (
-                <li key={plan.name} className="flex flex-col rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10">
-                  <h3 className="font-serif text-3xl">{plan.name}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-cream/70">{plan.body}</p>
-                  <p className="mt-6 flex flex-wrap items-baseline gap-x-1.5 border-b border-cream/10 pb-6">
-                    <span className="text-sm text-cream/70">PKR</span>
-                    <span className="text-4xl font-light">{plan.price}</span>
-                    <span className="text-sm text-cream/60">/ {plan.unit}</span>
-                  </p>
-                  <ul className="mt-6 flex-1 space-y-3 text-[15px] text-cream/85">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex gap-3">
-                        <span className="mt-[0.7em] h-px w-3 shrink-0 bg-brass" aria-hidden="true" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="#contact" className={`${btn} mt-8 border border-cream/40 hover:bg-cream hover:text-ink`}>
-                    {plan.cta}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <ul className="mt-5 grid gap-5 md:grid-cols-2">
-              {pricing.extras.map((extra) => (
-                <li
-                  key={extra.name}
-                  className="flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <h3 className="font-serif text-3xl">{extra.name}</h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-cream/70">{extra.body}</p>
-                    <p className="mt-4 flex items-baseline gap-1.5">
-                      <span className="text-sm text-cream/70">PKR</span>
-                      <span className="text-3xl font-light">{extra.price}</span>
-                      <span className="text-sm text-cream/60">/ {extra.unit}</span>
-                    </p>
-                  </div>
-                  <a href="#contact" className={`${btn} shrink-0 bg-brass text-ink hover:bg-brass-light`}>
-                    {extra.cta}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 text-sm text-cream/60">{pricing.note}</p>
-          </div>
+          <Pricing />
         </section>
 
         {/* Location */}

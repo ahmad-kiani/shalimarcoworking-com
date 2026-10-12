@@ -89,52 +89,60 @@ export const spaces = {
 
 export const pricing = {
   eyebrow: "Pricing",
-  title: ["Plans that grow", "with your"],
+  title: "Plans that grow with your",
   accent: "work.",
-  note: "All prices in PKR. 15% discount applicable on annual payments. Final terms are confirmed on your tour.",
+  intro:
+    "Simple monthly pricing. Every plan includes high-speed internet, complimentary tea & coffee and access to the community areas.",
+  annualDiscount: 0.15,
   plans: [
     {
+      tag: "Flexible",
       name: "Hot Desk",
-      body: "Any open seat on the shared floor.",
-      price: "27,000",
+      body: "Any open seat on the shared floor, whenever you need it.",
+      price: 27000,
       unit: "month",
       features: ["Shared workstations", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
     {
+      tag: "Your own desk",
       name: "Dedicated Desk",
-      body: "A desk that's yours, every working day.",
-      price: "29,000",
+      body: "A fixed desk that's yours, every working day.",
+      price: 29000,
       unit: "month",
       features: ["Your own fixed desk", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
+      // Highlighted card. Set ribbon to "" to keep the highlight without a label.
+      featured: true,
+      ribbon: "Most popular",
     },
     {
+      tag: "Privacy",
       name: "Private Office",
       body: "A private office for two or three people.",
-      price: "38,000",
+      price: 38000,
       unit: "seat / month",
-      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
+      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
   ],
-  extras: [
-    {
-      name: "Conference Room",
-      body: "Book a conference room for meetings, calls and workshops.",
-      price: "2,500",
-      unit: "hour",
-      cta: "Book a room",
-    },
-    {
-      name: "Virtual Office",
-      body: "A professional address at ATS Centre, Blue Area, without renting a desk.",
-      price: "5,000",
-      unit: "month",
-      cta: "Enquire",
-    },
-  ],
+  onDemand: {
+    title: "On demand",
+    note: "No membership needed",
+    items: [
+      { name: "Conference Room", body: "For meetings, client calls and workshops.", price: 2500, unit: "hour", cta: "Book a room" },
+      {
+        name: "Virtual Office",
+        body: "A professional address at ATS Centre, Blue Area, without renting a desk.",
+        price: 5000,
+        unit: "month",
+        cta: "Enquire",
+      },
+    ],
+  },
+  notes: ["All prices in PKR", "15% off when you pay annually", "Final terms confirmed on your tour"],
 };
+
 
 export const location = {
   eyebrow: "Location",
