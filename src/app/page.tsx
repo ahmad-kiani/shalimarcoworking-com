@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Pricing from "@/components/Pricing";
 import Icon from "@/components/Icon";
 import Mark from "@/components/Mark";
-import SectionHeading from "@/components/SectionHeading";
 import SpacesCarousel from "@/components/SpacesCarousel";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
@@ -135,39 +134,56 @@ export default function Home() {
         {/* Location */}
         <section id="location" className="py-20 sm:py-28">
           <div className={container}>
-            <SectionHeading eyebrow={location.eyebrow} lines={location.title} />
-            <div className="mt-12 grid overflow-hidden rounded-sm bg-sand lg:grid-cols-[4fr_8fr]">
-              <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
-                <div>
-                  <p className="leading-relaxed text-ink/80">{location.body}</p>
-                  <address className="mt-6 text-lg leading-relaxed not-italic">
-                    {site.address[0]}
-                    <br />
-                    {site.address[1]}
-                  </address>
-                </div>
-                <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${btn} bg-garden text-cream hover:bg-garden-deep`}
-                  >
-                    Get directions
-                  </a>
-                  <a href={`tel:${site.phoneHref}`} className={`${btn} gap-2 border border-ink/30 hover:bg-ink hover:text-cream`}>
-                    <Icon name="phone" className="size-4" />
-                    {site.phone}
-                  </a>
-                </div>
-              </div>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="flex items-center justify-center gap-4 text-xs font-medium tracking-[0.3em] text-brass-dark uppercase">
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+                {location.eyebrow}
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+              </p>
+              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+                {location.title[0]} <span className="text-brass-dark italic">{location.title[1]}</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted">{location.body}</p>
+            </div>
+            {/* Full-width map; the card floats over its bottom-right corner on desktop and sits below it on phones. */}
+            <div className="relative mt-14 overflow-hidden rounded-md shadow-[0_24px_60px_rgb(0_0_0/0.12)]">
               <iframe
                 title={`Map showing ${site.mapQuery}`}
                 src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-80 w-full border-0 sm:h-96 lg:h-full lg:min-h-[28rem]"
+                className="block h-80 w-full border-0 sm:h-96 lg:h-[32rem]"
               />
+              <div className="grid gap-6 bg-ink p-7 text-cream sm:p-8 lg:absolute lg:right-7 lg:bottom-7 lg:w-[23rem] lg:rounded-md lg:shadow-[0_20px_50px_rgb(0_0_0/0.3)]">
+                <div>
+                  <p className="text-[11px] font-semibold tracking-[0.2em] text-cream/55 uppercase">
+                    {site.name} {site.tagline}
+                  </p>
+                  <h3 className="mt-2 font-serif text-3xl leading-tight">ATS Centre, Blue Area</h3>
+                  <address className="mt-2 leading-relaxed text-cream/85 not-italic">
+                    {site.address[0]}
+                    <br />
+                    {site.address[1]}
+                  </address>
+                </div>
+                <div className="grid gap-3">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${btn} bg-brass text-ink hover:bg-brass-light`}
+                  >
+                    Get directions
+                  </a>
+                  <a
+                    href={`tel:${site.phoneHref}`}
+                    className={`${btn} gap-2 border border-cream/35 hover:bg-cream hover:text-ink`}
+                  >
+                    <Icon name="phone" className="size-4" />
+                    {site.phone}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
