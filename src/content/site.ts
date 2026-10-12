@@ -72,6 +72,7 @@ export const why = {
 export const amenities = {
   eyebrow: "Amenities",
   title: ["Everything a working day needs,", "already taken care of."],
+  intro: "Choose how you like to work. Internet, tea & coffee and the community areas come with every desk and office.",
   items: [
     { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
     { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },

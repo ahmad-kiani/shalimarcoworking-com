@@ -77,12 +77,22 @@ export default function Home() {
         {/* Amenities */}
         <section id="amenities" className="bg-ink py-20 text-cream sm:py-28">
           <div className={container}>
-            <SectionHeading eyebrow={amenities.eyebrow} lines={amenities.title} dark />
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="flex items-center justify-center gap-4 text-xs font-medium tracking-[0.3em] text-brass-light uppercase">
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+                {amenities.eyebrow}
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+              </p>
+              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+                {amenities.title[0]} <span className="text-brass italic">{amenities.title[1]}</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-cream/70">{amenities.intro}</p>
+            </div>
             <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {amenities.items.map((a) => (
                 <li key={a.title} className="rounded-sm bg-ink-card p-6 sm:p-7">
                   <Icon name={a.icon} className="size-7 text-brass" />
-                  <h3 className="mt-5 text-sm font-semibold tracking-[0.08em] uppercase">{a.title}</h3>
+                  <h3 className="mt-5 font-serif text-[1.75rem] leading-tight">{a.title}</h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-cream/70">{a.body}</p>
                 </li>
               ))}
