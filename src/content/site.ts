@@ -92,6 +92,7 @@ export const amenities = {
 export const spaces = {
   eyebrow: "Our spaces",
   title: ["Four spaces, each built for", "a different way of working."],
+  intro: "From a seat on the open floor to a room of your own, pick the space that fits how you work today.",
   items: [
     { name: "The Open Floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
     { name: "Private Offices", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },

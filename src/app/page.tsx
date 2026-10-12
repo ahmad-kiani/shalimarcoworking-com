@@ -110,8 +110,18 @@ export default function Home() {
         {/* Spaces */}
         <section id="spaces" className="overflow-hidden py-20 sm:py-28">
           <div className={container}>
-            <SectionHeading eyebrow={spaces.eyebrow} lines={spaces.title} />
-            <div className="mt-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="flex items-center justify-center gap-4 text-xs font-medium tracking-[0.3em] text-brass-dark uppercase">
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+                {spaces.eyebrow}
+                <span className="h-px w-7 bg-brass" aria-hidden="true" />
+              </p>
+              <h2 className="mt-5 font-serif text-[2.6rem] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+                {spaces.title[0]} <span className="text-brass-dark italic">{spaces.title[1]}</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-muted">{spaces.intro}</p>
+            </div>
+            <div className="mt-14">
               <SpacesCarousel />
             </div>
           </div>
