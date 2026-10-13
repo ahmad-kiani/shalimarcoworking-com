@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Pricing from "@/components/Pricing";
 import Icon from "@/components/Icon";
+import LocationMap from "@/components/LocationMap";
 import Mark from "@/components/Mark";
 import SpacesCarousel from "@/components/SpacesCarousel";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
@@ -172,13 +173,7 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <iframe
-                title={`Map showing ${site.mapQuery}`}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-80 w-full border-0 sm:h-96 lg:h-full lg:min-h-[28rem]"
-              />
+              <LocationMap />
             </div>
           </div>
         </section>
