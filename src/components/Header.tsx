@@ -8,14 +8,19 @@ import Logo from "./Logo";
 
 export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
+  // The hero has its own Book a tour button, so the header one waits until the hero is scrolled past.
+  const [pastHero, setPastHero] = useState(alwaysSolid);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      if (!alwaysSolid) setPastHero(window.scrollY > window.innerHeight * 0.8);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysSolid]);
 
   // Lock page scroll while the mobile menu is open.
   useEffect(() => {
@@ -58,7 +63,9 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
             href={tourLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden min-h-11 items-center rounded-sm bg-brass px-5 text-xs font-semibold tracking-[0.14em] text-ink uppercase transition-colors hover:bg-brass-light sm:flex"
+            className={`hidden min-h-11 items-center rounded-sm bg-brass px-5 text-xs font-semibold tracking-[0.14em] text-ink uppercase transition-[background-color,opacity,visibility] duration-300 hover:bg-brass-light sm:flex ${
+              pastHero ? "visible opacity-100" : "invisible opacity-0"
+            }`}
           >
             Book a tour
           </a>
