@@ -8,6 +8,7 @@ import SpacesCarousel from "@/components/SpacesCarousel";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
+const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`;
 const btn =
   "inline-flex min-h-12 items-center justify-center rounded-sm px-7 text-xs font-semibold tracking-[0.16em] uppercase transition-colors active:scale-[0.98]";
 
@@ -158,7 +159,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`}
+                    href={directionsLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${btn} bg-brass text-ink hover:bg-brass-light`}
@@ -192,32 +193,41 @@ export default function Home() {
               </p>
               <h2 className="mt-6 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl">{contact.title}</h2>
               <p className="mt-6 text-cream/70">{contact.visit}</p>
-              <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                <div className="sm:col-span-2 lg:col-span-1 xl:col-span-2">
-                  <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Address</dt>
-                  <dd className="mt-2 leading-relaxed">
-                    {site.address[0]}
-                    <br />
-                    <span className="text-cream/60">{site.address[1]}</span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Phone</dt>
-                  <dd className="mt-1">
-                    <a href={`tel:${site.phoneHref}`} className="inline-flex min-h-11 items-center underline-offset-4 hover:underline">
-                      {site.phone}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">Email</dt>
-                  <dd className="mt-1">
-                    <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center [overflow-wrap:anywhere] underline-offset-4 hover:underline">
-                      {site.email}
-                    </a>
-                  </dd>
-                </div>
-              </dl>
+              <ul className="mt-10 grid gap-7">
+                {[
+                  {
+                    icon: "pin",
+                    label: "Address",
+                    value: site.address[0],
+                    sub: site.address[1],
+                    link: { label: "Get directions", href: directionsLink, external: true },
+                  },
+                  { icon: "clock", label: "Hours", value: site.hours[0], sub: site.hours[1] },
+                  { icon: "phone", label: "Phone", value: site.phone, link: { label: "Call us", href: `tel:${site.phoneHref}` } },
+                  { icon: "mail", label: "Email", value: site.email, link: { label: "Email us", href: `mailto:${site.email}` } },
+                ].map((d) => (
+                  <li key={d.label} className="flex gap-4">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brass/12 text-brass">
+                      <Icon name={d.icon} className="size-5" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold tracking-[0.2em] text-brass uppercase">{d.label}</p>
+                      <p className="mt-1.5 leading-relaxed [overflow-wrap:anywhere]">{d.value}</p>
+                      {d.sub && <p className="text-cream/60">{d.sub}</p>}
+                      {d.link && (
+                        <a
+                          href={d.link.href}
+                          {...(d.link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm text-brass-light underline-offset-4 hover:underline"
+                        >
+                          {d.link.label}
+                          <Icon name="arrowRight" className="size-3.5" />
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
             <ContactForm />
           </div>

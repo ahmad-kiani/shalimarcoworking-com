@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { site } from "@/content/site";
 import InterestSelect from "./InterestSelect";
 
@@ -84,6 +85,13 @@ export default function ContactForm() {
       >
         Send enquiry
       </button>
+      <p className="mt-4 text-[0.8125rem] text-muted">
+        By sending this you agree to our{" "}
+        <Link href="/privacy-policy" className="text-brass-dark underline underline-offset-4 hover:text-ink">
+          Privacy Policy
+        </Link>
+        .
+      </p>
     </form>
   );
 }

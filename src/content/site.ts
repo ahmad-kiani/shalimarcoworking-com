@@ -9,6 +9,7 @@ export const site = {
   phone: "+92 314 5323372",
   phoneHref: "+923145323372",
   mapQuery: "ATS Centre, Blue Area, Islamabad",
+  hours: ["9 AM to 3 AM", "Monday to Saturday"],
 };
 
 // Floating WhatsApp button. Temporary test number; swap for the business number after testing.
@@ -170,7 +171,7 @@ export const legal = [
 export const contact = {
   eyebrow: "Visit Shalimar",
   title: "Come and see it for yourself.",
-  visit: "Call or email to book a tour of the space.",
+  visit: "Call, WhatsApp or email to book a tour of the space.",
   interests: [
     { label: "Hot desk", icon: "desk" },
     { label: "Dedicated desk", icon: "chair" },
