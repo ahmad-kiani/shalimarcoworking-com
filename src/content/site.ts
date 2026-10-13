@@ -9,7 +9,7 @@ export const site = {
   phone: "+92 314 5323372",
   phoneHref: "+923145323372",
   mapQuery: "ATS Centre, Blue Area, Islamabad",
-  hours: ["9 AM to 3 AM", "Monday to Saturday"],
+  hours: ["9 AM to 10 PM", "Monday to Saturday"],
 };
 
 // Floating WhatsApp button. Temporary test number; swap for the business number after testing.
