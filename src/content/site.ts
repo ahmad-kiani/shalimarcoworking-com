@@ -84,7 +84,7 @@ export const amenities = {
     { icon: "door", title: "Private offices", body: "Private offices for two or three people, with the quiet to focus." },
     { icon: "people", title: "Conference rooms", body: "Well-equipped rooms for meetings, client calls and workshops." },
     { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
-    { icon: "wifi", title: "Internet & equipment", body: "Fast, reliable internet across the floor, with laptops and headphones available if you need them." },
+    { icon: "wifi", title: "High-speed internet", body: "Fast, reliable internet across the whole floor, for every desk and office." },
     { icon: "cup", title: "Tea & coffee", body: "Complimentary tea and coffee, all day, for everyone working here." },
     { icon: "calendar", title: "Community & events", body: "Shared lounges, networking events and workshops to meet other members." },
   ],
