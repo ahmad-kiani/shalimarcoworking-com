@@ -44,13 +44,13 @@ export default function Home() {
         </section>
 
         {/* Marquee */}
-        <div className="overflow-hidden bg-garden py-5 text-cream" aria-label={marquee.join(", ")}>
+        <div className="overflow-hidden bg-sand py-5 text-garden" aria-label={marquee.join(", ")}>
           <div className="animate-marquee flex w-max" aria-hidden="true">
             {/* Four copies: the strip slides by half, which must stay wider than the widest screen. */}
             {[...marquee, ...marquee, ...marquee, ...marquee].map((text, i) => (
               <span key={i} className="flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl">
                 <span className="px-8">{text}</span>
-                <Mark className="h-6 w-auto shrink-0 text-brass sm:h-7" />
+                <Mark className="h-6 w-auto shrink-0 text-brass-dark sm:h-7" />
               </span>
             ))}
           </div>
