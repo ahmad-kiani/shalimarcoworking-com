@@ -28,6 +28,14 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Laptops (mouse/trackpad only, so tablets keep full-size tap targets): look like
+   75% browser zoom at 100%. 12px at 1280 wide, back to 16px from ~1707 wide. */
+@media (min-width: 1024px) and (max-width: 1919.98px) and (hover: hover) and (pointer: fine) {
+  html {
+    font-size: clamp(75%, 0.9375vw, 100%);
+  }
+}
+
 /* Large monitors and TVs: scale the whole rem-based layout with the screen
    (16px at 1920 wide, 32px at 3840) instead of leaving a small island. */
 @media (min-width: 1920px) {
