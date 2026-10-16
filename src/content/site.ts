@@ -95,10 +95,10 @@ export const spaces = {
   title: ["Four spaces, each built for", "a different way of working."],
   intro: "From a seat on the open floor to a room of your own, pick the space that fits how you work today.",
   items: [
-    { name: "The Open Floor", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
-    { name: "Private Offices", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
-    { name: "Conference Rooms", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
-    { name: "Community Areas", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
+    { name: "The Open Floor", image: "/spaces/open-floor.webp", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
+    { name: "Private Offices", image: "/spaces/private-office.webp", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
+    { name: "Conference Rooms", image: "/spaces/conference-room.webp", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
+    { name: "Community Areas", image: "/spaces/community-area.webp", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
 };
 

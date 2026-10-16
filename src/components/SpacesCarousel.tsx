@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { spaces } from "@/content/site";
 import Icon from "./Icon";
-import Photo from "./Photo";
+import Image from "next/image";
 
 export default function SpacesCarousel() {
   const track = useRef<HTMLUListElement>(null);
@@ -38,7 +38,15 @@ export default function SpacesCarousel() {
       >
         {spaces.items.map((space) => (
           <li key={space.name} className="w-[82%] shrink-0 snap-start min-[520px]:w-[64%] sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]">
-            <Photo label={space.name} className="aspect-[4/3.4]" />
+            <div className="relative aspect-[4/3.4] overflow-hidden bg-sand">
+              <Image
+                src={space.image}
+                alt={space.name}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 46vw, 82vw"
+                className="object-cover"
+              />
+            </div>
             <div className="mt-5 flex flex-col items-start gap-1">
               <h3 className="font-serif text-3xl">{space.name}</h3>
               <span className="text-[0.6875rem] font-medium tracking-[0.2em] text-brass-dark uppercase">{space.meta}</span>
