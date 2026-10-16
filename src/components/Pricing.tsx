@@ -3,8 +3,20 @@
 import { useState } from "react";
 import { pricing, whatsappLink } from "@/content/site";
 
+type Currency = "USD" | "PKR";
+
 const fmt = (n: number) => n.toLocaleString("en-US");
-const annual = (n: number) => Math.round(n * (1 - pricing.annualDiscount));
+// Annual price in PKR, rounded down to the nearest 100.
+const annual = (n: number) => Math.floor((n * (1 - pricing.annualDiscount)) / 100) * 100;
+// USD rounded down to the nearest 10 (137 → 130). Under $100 it rounds down to the dollar instead,
+// so small prices like the conference room don't drop to $0.
+const usd = (pkr: number) => {
+  if (pricing.usdFixed[pkr]) return pricing.usdFixed[pkr];
+  const d = pkr / pricing.usdRate;
+  return d >= 100 ? Math.floor(d / 10) * 10 : Math.floor(d);
+};
+const amount = (pkr: number, c: Currency) => (c === "USD" ? usd(pkr) : pkr);
+const money = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : `PKR ${fmt(pkr)}`);
 
 const btn =
   "inline-flex min-h-12 items-center justify-center rounded-sm px-7 text-xs font-semibold tracking-[0.16em] uppercase transition-colors active:scale-[0.98]";
@@ -19,6 +31,7 @@ function Tick() {
 
 export default function Pricing() {
   const [yearly, setYearly] = useState(false);
+  const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
     <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -34,11 +47,12 @@ export default function Pricing() {
         <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-cream/70">{pricing.intro}</p>
       </div>
 
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
       {/* Billing switch */}
       <div
         role="radiogroup"
         aria-label="Billing period"
-        className="mx-auto mt-10 flex w-max items-center gap-1 rounded-full border border-cream/15 bg-black/15 p-1"
+        className="flex w-max items-center gap-1 rounded-full border border-cream/15 bg-black/15 p-1"
       >
         {[
           { label: "Monthly", value: false },
@@ -64,6 +78,25 @@ export default function Pricing() {
             )}
           </button>
         ))}
+      </div>
+
+      {/* Currency switch */}
+      <div role="radiogroup" aria-label="Currency" className="flex w-max items-center gap-1 rounded-full border border-cream/15 bg-black/15 p-1">
+        {(["USD", "PKR"] as const).map((c) => (
+          <button
+            key={c}
+            type="button"
+            role="radio"
+            aria-checked={currency === c}
+            onClick={() => setCurrency(c)}
+            className={`flex min-h-11 items-center rounded-full px-4 text-sm font-medium transition-colors ${
+              currency === c ? "bg-[#f2ebdf] text-ink" : "text-cream/70 hover:text-cream"
+            }`}
+          >
+            {c}
+          </button>
+        ))}
+      </div>
       </div>
 
       {/* Plans */}
@@ -95,25 +128,28 @@ export default function Pricing() {
               <p className={`mt-2 text-[0.9375rem] leading-relaxed lg:min-h-[3.2em] ${featured ? "text-muted" : "text-cream/65"}`}>
                 {plan.body}
               </p>
-
               <p className="mt-7 flex flex-wrap items-baseline gap-x-2">
-                <span className={`text-sm tracking-wide ${featured ? "text-muted" : "text-cream/60"}`}>PKR</span>
-                <span className="text-[2.5rem] leading-none min-[400px]:text-[3.25rem] lg:text-[2.6rem] xl:text-[3.25rem] font-light tracking-tight tabular-nums">{fmt(shown)}</span>
-                <span className={`text-sm whitespace-nowrap lg:basis-full xl:basis-auto ${featured ? "text-muted" : "text-cream/60"}`}>/ {plan.unit}</span>
+                {currency === "PKR" && (
+                  <span className={`text-sm tracking-wide ${featured ? "text-muted" : "text-cream/60"}`}>PKR</span>
+                )}
+                <span className="text-[2.5rem] leading-none min-[400px]:text-[3.25rem] lg:text-[2.6rem] xl:text-[3.25rem] font-light tracking-tight tabular-nums">
+                  {currency === "USD" ? "$" : ""}
+                  {fmt(amount(shown, currency))}
+                </span>
+                <s className={`text-lg tabular-nums ${featured ? "text-muted" : "text-cream/50"}`}>{money(plan.was, currency)}</s>
+                <span className={`text-sm whitespace-nowrap ${featured ? "text-muted" : "text-cream/60"}`}>/ {plan.unit}</span>
               </p>
               <p className={`mt-2 text-[0.8125rem] lg:min-h-[2.6em] xl:min-h-0 ${featured ? "text-muted" : "text-cream/55"}`}>
                 {yearly ? (
-                  <>
-                    billed annually · <s>PKR {fmt(plan.price)}</s> monthly
-                  </>
+                  <>billed annually · {money(plan.price, currency)} if paid monthly</>
                 ) : (
-                  <>or PKR {fmt(annual(plan.price))} / {plan.unit} paid annually</>
+                  <>or {money(annual(plan.price), currency)} / {plan.unit} paid annually</>
                 )}
               </p>
 
               <a
                 href={whatsappLink(
-                  `Hi Shalimar, I'm interested in the ${plan.name} plan (PKR ${fmt(shown)} / ${plan.unit}${
+                  `Hi Shalimar, I'm interested in the ${plan.name} plan (${money(shown, currency)} / ${plan.unit}${
                     yearly ? ", paid annually" : ""
                   }). Could you share more details?`,
                 )}
@@ -162,15 +198,15 @@ export default function Pricing() {
             <div>
               <h3 className="font-serif text-3xl">{item.name}</h3>
               <p className="mt-2 text-[0.9375rem] leading-relaxed text-cream/70">{item.body}</p>
-              <p className="mt-4 flex items-baseline gap-1.5">
-                <span className="text-sm text-cream/70">PKR</span>
-                <span className="text-3xl font-light tabular-nums">{fmt(item.price)}</span>
+              <p className="mt-4 flex flex-wrap items-baseline gap-x-2">
+                <span className="text-3xl font-light tabular-nums">{money(item.price, currency)}</span>
+                <s className="text-base text-cream/50 tabular-nums">{money(item.was, currency)}</s>
                 <span className="text-sm text-cream/60">/ {item.unit}</span>
               </p>
             </div>
             <a
               href={whatsappLink(
-                `Hi Shalimar, I'm interested in the ${item.name} (PKR ${fmt(item.price)} / ${item.unit}). Could you share more details?`,
+                `Hi Shalimar, I'm interested in the ${item.name} (${money(item.price, currency)} / ${item.unit}). Could you share more details?`,
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -178,15 +214,6 @@ export default function Pricing() {
             >
               {item.cta}
             </a>
-          </li>
-        ))}
-      </ul>
-
-      <ul className="mt-10 flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm text-cream/60">
-        {pricing.notes.map((n) => (
-          <li key={n} className="flex items-center gap-2">
-            <span className="size-1.5 rounded-full bg-brass" aria-hidden="true" />
-            {n}
           </li>
         ))}
       </ul>

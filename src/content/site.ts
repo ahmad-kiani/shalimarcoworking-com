@@ -108,13 +108,18 @@ export const pricing = {
   accent: "work.",
   intro:
     "Simple monthly pricing. Every plan includes high-speed internet, complimentary tea & coffee and access to the community areas.",
-  annualDiscount: 0.15,
+  annualDiscount: 0.18,
+  // Prices are entered in PKR. USD is worked out with this rate (PKR per US dollar); update it when the rate moves.
+  usdRate: 280,
+  // Hand-picked USD amounts that replace the worked-out ones, keyed by the PKR price.
+  usdFixed: { 27000: 95, 4000: 15, 7500: 25 } as Record<number, number>,
   plans: [
     {
       tag: "Flexible",
       name: "Hot Desk",
       body: "Any open seat on the shared floor, whenever you need it.",
       price: 27000,
+      was: 45000,
       unit: "month",
       features: ["Shared workstations", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
@@ -123,7 +128,8 @@ export const pricing = {
       tag: "Your own desk",
       name: "Dedicated Desk",
       body: "A fixed desk that's yours, every working day.",
-      price: 29000,
+      price: 30000,
+      was: 50000,
       unit: "month",
       features: ["Your own fixed desk", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
@@ -135,7 +141,8 @@ export const pricing = {
       tag: "Privacy",
       name: "Private Office",
       body: "A private office for two or three people.",
-      price: 38000,
+      price: 40000,
+      was: 72500,
       unit: "seat / month",
       features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
@@ -143,17 +150,17 @@ export const pricing = {
   ],
   onDemand: {
     items: [
-      { name: "Conference Room", body: "Book a conference room for meetings, calls and workshops.", price: 2500, unit: "hour", cta: "Book a room" },
+      { name: "Conference Room", body: "Book a conference room for meetings, calls and workshops.", price: 2500, was: 4000, unit: "hour", cta: "Book a room" },
       {
         name: "Virtual Office",
         body: "A professional address at ATS Centre, Blue Area, without renting a desk.",
         price: 5000,
+        was: 7500,
         unit: "month",
         cta: "Enquire",
       },
     ],
   },
-  notes: ["All prices in PKR", "15% off when you pay annually", "Final terms confirmed on your tour"],
 };
 
 
