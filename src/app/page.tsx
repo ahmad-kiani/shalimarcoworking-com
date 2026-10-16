@@ -1,3 +1,4 @@
+import { preload } from "react-dom";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -14,12 +15,28 @@ const btn =
   "inline-flex min-h-12 items-center justify-center rounded-sm px-7 text-xs font-semibold tracking-[0.16em] uppercase transition-colors active:scale-[0.98]";
 
 export default function Home() {
+  preload("/hero/poster.webp", { as: "image", fetchPriority: "high" });
+
   return (
     <>
       <Header />
       <main id="top">
         {/* Hero */}
         <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 short:pt-20 short:pb-10 text-cream">
+          {/* The poster shows straight away and stays up until the video can play. */}
+          <video
+            className="absolute inset-0 size-full object-cover"
+            src="/hero/hero.mp4"
+            poster="/hero/poster.webp"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          {/* Darken the video evenly behind the text. */}
+          <div className="absolute inset-0 bg-ink/55" aria-hidden="true" />
           <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
             {/* On laptops the headline also shrinks with the window height, so short screens (e.g. 150% scaling) keep room around it. */}
