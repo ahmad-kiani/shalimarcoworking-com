@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPage title="Privacy Policy" updated="8 October 2026">
+    <LegalPage title="Privacy Policy" updated="16 October 2026">
       <p>
         This policy explains what personal information Shalimar Coworking (&ldquo;Shalimar&rdquo;, &ldquo;we&rdquo;,
         &ldquo;us&rdquo;) collects through this website and when you get in touch with us, how we use it, and the choices
@@ -29,9 +29,9 @@ export default function PrivacyPolicy() {
       </p>
       <ul>
         <li>
-          <strong>Enquiry form.</strong> The form doesn&rsquo;t send anything to us directly. It opens your own email app
-          with your details filled in, and we receive them only if you send that email. This can include your name,
-          company, email address, phone number, the workspace you&rsquo;re interested in and your message.
+          <strong>Enquiry form.</strong> When you send the enquiry form, the details you enter come straight to our
+          email. This can include your name, company, email address, phone number, the workspace you&rsquo;re interested
+          in and your message.
         </li>
         <li>
           <strong>Email and phone.</strong> Anything you include when you email or call us.
@@ -65,10 +65,11 @@ export default function PrivacyPolicy() {
           .
         </li>
         <li>
-          <strong>Email.</strong> Messages you send us are stored by our email provider.
+          <strong>Email.</strong> Enquiry forms and emails you send us are delivered to and stored by our email
+          provider.
         </li>
         <li>
-          <strong>WhatsApp.</strong> The WhatsApp and pricing buttons open a chat with us in WhatsApp. Messages you send there are
+          <strong>WhatsApp.</strong> The WhatsApp, Book a tour and pricing buttons open a chat with us in WhatsApp. Messages you send there are
           handled by WhatsApp under the{" "}
           <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
             WhatsApp Privacy Policy
