@@ -127,7 +127,7 @@ export const pricing = {
     {
       tag: "Your own desk",
       name: "Dedicated Desk",
-      body: "A fixed desk that's yours, every working day.",
+      body: "A fixed desk that's yours every working day, set up just the way you like.",
       price: 30000,
       was: 50000,
       unit: "month",
@@ -140,10 +140,10 @@ export const pricing = {
     {
       tag: "Privacy",
       name: "Private Office",
-      body: "A private office for two or three people.",
+      body: "A seat in a private office for two or three people.",
       price: 40000,
       was: 72500,
-      unit: "seat / month",
+      unit: "month",
       features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
