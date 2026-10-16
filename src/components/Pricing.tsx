@@ -6,8 +6,8 @@ import { pricing, whatsappLink } from "@/content/site";
 type Currency = "USD" | "PKR";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
-// Annual price in PKR, rounded down to the nearest 100.
-const annual = (n: number) => Math.floor((n * (1 - pricing.annualDiscount)) / 100) * 100;
+// Annual price in PKR, rounded down to the nearest 500.
+const annual = (n: number) => Math.floor((n * (1 - pricing.annualDiscount)) / 500) * 500;
 // USD rounded down to the nearest 10 (137 → 130). Under $100 it rounds down to the dollar instead,
 // so small prices like the conference room don't drop to $0.
 const usd = (pkr: number) => {
@@ -69,13 +69,6 @@ export default function Pricing() {
             }`}
           >
             {o.label}
-            {o.value && (
-              <span className="rounded-full bg-brass-light px-2 py-0.5 text-[0.6875rem] font-semibold tracking-wide text-ink">
-                <span className="max-[359px]:hidden">Save </span>
-                <span className="min-[360px]:hidden">−</span>
-                {Math.round(pricing.annualDiscount * 100)}%
-              </span>
-            )}
           </button>
         ))}
       </div>
