@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { nav, site, tourLink } from "@/content/site";
 import Icon from "./Icon";
@@ -11,6 +11,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
   // The hero has its own Book a tour button, so the header one waits until the hero is scrolled past.
   const [pastHero, setPastHero] = useState(alwaysSolid);
   const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,11 +23,31 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
     return () => window.removeEventListener("scroll", onScroll);
   }, [alwaysSolid]);
 
-  // Lock page scroll while the mobile menu is open.
+  // While the mobile menu is open: lock page scroll, make the page behind it unreachable by Tab
+  // (inert on main, footer and the WhatsApp button only, so Next's route announcer keeps working),
+  // close on Escape, and close if the window grows to the desktop layout (e.g. a tablet rotated).
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    const behind = [...document.querySelectorAll<HTMLElement>("body > main, body > footer, #whatsapp-button")];
+    behind.forEach((el) => (el.inert = true));
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const onDesktop = () => desktop.matches && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onDesktop);
+
     return () => {
       document.body.style.overflow = "";
+      behind.forEach((el) => (el.inert = false));
+      document.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onDesktop);
     };
   }, [open]);
 
@@ -70,6 +91,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
             Book a tour
           </a>
           <button
+            ref={toggle}
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
@@ -87,7 +109,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-cream px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:px-8 lg:hidden"
+        className="h-[calc(100dvh-4rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain bg-cream px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:px-8 lg:hidden"
       >
         <ul className="divide-y divide-ink/10 border-b border-ink/10 short:grid short:grid-cols-2 short:gap-x-8 short:divide-y-0 short:border-b-0">
           {nav.map((item) => (

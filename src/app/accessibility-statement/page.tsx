@@ -26,7 +26,7 @@ export default function AccessibilityStatement() {
         <li>Text and buttons use strong colour contrast against their backgrounds.</li>
         <li>Buttons and links are large enough to tap easily on touch screens.</li>
         <li>Every form field has a visible label, and fields bring up the right keyboard on phones.</li>
-        <li>Moving content, such as the scrolling banner, stops if your device is set to reduce motion.</li>
+        <li>Moving content, such as the background video and the scrolling banner, stops if your device is set to reduce motion.</li>
         <li>Icons are decorative only. All information is also given as text.</li>
       </ul>
 

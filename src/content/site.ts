@@ -82,7 +82,7 @@ export const amenities = {
   items: [
     { icon: "wifi", title: "High-speed internet", body: "Fast, reliable internet across the whole floor, for every desk and office." },
     { icon: "cup", title: "Tea & coffee", body: "Complimentary tea and coffee, all day, for everyone working here." },
-    { icon: "calendar", title: "Community & events", body: "Shared lounges, networking events and workshops to meet other members." },
+    { icon: "calendar", title: "Community", body: "Shared lounges, networking events and workshops to meet other members." },
     { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
     { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
     { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },
