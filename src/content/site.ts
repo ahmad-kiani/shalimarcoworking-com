@@ -45,7 +45,7 @@ export const hero = {
 
 export const marquee = [
   "ATS Centre, Blue Area",
-  "Private offices for 2–3 people",
+  "Private offices for 2–4 people",
   "Complimentary tea & coffee",
   "Virtual office from PKR 5,000 a month",
   "Book a tour",
@@ -86,7 +86,7 @@ export const amenities = {
     { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
     { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
     { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },
-    { icon: "door", title: "Private offices", body: "Private offices for two or three people, with the quiet to focus." },
+    { icon: "door", title: "Private offices", body: "Private offices for two to four people, with the quiet to focus." },
     { icon: "people", title: "Conference rooms", body: "Well-equipped rooms for meetings, client calls and workshops." },
   ],
 };
@@ -94,10 +94,10 @@ export const amenities = {
 export const spaces = {
   eyebrow: "Our spaces",
   title: ["Four spaces, each built for", "a different way of working."],
-  intro: "From a seat on the open floor to a room of your own, pick the space that fits how you work today.",
+  intro: "From a single desk to a room of your own, pick what suits you.",
   items: [
     { name: "The Open Floor", image: "/spaces/open-floor.webp", meta: "Hot & dedicated desks", body: "A shared floor with flexible workstations and ergonomic furniture. Good for freelancers and remote professionals." },
-    { name: "Private Offices", image: "/spaces/private-office.webp", meta: "2–3 seats", body: "Your own room within the space, for people who need privacy and focus. Good for small teams, business partners and consultants." },
+    { name: "Private Offices", image: "/spaces/private-office.webp", meta: "2–4 seats", body: "Your own room, with the privacy to focus. Good for small teams, business partners and consultants." },
     { name: "Conference Rooms", image: "/spaces/conference-room.webp", meta: "By the hour", body: "Well-equipped rooms for team discussions, client meetings and workshops. Bookable by the hour." },
     { name: "Community Areas", image: "/spaces/community-area.webp", meta: "Lounges & events", body: "Shared lounges for a break between tasks, plus regular networking events and workshops." },
   ],
@@ -141,11 +141,11 @@ export const pricing = {
     {
       tag: "Privacy",
       name: "Private Office",
-      body: "A seat in a private office for two or three people.",
+      body: "A seat in a private office for two to four people.",
       price: 40000,
       was: 72500,
       unit: "month",
-      features: ["Private room for 2–3 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
+      features: ["Private room for 2–4 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
     },
   ],

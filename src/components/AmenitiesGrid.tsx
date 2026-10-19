@@ -33,7 +33,9 @@ export default function AmenitiesGrid({ items }: { items: Amenity[] }) {
             ref={i === FIRST ? firstHidden : undefined}
             tabIndex={i === FIRST ? -1 : undefined}
             // Subgrid lines up icon, title and body across each row; gap-y-0 stops it inheriting the list's gap.
-            className={`row-span-3 grid grid-rows-subgrid gap-y-0 rounded-sm bg-ink-card p-3.5 [overflow-wrap:anywhere] outline-none min-[360px]:p-4 min-[400px]:p-5 sm:p-6 xl:p-7 ${
+            // Hover (mouse/trackpad only; Tailwind's hover: needs a hover-capable device): the card pops out, growing
+            // slightly with a deep shadow. It grows rather than moves, so it never slips out from under the pointer.
+            className={`relative row-span-3 grid grid-rows-subgrid gap-y-0 rounded-sm bg-ink-card p-3.5 [overflow-wrap:anywhere] outline-none transition-[scale,box-shadow,background-color] duration-300 ease-out hover:z-10 hover:scale-[1.035] hover:bg-[#3b433d] hover:shadow-[0_18px_40px_-12px_rgb(0_0_0/0.65)] motion-reduce:transition-none motion-reduce:hover:scale-100 min-[360px]:p-4 min-[400px]:p-5 sm:p-6 xl:p-7 ${
               i >= FIRST && !expanded ? "max-sm:hidden" : ""
             }`}
           >

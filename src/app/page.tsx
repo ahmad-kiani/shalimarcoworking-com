@@ -8,7 +8,7 @@ import Pricing from "@/components/Pricing";
 import Icon from "@/components/Icon";
 import LocationMap from "@/components/LocationMap";
 import Mark from "@/components/Mark";
-import SpacesCarousel from "@/components/SpacesCarousel";
+import SpacesGrid from "@/components/SpacesGrid";
 import { btn } from "@/components/styles";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
@@ -124,7 +124,7 @@ export default function Home() {
               <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-muted">{spaces.intro}</p>
             </div>
             <div className="mt-10">
-              <SpacesCarousel />
+              <SpacesGrid />
             </div>
           </div>
         </section>
