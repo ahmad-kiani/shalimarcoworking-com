@@ -6,7 +6,7 @@ import InterestSelect from "./InterestSelect";
 
 const field =
   "w-full border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-ink placeholder:text-ink/55 focus:border-garden focus:ring-0 focus:outline-none";
-const label = "block text-[0.6875rem] font-medium tracking-[0.2em] text-muted uppercase";
+const label = "block text-xs font-medium tracking-[0.2em] text-muted uppercase";
 
 // No backend yet: the form opens the visitor's email app with the enquiry filled in.
 export default function ContactForm() {

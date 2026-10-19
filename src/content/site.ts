@@ -77,16 +77,17 @@ export const why = {
 export const amenities = {
   eyebrow: "Amenities",
   title: ["Everything a working day needs,", "already taken care of."],
-  intro: "Choose how you like to work. Internet, tea & coffee and the community areas come with every desk and office.",
+  intro: "Included with every desk and office, plus the spaces to work the way you like.",
+  // Perks first: phones show only the first four until "Show 4 more" is tapped.
   items: [
+    { icon: "wifi", title: "High-speed internet", body: "Fast, reliable internet across the whole floor, for every desk and office." },
+    { icon: "cup", title: "Tea & coffee", body: "Complimentary tea and coffee, all day, for everyone working here." },
+    { icon: "calendar", title: "Community & events", body: "Shared lounges, networking events and workshops to meet other members." },
+    { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
     { icon: "desk", title: "Hot desks", body: "Take any open seat on the shared floor, whenever you need one." },
     { icon: "chair", title: "Dedicated desks", body: "A desk that's yours every day, set up just the way you like it." },
     { icon: "door", title: "Private offices", body: "Private offices for two or three people, with the quiet to focus." },
     { icon: "people", title: "Conference rooms", body: "Well-equipped rooms for meetings, client calls and workshops." },
-    { icon: "mail", title: "Virtual office", body: "A professional Blue Area address for your business, without renting a desk." },
-    { icon: "wifi", title: "High-speed internet", body: "Fast, reliable internet across the whole floor, for every desk and office." },
-    { icon: "cup", title: "Tea & coffee", body: "Complimentary tea and coffee, all day, for everyone working here." },
-    { icon: "calendar", title: "Community & events", body: "Shared lounges, networking events and workshops to meet other members." },
   ],
 };
 

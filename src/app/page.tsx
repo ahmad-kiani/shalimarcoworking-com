@@ -1,4 +1,5 @@
 import { preload } from "react-dom";
+import AmenitiesGrid from "@/components/AmenitiesGrid";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -7,12 +8,11 @@ import Icon from "@/components/Icon";
 import LocationMap from "@/components/LocationMap";
 import Mark from "@/components/Mark";
 import SpacesCarousel from "@/components/SpacesCarousel";
+import { btn } from "@/components/styles";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
 const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`;
-const btn =
-  "inline-flex min-h-12 items-center justify-center rounded-sm px-7 text-xs font-semibold tracking-[0.16em] uppercase transition-colors active:scale-[0.98]";
 
 export default function Home() {
   preload("/hero/poster.webp", { as: "image", fetchPriority: "high" });
@@ -115,15 +115,7 @@ export default function Home() {
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-cream/70">{amenities.intro}</p>
             </div>
-            <ul className="mt-14 grid gap-4 min-[520px]:grid-cols-2 lg:grid-cols-4">
-              {amenities.items.map((a) => (
-                <li key={a.title} className="rounded-sm bg-ink-card p-6 sm:p-7 lg:p-6 xl:p-7">
-                  <Icon name={a.icon} className="size-7 text-brass" />
-                  <h3 className="mt-5 font-serif text-[1.75rem] leading-tight lg:text-[1.5rem] xl:text-[1.75rem]">{a.title}</h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-cream/70">{a.body}</p>
-                </li>
-              ))}
-            </ul>
+            <AmenitiesGrid items={amenities.items} />
           </div>
         </section>
 

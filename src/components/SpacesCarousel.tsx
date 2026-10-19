@@ -49,7 +49,7 @@ export default function SpacesCarousel() {
             </div>
             <div className="mt-5 flex flex-col items-start gap-1">
               <h3 className="font-serif text-3xl">{space.name}</h3>
-              <span className="text-[0.6875rem] font-medium tracking-[0.2em] text-brass-dark uppercase">{space.meta}</span>
+              <span className="text-xs font-medium tracking-[0.2em] text-brass-dark uppercase">{space.meta}</span>
             </div>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{space.body}</p>
           </li>

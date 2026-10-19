@@ -20,6 +20,9 @@
   /* Brass dark enough for text on cream (4.9:1). */
   --color-brass-dark: #8a5f22;
   --color-muted: #5f665f;
+
+  /* Small labels never shrink below 11px on scaled laptops; unchanged (12px) at a 16px root. */
+  --text-xs: max(0.75rem, 11px);
 }
 
 html {
@@ -29,10 +32,10 @@ html {
 }
 
 /* Laptops (mouse/trackpad only, so tablets keep full-size tap targets): look like
-   75% browser zoom at 100%. 12px at 1280 wide, back to 16px from ~1707 wide. */
+   ~85% browser zoom at 100%. 13.6px at 1280 wide, back to 16px from ~1506 wide. */
 @media (min-width: 1024px) and (max-width: 1919.98px) and (hover: hover) and (pointer: fine) {
   html {
-    font-size: clamp(75%, 0.9375vw, 100%);
+    font-size: clamp(85%, 1.0625vw, 100%);
   }
 }
 

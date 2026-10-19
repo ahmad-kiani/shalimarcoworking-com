@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { pricing, whatsappLink } from "@/content/site";
+import { btn } from "./styles";
 
 type Currency = "USD" | "PKR";
 
@@ -29,8 +30,6 @@ const fit = ({ fixed, slope, whole }: Fit) => ({
 const wasLabel = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : fmt(pkr));
 const money = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : `PKR ${fmt(pkr)}`);
 
-const btn =
-  "inline-flex min-h-12 items-center justify-center rounded-sm px-7 text-xs font-semibold tracking-[0.16em] uppercase transition-colors active:scale-[0.98]";
 
 function Tick() {
   return (
@@ -119,12 +118,12 @@ export default function Pricing() {
               } ${ribbon ? "mt-3 lg:mt-0" : ""}`}
             >
               {featured && ribbon && (
-                <span className="absolute -top-3 left-6 min-[400px]:left-8 lg:left-7 xl:left-8 rounded-sm bg-brass px-3 py-1.5 text-[0.6875rem] font-semibold tracking-[0.18em] text-ink uppercase">
+                <span className="absolute -top-3 left-6 min-[400px]:left-8 lg:left-7 xl:left-8 rounded-sm bg-brass px-3 py-1.5 text-xs font-semibold tracking-[0.18em] text-ink uppercase">
                   {ribbon}
                 </span>
               )}
               <span
-                className={`text-[0.6875rem] font-semibold tracking-[0.2em] uppercase ${featured ? "text-brass-dark" : "text-brass-light"}`}
+                className={`text-xs font-semibold tracking-[0.2em] uppercase ${featured ? "text-brass-dark" : "text-brass-light"}`}
               >
                 {plan.tag}
               </span>
@@ -169,7 +168,7 @@ export default function Pricing() {
               </a>
 
               <div className={`mt-7 border-t pt-6 ${featured ? "border-ink/12" : "border-cream/12"}`}>
-                <p className={`text-[0.6875rem] font-semibold tracking-[0.2em] uppercase ${featured ? "text-muted" : "text-cream/50"}`}>
+                <p className={`text-xs font-semibold tracking-[0.2em] uppercase ${featured ? "text-muted" : "text-cream/50"}`}>
                   Includes
                 </p>
                 <ul className="mt-4 grid gap-3">
