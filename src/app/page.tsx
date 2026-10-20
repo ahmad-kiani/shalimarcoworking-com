@@ -1,4 +1,3 @@
-import { preload } from "react-dom";
 import AmenitiesGrid from "@/components/AmenitiesGrid";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -16,8 +15,6 @@ const container = "mx-auto max-w-7xl px-5 sm:px-8";
 const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`;
 
 export default function Home() {
-  preload("/hero/poster.webp", { as: "image", fetchPriority: "high" });
-
   return (
     <>
       <Header />
@@ -26,8 +23,10 @@ export default function Home() {
         <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 short:pt-20 short:pb-10 text-cream">
           <HeroVideo />
           {/* Darken the video evenly behind the text. */}
-          <div className="absolute inset-0 bg-ink/55" aria-hidden="true" />
-          <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40" aria-hidden="true" />
+          <div className="absolute inset-0 bg-ink/55 max-sm:portrait:hidden" aria-hidden="true" />
+          <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40 max-sm:portrait:hidden" aria-hidden="true" />
+          {/* Phones held upright: the still is already dark, so only the text area is darkened and the lamps and sign stay bright. */}
+          <div className="absolute inset-0 hidden bg-[linear-gradient(180deg,rgb(29_33_31/0.5)_0%,rgb(29_33_31/0.15)_16%,rgb(29_33_31/0.6)_28%,rgb(29_33_31/0.6)_76%,rgb(29_33_31/0.1)_84%,rgb(29_33_31/0.3)_100%)] max-sm:portrait:block" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
             {/* On laptops the headline also shrinks with the window height, so short screens (e.g. 150% scaling) keep room around it. */}
             <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[clamp(4rem,12.5svh,6.5rem)] short:text-5xl!">
