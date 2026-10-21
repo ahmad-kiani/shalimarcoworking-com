@@ -28,8 +28,8 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="rounded-sm bg-cream p-6 text-ink shadow-2xl max-[359px]:p-5 sm:p-10 lg:self-start">
-      <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 sm:gap-y-6">
+    <form onSubmit={onSubmit} className="rounded-sm bg-cream p-6 text-ink shadow-2xl max-[359px]:p-5 sm:p-10 lg:flex lg:flex-col">
+      <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 sm:gap-y-6 lg:flex-1 lg:grid-rows-[auto_auto_auto_1fr]">
         <label>
           <span className={label}>Name</span>
           <input name="name" required autoComplete="name" enterKeyHint="next" placeholder="Your full name" className={field} />
@@ -69,19 +69,19 @@ export default function ContactForm() {
           </span>
           <InterestSelect labelId="interest-label" />
         </div>
-        <label className="sm:col-span-2">
+        <label className="sm:col-span-2 lg:flex lg:flex-col">
           <span className={label}>Note</span>
           <textarea
             name="note"
             rows={3}
             placeholder="A line about your work and when you'd like to visit."
-            className={`${field} field-sizing-content min-h-24 resize-none`}
+            className={`${field} field-sizing-content min-h-24 resize-none lg:flex-1`}
           />
         </label>
       </div>
       <button
         type="submit"
-        className="mt-8 flex min-h-12 w-full items-center justify-center rounded-sm bg-brass px-8 text-xs font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:bg-brass-light active:scale-[0.98] sm:w-auto"
+        className="mt-8 flex min-h-12 w-full items-center justify-center rounded-sm bg-brass px-8 text-xs font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:bg-brass-light active:scale-[0.98] sm:w-auto lg:self-start"
       >
         Send enquiry
       </button>
