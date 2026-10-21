@@ -28,8 +28,8 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="rounded-sm bg-cream p-6 text-ink shadow-2xl sm:p-10">
-      <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="rounded-sm bg-cream p-6 text-ink shadow-2xl max-[359px]:p-5 sm:p-10 lg:self-start">
+      <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 sm:gap-y-6">
         <label>
           <span className={label}>Name</span>
           <input name="name" required autoComplete="name" enterKeyHint="next" placeholder="Your full name" className={field} />

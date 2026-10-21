@@ -27,7 +27,11 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
   }, [open]);
 
   useEffect(() => {
-    if (open) list.current?.focus();
+    // Bring the whole list into view (it can open near the bottom of a short screen) without the focus jump.
+    if (open) {
+      list.current?.focus({ preventScroll: true });
+      list.current?.scrollIntoView({ block: "nearest" });
+    }
   }, [open]);
 
   const openList = () => {
@@ -98,7 +102,7 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
           aria-labelledby={labelId}
           aria-activedescendant={`${listId}-${active}`}
           onKeyDown={onListKey}
-          className="absolute inset-x-0 top-full z-20 mt-1.5 rounded-md border border-ink/10 bg-[#fbf8f2] p-1.5 shadow-[0_16px_40px_rgb(0_0_0/0.14)] focus:outline-none"
+          className="absolute inset-x-0 top-full z-[45] mt-1.5 scroll-mt-20 max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain rounded-md border border-ink/10 bg-[#fbf8f2] p-1.5 shadow-[0_16px_40px_rgb(0_0_0/0.14)] focus:outline-none"
         >
           {options.map((o, i) => {
             const selected = o.label === value;
@@ -110,7 +114,7 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
                 aria-selected={selected}
                 onPointerEnter={() => setActive(i)}
                 onClick={() => choose(i)}
-                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded px-3.5 py-2.5 text-[0.96875rem] ${
+                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded px-3.5 py-2.5 text-[0.96875rem] max-[359px]:gap-2 max-[359px]:px-2.5 ${
                   i === active ? "bg-brass/15" : ""
                 } ${selected ? "font-semibold" : ""}`}
               >

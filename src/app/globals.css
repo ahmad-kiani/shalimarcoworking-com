@@ -2,6 +2,10 @@
 
 /* Phones turned sideways: short and wide. */
 @custom-variant short (@media (orientation: landscape) and (max-height: 31.25rem));
+/* The smallest of those (e.g. iPhone SE 1st gen sideways, 568x320). */
+@custom-variant shorter (@media (orientation: landscape) and (max-height: 24rem));
+/* Short phones held upright (e.g. iPhone SE 1st gen, 320x568). */
+@custom-variant squat (@media (orientation: portrait) and (max-height: 37.5rem));
 
 @theme inline {
   --font-sans: var(--font-inter);

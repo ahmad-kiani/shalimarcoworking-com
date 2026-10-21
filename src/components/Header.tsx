@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { nav, site, tourLink } from "@/content/site";
 import Icon from "./Icon";
+import { gutter } from "./styles";
 import Logo from "./Logo";
 
 export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
@@ -56,15 +57,17 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
-        solid ? "bg-cream/95 text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)] backdrop-blur" : "text-cream"
+        // Fully opaque while the menu is open, so the bar matches the menu panel below it.
+        open ? "bg-cream text-ink" : solid ? "bg-cream/95 text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)] backdrop-blur" : "text-cream"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-5 sm:px-8 lg:h-20">
+      <div className={`relative mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 ${gutter} lg:h-20`}>
         <Link href="/" className="flex min-h-11 items-center" aria-label={`${site.name} ${site.tagline}, home`}>
           <Logo />
         </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
+        {/* Centred on the bar: the hidden "Book a tour" button would otherwise push it left. */}
+        <nav aria-label="Main" className="hidden lg:absolute lg:left-1/2 lg:block lg:-translate-x-1/2">
           <ul className="flex items-center gap-1">
             {nav.map((item) => (
               <li key={item.href}>
@@ -109,7 +112,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-4rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain bg-cream px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] sm:px-8 lg:hidden"
+        className={`h-[calc(100dvh-4rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain bg-cream ${gutter} pb-[calc(2rem+env(safe-area-inset-bottom))] lg:hidden`}
       >
         <ul className="divide-y divide-ink/10 border-b border-ink/10 short:grid short:grid-cols-2 short:gap-x-8 short:divide-y-0 short:border-b-0">
           {nav.map((item) => (

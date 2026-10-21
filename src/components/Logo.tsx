@@ -12,7 +12,7 @@ export default function Logo({ large = false }: { large?: boolean }) {
         <span
           aria-hidden="true"
           className={`flex justify-between font-sans font-semibold text-brass ${
-            large ? "mt-2 text-[0.625rem] sm:mt-2.5 sm:text-xs" : "mt-1.5 text-[0.5rem] lg:text-[0.53125rem]"
+            large ? "mt-2 text-[0.625rem] sm:mt-2.5 sm:text-xs" : "mt-1.5 text-[max(0.5rem,8px)] lg:text-[max(0.53125rem,8px)]"
           }`}
         >
           {"COWORKING".split("").map((c, i) => (

@@ -6,7 +6,8 @@ import { btn } from "./styles";
 
 type Amenity = { icon: string; title: string; body: string };
 
-// Phones show the first four (two rows of two) plus a one-way "Show 4 more" button; tablets and up show all.
+// Phones show the first four plus a one-way "Show 4 more" button; tablets and up show all. One column below 360px
+// (two would leave ~85px of text per card), two up to md, then four (tablets and phones held sideways).
 // Every card stays in the HTML, so search engines and screen readers get the full list.
 const FIRST = 4;
 
@@ -26,7 +27,7 @@ export default function AmenitiesGrid({ items }: { items: Amenity[] }) {
 
   return (
     <>
-      <ul id={listId} className="mt-12 grid grid-cols-2 gap-3 min-[400px]:gap-4 sm:mt-14 lg:grid-cols-4 lg:gap-5 xl:gap-6">
+      <ul id={listId} className="mt-12 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 min-[400px]:gap-4 sm:mt-14 md:grid-cols-4 lg:gap-5 xl:gap-6">
         {items.map((a, i) => (
           <li
             key={a.title}
@@ -35,15 +36,15 @@ export default function AmenitiesGrid({ items }: { items: Amenity[] }) {
             // Subgrid lines up icon, title and body across each row; gap-y-0 stops it inheriting the list's gap.
             // Hover (mouse/trackpad only; Tailwind's hover: needs a hover-capable device): the card pops out, growing
             // slightly with a deep shadow. It grows rather than moves, so it never slips out from under the pointer.
-            className={`relative row-span-3 grid grid-rows-subgrid gap-y-0 rounded-sm bg-ink-card p-3.5 [overflow-wrap:anywhere] outline-none transition-[scale,box-shadow,background-color] duration-300 ease-out hover:z-10 hover:scale-[1.035] hover:bg-[#3b433d] hover:shadow-[0_18px_40px_-12px_rgb(0_0_0/0.65)] motion-reduce:transition-none motion-reduce:hover:scale-100 min-[360px]:p-4 min-[400px]:p-5 sm:p-6 xl:p-7 ${
+            className={`relative row-span-3 grid grid-rows-subgrid gap-y-0 rounded-sm bg-ink-card p-3.5 [overflow-wrap:anywhere] outline-none transition-[scale,box-shadow,background-color] duration-300 ease-out hover:z-10 hover:scale-[1.035] hover:bg-[#3b433d] hover:shadow-[0_18px_40px_-12px_rgb(0_0_0/0.65)] motion-reduce:transition-none motion-reduce:hover:scale-100 min-[360px]:p-4 min-[400px]:p-5 sm:p-6 md:p-5 lg:p-6 xl:p-7 ${
               i >= FIRST && !expanded ? "max-sm:hidden" : ""
             }`}
           >
             <Icon name={a.icon} className="size-6 text-brass sm:size-7" />
-            <h3 className="mt-3 font-serif text-[1.25rem] leading-tight min-[400px]:text-[1.375rem] sm:mt-5 sm:text-[1.625rem] lg:text-[1.5rem] xl:text-[1.75rem]">
+            <h3 className="mt-3 font-serif text-[1.25rem] leading-tight min-[400px]:text-[1.375rem] sm:mt-5 sm:text-[1.5rem] md:text-[1.375rem] lg:text-[1.5rem] xl:text-[1.75rem]">
               {a.title}
             </h3>
-            <p className="mt-2 text-[0.8125rem] leading-relaxed text-cream/70 min-[400px]:text-sm sm:mt-3 sm:text-[0.9375rem]">{a.body}</p>
+            <p className="mt-2 text-sm leading-relaxed text-cream/70 min-[360px]:text-[0.8125rem] min-[400px]:text-sm sm:mt-3 sm:text-[0.9375rem] md:text-sm lg:text-[0.9375rem]">{a.body}</p>
           </li>
         ))}
       </ul>
