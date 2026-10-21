@@ -167,7 +167,7 @@ export const pricing = {
 
 export const location = {
   eyebrow: "Location",
-  title: ["In the heart of", "Islamabad."],
+  title: ["In the heart of", "Blue Area, Islamabad."],
   body: "Find us on the first floor of ATS Centre, in Islamabad's main business district. Call ahead and we'll show you around.",
 };
 

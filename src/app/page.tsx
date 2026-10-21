@@ -146,8 +146,12 @@ export default function Home() {
                 {location.eyebrow}
                 <span className="h-px w-7 bg-brass" aria-hidden="true" />
               </p>
-              <h2 className="mt-5 font-serif text-[2.25rem] leading-[1.05] min-[360px]:text-[2.6rem] sm:text-5xl lg:text-[4rem]">
-                {location.title[0]} <span className="text-brass-dark italic">{location.title[1]}</span>
+              <h2 className="mt-5 font-serif text-[min(2.6rem,calc((100vw-2.5rem)/8))] leading-[1.05] sm:text-5xl lg:text-[4rem]">
+                {/* Always two lines, on every screen: the place name gets a line of its own and never wraps. On the
+                    narrowest phones the heading scales with the screen so that line still fits. */}
+                {location.title[0]}
+                <br />
+                <span className="whitespace-nowrap text-brass-dark italic">{location.title[1]}</span>
               </h2>
             </div>
             <div className="mt-12 grid overflow-hidden rounded-sm bg-[#f2ebdf] lg:grid-cols-[5fr_7fr] xl:grid-cols-[4fr_8fr]">
