@@ -7,7 +7,7 @@ import Icon from "./Icon";
 import InterestSelect from "./InterestSelect";
 
 const field =
-  "w-full border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-ink placeholder:text-ink/55 focus:border-garden focus:shadow-[inset_0_-2px_0_var(--color-garden)] focus:ring-0 focus:outline-none";
+  "w-full border-0 border-b border-ink/50 bg-transparent px-0 py-3 text-ink placeholder:text-ink/65 focus:border-garden focus:shadow-[inset_0_-2px_0_var(--color-garden)] focus:ring-0 focus:outline-none";
 const label = "block text-xs font-medium tracking-[0.2em] text-muted uppercase";
 
 type Status = "idle" | "sending" | "sent" | "invalid" | "rate" | "error";

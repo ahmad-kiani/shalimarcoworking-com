@@ -112,8 +112,8 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
           }
         }}
         className={`flex w-full items-center justify-between border-b py-3 text-left text-base transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-garden ${
-          open ? "border-brass-dark" : "border-ink/20 focus-visible:border-brass-dark"
-        } ${value ? "text-ink" : "text-ink/55"}`}
+          open ? "border-brass-dark" : "border-ink/50 focus-visible:border-brass-dark"
+        } ${value ? "text-ink" : "text-ink/65"}`}
       >
         <span id={valueId}>{value || "Select an option"}</span>
         <Icon name="chevron" className={`size-4 text-muted transition-transform ${open ? "rotate-180" : ""}`} />

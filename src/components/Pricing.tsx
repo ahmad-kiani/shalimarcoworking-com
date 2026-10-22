@@ -202,7 +202,7 @@ export default function Pricing() {
                     {fmt(amount(shown, currency))}
                   </span>
                   <span className="flex items-baseline gap-x-[0.5em] whitespace-nowrap">
-                    <s className={`text-[max(0.8125rem,1.125em)] tabular-nums ${featured ? "text-muted" : "text-cream/50"}`}>
+                    <s className={`text-[max(0.8125rem,1.125em)] tabular-nums ${featured ? "text-muted" : "text-cream/60"}`}>
                       <span className="sr-only">was </span>
                       {wasLabel(plan.was, currency)}
                     </s>
@@ -240,7 +240,7 @@ export default function Pricing() {
                   featured ? "border-ink/12" : "border-cream/12"
                 }`}
               >
-                <p className={`text-xs font-semibold tracking-[0.2em] uppercase ${featured ? "text-muted" : "text-cream/50"}`}>
+                <p className={`text-xs font-semibold tracking-[0.2em] uppercase ${featured ? "text-muted" : "text-cream/60"}`}>
                   Includes
                 </p>
                 <ul className="mt-4 grid gap-2.5 sm:gap-3">
@@ -276,7 +276,7 @@ export default function Pricing() {
               <p className="mt-4 flex flex-wrap items-baseline gap-x-[0.5em] gap-y-1 [&>*]:shrink-0" style={fit(roomFit[currency])}>
                 <span className="text-[1.875em] font-light whitespace-nowrap tabular-nums">{money(item.price, currency)}</span>
                 <span className="flex items-baseline gap-x-[0.5em] whitespace-nowrap">
-                  <s className="text-[max(0.8125rem,1em)] text-cream/50 tabular-nums">
+                  <s className="text-[max(0.8125rem,1em)] text-cream/60 tabular-nums">
                     <span className="sr-only">was </span>
                     {wasLabel(item.was, currency)}
                   </s>
