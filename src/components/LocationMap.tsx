@@ -42,8 +42,8 @@ export default function LocationMap() {
           <Icon name="pin" className="size-7" />
         </span>
         <p className="font-serif text-2xl">{site.mapQuery.split(",")[0]}</p>
-        <p className="text-sm text-muted">{site.address[1]}</p>
-        {!loaded && <p className="mt-2 text-xs tracking-[0.2em] text-muted uppercase">Loading map…</p>}
+        <p className="text-sm text-ink/75">{site.address[1]}</p>
+        {!loaded && <p className="mt-2 text-xs tracking-[0.2em] text-ink/75 uppercase">Loading map…</p>}
       </div>
       {start && (
         <iframe

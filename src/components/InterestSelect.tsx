@@ -111,7 +111,7 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
             if (i >= 0) openList(i);
           }
         }}
-        className={`flex w-full items-center justify-between border-b py-3 text-left text-base transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-garden ${
+        className={`flex w-full items-center justify-between border-b py-3 text-left text-base transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-garden ${
           open ? "border-brass-dark" : "border-ink/50 focus-visible:border-brass-dark"
         } ${value ? "text-ink" : "text-ink/65"}`}
       >

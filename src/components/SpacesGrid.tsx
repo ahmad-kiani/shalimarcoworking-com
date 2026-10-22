@@ -1,11 +1,16 @@
 import Image from "next/image";
 import { spaces } from "@/content/site";
+import ScrollArea from "./ScrollArea";
 
 // Phones: a swipe row where the next card peeks in. Tablets: 2×2. Laptops and up, and phones held sideways: all four
 // side by side (sideways, the photos are shorter so a title still shows under them).
 export default function SpacesGrid() {
   return (
-    <ul className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:overflow-visible sm:px-0 sm:pb-0 sm:short:grid-cols-4 sm:short:gap-x-4 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+    <ScrollArea
+      as="ul"
+      label="Spaces"
+      className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:overflow-visible sm:px-0 sm:pb-0 sm:short:grid-cols-4 sm:short:gap-x-4 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden"
+    >
       {spaces.items.map((space) => (
         <li key={space.name} className="group w-[82%] shrink-0 snap-start max-[359px]:w-[86%] min-[520px]:w-[64%] max-sm:short:w-[42%] sm:w-auto">
           <div className="relative aspect-[4/3.4] overflow-hidden bg-sand short:aspect-[4/3]">
@@ -26,6 +31,6 @@ export default function SpacesGrid() {
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{space.body}</p>
         </li>
       ))}
-    </ul>
+    </ScrollArea>
   );
 }

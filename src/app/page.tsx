@@ -8,6 +8,7 @@ import Icon from "@/components/Icon";
 import LocationMap from "@/components/LocationMap";
 import Mark from "@/components/Mark";
 import MotionToggle from "@/components/MotionToggle";
+import ScrollArea from "@/components/ScrollArea";
 import SpacesGrid from "@/components/SpacesGrid";
 import { btn, gutter } from "@/components/styles";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
@@ -55,7 +56,11 @@ export default function Home() {
         </section>
 
         {/* Marquee */}
-        <div className="overflow-hidden bg-sand py-5 text-garden max-sm:portrait:overflow-x-auto max-sm:portrait:overscroll-x-contain max-sm:portrait:[scrollbar-width:none] max-sm:portrait:[&::-webkit-scrollbar]:hidden">
+        <ScrollArea
+          label="Highlights"
+          region
+          className="overflow-hidden bg-sand py-5 text-garden max-sm:portrait:overflow-x-auto max-sm:portrait:overscroll-x-contain max-sm:portrait:[scrollbar-width:none] max-sm:portrait:[&::-webkit-scrollbar]:hidden"
+        >
           <p className="sr-only">{marquee.join(", ")}</p>
           <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="true">
             {/* Four copies: the strip slides by half, which must stay wider than the widest screen. */}
@@ -70,7 +75,7 @@ export default function Home() {
               </span>
             ))}
           </div>
-        </div>
+        </ScrollArea>
 
         {/* Why */}
         <section id="about" className="py-20 sm:py-28 short:py-14">
