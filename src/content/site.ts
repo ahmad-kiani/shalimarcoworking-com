@@ -15,6 +15,7 @@ export const site = {
 // Floating WhatsApp button. Temporary test number; swap for the business number after testing.
 export const whatsapp = {
   number: "923354257775", // country code + number, digits only
+  display: "+92 335 4257775",
   message: "Hi Shalimar, I'd like to know more about your coworking spaces.",
   tourMessage: "Hi Shalimar, I'd like to book a tour of the space. When would be a good time to visit?",
 };

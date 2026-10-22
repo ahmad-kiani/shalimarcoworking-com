@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPage title="Privacy Policy" updated="16 October 2026">
+    <LegalPage title="Privacy Policy" updated="22 October 2026">
       <p>
         This policy explains what personal information Shalimar Coworking (&ldquo;Shalimar&rdquo;, &ldquo;we&rdquo;,
         &ldquo;us&rdquo;) collects through this website and when you get in touch with us, how we use it, and the choices
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
         <li>
           <strong>Enquiry form.</strong> When you send the enquiry form, the details you enter come straight to our
           email. This can include your name, company, email address, phone number, the workspace you&rsquo;re interested
-          in and your message.
+          in and your message. We also send you a one-time confirmation email. It isn&rsquo;t marketing.
         </li>
         <li>
           <strong>Email and phone.</strong> Anything you include when you email or call us.
@@ -54,7 +54,8 @@ export default function PrivacyPolicy() {
       <ul>
         <li>
           <strong>Hosting.</strong> The website is hosted by Vercel. Like any web host, it processes technical data
-          such as your IP address and browser type to deliver the site and keep it secure.
+          such as your IP address and browser type, and the content of forms you submit, to deliver the site and keep it
+          secure.
         </li>
         <li>
           <strong>Google Maps.</strong> The map on our home page is provided by Google. When it loads, Google may
@@ -66,7 +67,9 @@ export default function PrivacyPolicy() {
         </li>
         <li>
           <strong>Email.</strong> Enquiry forms and emails you send us are delivered to and stored by our email
-          provider.
+          provider. Form enquiries and the confirmation we send you are delivered by Resend (resend.com), our email
+          delivery service. Resend processes your name and email address and keeps delivery logs for a limited
+          period.
         </li>
         <li>
           <strong>WhatsApp.</strong> The WhatsApp, Book a tour and pricing buttons open a chat with us in WhatsApp. Messages you send there are
