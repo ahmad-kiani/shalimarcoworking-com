@@ -15,6 +15,9 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
   const button = useRef<HTMLButtonElement>(null);
   const list = useRef<HTMLUListElement>(null);
   const listId = useId();
+  const valueId = `${listId}-value`;
+  // Type-ahead: letters typed within half a second build up a search, like a native select.
+  const typed = useRef({ text: "", at: 0 });
 
   // Close when clicking or tapping outside.
   useEffect(() => {
@@ -34,11 +37,28 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
     }
   }, [open]);
 
-  const openList = () => {
+  const openList = (at?: number) => {
     const i = options.findIndex((o) => o.label === value);
-    setActive(i < 0 ? 0 : i);
+    setActive(at ?? (i < 0 ? 0 : i));
     setOpen(true);
   };
+
+  // Index of the next option starting with what's been typed, or -1. A repeated single letter cycles through matches.
+  const match = (e: React.KeyboardEvent, from: number) => {
+    const key = e.key;
+    const now = e.timeStamp;
+    const text = now - typed.current.at < 500 ? typed.current.text + key.toLowerCase() : key.toLowerCase();
+    typed.current = { text, at: now };
+    const cycling = [...text].every((c) => c === text[0]);
+    const search = cycling ? text[0] : text;
+    const start = cycling ? from + 1 : from;
+    for (let k = 0; k < options.length; k++) {
+      const i = (((start + k) % options.length) + options.length) % options.length;
+      if (options[i].label.toLowerCase().startsWith(search)) return i;
+    }
+    return -1;
+  };
+  const isTypeAhead = (e: React.KeyboardEvent) => e.key.length === 1 && e.key !== " " && !e.ctrlKey && !e.metaKey && !e.altKey;
 
   const choose = (i: number) => {
     setValue(options[i].label);
@@ -62,6 +82,9 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
     } else if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       choose(active);
+    } else if (isTypeAhead(e)) {
+      const i = match(e, active);
+      if (i >= 0) setActive(i);
     } else if (e.key === "Escape" || e.key === "Tab") {
       setOpen(false);
       if (e.key === "Escape") button.current?.focus();
@@ -77,19 +100,22 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
-        aria-labelledby={labelId}
+        aria-labelledby={`${labelId} ${valueId}`}
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={(e) => {
           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
             e.preventDefault();
             openList();
+          } else if (isTypeAhead(e)) {
+            const i = match(e, options.findIndex((o) => o.label === value));
+            if (i >= 0) openList(i);
           }
         }}
-        className={`flex w-full items-center justify-between border-b py-3 text-left text-base transition-colors focus:outline-none ${
+        className={`flex w-full items-center justify-between border-b py-3 text-left text-base transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-garden ${
           open ? "border-brass-dark" : "border-ink/20 focus-visible:border-brass-dark"
         } ${value ? "text-ink" : "text-ink/55"}`}
       >
-        <span>{value || "Select an option"}</span>
+        <span id={valueId}>{value || "Select an option"}</span>
         <Icon name="chevron" className={`size-4 text-muted transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
@@ -115,7 +141,7 @@ export default function InterestSelect({ labelId }: { labelId: string }) {
                 onPointerEnter={() => setActive(i)}
                 onClick={() => choose(i)}
                 className={`flex min-h-11 cursor-pointer items-center gap-3 rounded px-3.5 py-2.5 text-[0.96875rem] max-[359px]:gap-2 max-[359px]:px-2.5 ${
-                  i === active ? "bg-brass/15" : ""
+                  i === active ? "bg-brass/25 ring-1 ring-brass-dark/40 ring-inset" : ""
                 } ${selected ? "font-semibold" : ""}`}
               >
                 <Icon name={o.icon} className="size-5 text-brass-dark" />

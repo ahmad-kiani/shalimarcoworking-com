@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { pricing, whatsappLink } from "@/content/site";
 import { btn, gutter } from "./styles";
 
@@ -32,6 +32,34 @@ const wasLabel = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}
 const money = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : `PKR ${fmt(pkr)}`);
 
 
+// Arrow keys, Home and End move the choice within a radio group (the standard ARIA pattern).
+// Only the checked option is in the Tab order, so Tab moves on to the next group.
+function radioKeys<T>(
+  e: React.KeyboardEvent,
+  values: readonly T[],
+  current: T,
+  set: (v: T) => void,
+  refs: React.RefObject<(HTMLButtonElement | null)[]>,
+) {
+  {
+    const i = values.indexOf(current);
+    const next =
+      e.key === "ArrowRight" || e.key === "ArrowDown"
+        ? (i + 1) % values.length
+        : e.key === "ArrowLeft" || e.key === "ArrowUp"
+          ? (i - 1 + values.length) % values.length
+          : e.key === "Home"
+            ? 0
+            : e.key === "End"
+              ? values.length - 1
+              : -1;
+    if (next < 0) return;
+    e.preventDefault();
+    set(values[next]);
+    refs.current[next]?.focus();
+  }
+}
+
 function Tick() {
   return (
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="size-[0.6875rem]">
@@ -43,6 +71,18 @@ function Tick() {
 export default function Pricing() {
   const [yearly, setYearly] = useState(false);
   const [currency, setCurrency] = useState<Currency>("USD");
+  const billingRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const currencyRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  // Announced to screen readers when either switch changes (empty until then, so nothing is read on load).
+  const [announce, setAnnounce] = useState("");
+  const setBilling = (v: boolean) => {
+    setYearly(v);
+    setAnnounce(`Showing ${v ? "annual" : "monthly"} prices in ${currency}`);
+  };
+  const setMoney = (c: Currency) => {
+    setCurrency(c);
+    setAnnounce(`Showing ${yearly ? "annual" : "monthly"} prices in ${c}`);
+  };
 
   return (
     <div className={`mx-auto max-w-7xl ${gutter}`}>
@@ -64,18 +104,23 @@ export default function Pricing() {
       <div
         role="radiogroup"
         aria-label="Billing period"
+        onKeyDown={(e) => radioKeys(e, [false, true], yearly, setBilling, billingRefs)}
         className="flex w-max items-center gap-1 rounded-full border border-cream/15 bg-black/15 p-1 max-[359px]:w-full max-[359px]:max-w-64"
       >
         {[
           { label: "Monthly", value: false },
           { label: "Annually", value: true },
-        ].map((o) => (
+        ].map((o, i) => (
           <button
             key={o.label}
+            ref={(el) => {
+              billingRefs.current[i] = el;
+            }}
             type="button"
             role="radio"
             aria-checked={yearly === o.value}
-            onClick={() => setYearly(o.value)}
+            tabIndex={yearly === o.value ? 0 : -1}
+            onClick={() => setBilling(o.value)}
             className={`flex min-h-11 items-center justify-center gap-2 rounded-full px-3.5 text-sm font-medium transition-colors max-[359px]:flex-1 min-[400px]:px-5 ${
               yearly === o.value ? "bg-[#f2ebdf] text-ink" : "text-cream/70 hover:text-cream"
             }`}
@@ -86,14 +131,22 @@ export default function Pricing() {
       </div>
 
       {/* Currency switch */}
-      <div role="radiogroup" aria-label="Currency" className="flex w-max items-center gap-1 rounded-full border border-cream/15 bg-black/15 p-1 max-[359px]:w-full max-[359px]:max-w-64">
-        {(["USD", "PKR"] as const).map((c) => (
+      <div
+        role="radiogroup"
+        aria-label="Currency"
+        onKeyDown={(e) => radioKeys(e, ["USD", "PKR"] as const, currency, setMoney, currencyRefs)}
+        className="flex w-max items-center gap-1 rounded-full border border-cream/15 bg-black/15 p-1 max-[359px]:w-full max-[359px]:max-w-64">
+        {(["USD", "PKR"] as const).map((c, i) => (
           <button
             key={c}
+            ref={(el) => {
+              currencyRefs.current[i] = el;
+            }}
             type="button"
             role="radio"
             aria-checked={currency === c}
-            onClick={() => setCurrency(c)}
+            tabIndex={currency === c ? 0 : -1}
+            onClick={() => setMoney(c)}
             className={`flex min-h-11 items-center justify-center rounded-full px-3 text-sm font-medium transition-colors max-[359px]:flex-1 min-[400px]:px-4 ${
               currency === c ? "bg-[#f2ebdf] text-ink" : "text-cream/70 hover:text-cream"
             }`}
@@ -103,6 +156,9 @@ export default function Pricing() {
         ))}
       </div>
       </div>
+      <p aria-live="polite" className="sr-only">
+        {announce}
+      </p>
 
       {/* Plans */}
       <ul className="mx-auto mt-14 grid max-w-2xl gap-5 lg:max-w-none lg:grid-cols-3 lg:items-stretch">
@@ -146,7 +202,10 @@ export default function Pricing() {
                     {fmt(amount(shown, currency))}
                   </span>
                   <span className="flex items-baseline gap-x-[0.5em] whitespace-nowrap">
-                    <s className={`text-[max(0.8125rem,1.125em)] tabular-nums ${featured ? "text-muted" : "text-cream/50"}`}>{wasLabel(plan.was, currency)}</s>
+                    <s className={`text-[max(0.8125rem,1.125em)] tabular-nums ${featured ? "text-muted" : "text-cream/50"}`}>
+                      <span className="sr-only">was </span>
+                      {wasLabel(plan.was, currency)}
+                    </s>
                     <span className={`text-[max(0.75rem,0.875em)] ${featured ? "text-muted" : "text-cream/60"}`}>/ {plan.unit}</span>
                   </span>
                 </p>
@@ -217,7 +276,10 @@ export default function Pricing() {
               <p className="mt-4 flex flex-wrap items-baseline gap-x-[0.5em] gap-y-1 [&>*]:shrink-0" style={fit(roomFit[currency])}>
                 <span className="text-[1.875em] font-light whitespace-nowrap tabular-nums">{money(item.price, currency)}</span>
                 <span className="flex items-baseline gap-x-[0.5em] whitespace-nowrap">
-                  <s className="text-[max(0.8125rem,1em)] text-cream/50 tabular-nums">{wasLabel(item.was, currency)}</s>
+                  <s className="text-[max(0.8125rem,1em)] text-cream/50 tabular-nums">
+                    <span className="sr-only">was </span>
+                    {wasLabel(item.was, currency)}
+                  </s>
                   <span className="text-[max(0.75rem,0.875em)] text-cream/60">/ {item.unit}</span>
                 </span>
               </p>

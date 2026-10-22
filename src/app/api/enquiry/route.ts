@@ -70,8 +70,11 @@ export async function POST(req: Request) {
     interest: oneLine(body.interest, 60),
     note: clean(body.note, 3000),
   };
-  if (!data.name || !emailPattern.test(data.email)) return Response.json({ error: "invalid" }, { status: 400 });
-  if (data.phone && !/^[+\d(][\d\s()-]{5,}$/.test(data.phone)) return Response.json({ error: "invalid" }, { status: 400 });
+  // `field` tells the form which input to point the visitor to.
+  const invalid = (field: "name" | "email" | "phone") => Response.json({ error: "invalid", field }, { status: 400 });
+  if (!data.name) return invalid("name");
+  if (!emailPattern.test(data.email)) return invalid("email");
+  if (data.phone && !/^[+\d(][\d\s()-]{5,}$/.test(data.phone)) return invalid("phone");
   if (data.interest && !interests.has(data.interest)) data.interest = "";
   const id = typeof body.id === "string" && uuidPattern.test(body.id) ? body.id : crypto.randomUUID();
 

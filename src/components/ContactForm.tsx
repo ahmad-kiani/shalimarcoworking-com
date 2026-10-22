@@ -7,16 +7,32 @@ import Icon from "./Icon";
 import InterestSelect from "./InterestSelect";
 
 const field =
-  "w-full border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-ink placeholder:text-ink/55 focus:border-garden focus:ring-0 focus:outline-none";
+  "w-full border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-ink placeholder:text-ink/55 focus:border-garden focus:shadow-[inset_0_-2px_0_var(--color-garden)] focus:ring-0 focus:outline-none";
 const label = "block text-xs font-medium tracking-[0.2em] text-muted uppercase";
 
 type Status = "idle" | "sending" | "sent" | "invalid" | "rate" | "error";
+type Field = "name" | "email" | "phone";
+
+const fieldErrors: Record<Field, string> = {
+  name: "Please enter your name.",
+  email: "Please check your email address.",
+  phone: "Please check your phone number.",
+};
+const Required = () => (
+  <span aria-hidden="true" className="text-brass-dark">
+    {" "}*
+  </span>
+);
 
 // Posts the enquiry to /api/enquiry, which emails it to the Shalimar inbox
 // and sends the visitor a confirmation.
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [round, setRound] = useState(0);
+  // errorField picks the message; badField marks the input and clears once the visitor edits it.
+  const [errorField, setErrorField] = useState<Field | null>(null);
+  const [badField, setBadField] = useState<Field | null>(null);
+  const form = useRef<HTMLFormElement>(null);
   // One id per enquiry, so a retry after a network error never sends it twice.
   const id = useRef<string | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
@@ -28,11 +44,23 @@ export default function ContactForm() {
   useEffect(() => {
     if (round > 0) nameInput.current?.focus();
   }, [round]);
+  // Point the visitor to the field the server rejected.
+  useEffect(() => {
+    if (badField) form.current?.querySelector<HTMLInputElement>(`[name="${badField}"]`)?.focus();
+  }, [badField]);
+
+  // Props that mark a field as the one needing attention, and clear it once edited.
+  const invalidProps = (name: Field) =>
+    badField === name
+      ? { "aria-invalid": true, "aria-describedby": "form-error", onInput: () => setBadField(null) }
+      : {};
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (status === "sending") return;
     setStatus("sending");
+    setBadField(null);
+    setErrorField(null);
     id.current ??= crypto.randomUUID();
     const data = { ...Object.fromEntries(new FormData(e.currentTarget)), id: id.current };
     try {
@@ -41,6 +69,13 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (res.status === 400) {
+        const { field } = await res.json().catch(() => ({}));
+        if (field in fieldErrors) {
+          setErrorField(field);
+          setBadField(field);
+        }
+      }
       setStatus(res.ok ? "sent" : res.status === 400 ? "invalid" : res.status === 429 ? "rate" : "error");
     } catch {
       setStatus("error");
@@ -80,23 +115,30 @@ export default function ContactForm() {
   }
 
   return (
-    <form key={round} onSubmit={onSubmit} aria-busy={status === "sending"} className="rounded-sm bg-cream p-6 text-ink shadow-2xl max-[359px]:p-5 sm:p-10 lg:flex lg:flex-col">
+    <form ref={form} key={round} onSubmit={onSubmit} aria-busy={status === "sending"} className="rounded-sm bg-cream p-6 text-ink shadow-2xl max-[359px]:p-5 sm:p-10 lg:flex lg:flex-col">
       <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 sm:gap-y-6 lg:flex-1 lg:grid-rows-[auto_auto_auto_1fr]">
         <label aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
           Leave this empty
           <input name="hp_extra" tabIndex={-1} autoComplete="off" />
         </label>
         <label>
-          <span className={label}>Name</span>
-          <input ref={nameInput} name="name" required autoComplete="name" enterKeyHint="next" placeholder="Your full name" className={field} />
+          <span className={label}>
+            Name
+            <Required />
+          </span>
+          <input ref={nameInput} name="name" required {...invalidProps("name")} autoComplete="name" enterKeyHint="next" placeholder="Your full name" className={field} />
         </label>
         <label>
           <span className={label}>Company</span>
           <input name="company" autoComplete="organization" enterKeyHint="next" placeholder="Optional" className={field} />
         </label>
         <label>
-          <span className={label}>Email</span>
+          <span className={label}>
+            Email
+            <Required />
+          </span>
           <input
+            {...invalidProps("email")}
             name="email"
             type="email"
             required
@@ -110,6 +152,7 @@ export default function ContactForm() {
         <label>
           <span className={label}>Phone</span>
           <input
+            {...invalidProps("phone")}
             name="phone"
             type="tel"
             inputMode="tel"
@@ -144,11 +187,16 @@ export default function ContactForm() {
       >
         {status === "sending" ? "Sending…" : "Send enquiry"}
       </button>
+      <p aria-live="polite" className="sr-only">
+        {status === "sending" ? "Sending your enquiry…" : ""}
+      </p>
       {(status === "invalid" || status === "rate") && (
-        <p role="alert" className="mt-4 text-sm text-[#a33a2b]">
-          {status === "invalid"
-            ? "Please check your email address and phone number."
-            : "Too many attempts. Please try again in a few minutes."}
+        <p id="form-error" role="alert" className="mt-4 text-sm text-[#a33a2b]">
+          {status === "rate"
+            ? "Too many attempts. Please try again in a few minutes."
+            : errorField
+              ? fieldErrors[errorField]
+              : "Please check your email address and phone number."}
         </p>
       )}
       {status === "error" && (
@@ -165,6 +213,9 @@ export default function ContactForm() {
         </p>
       )}
       <p className="mt-4 text-[0.8125rem] text-muted">
+        <span aria-hidden="true">
+          <span className="text-brass-dark">*</span> Required.{" "}
+        </span>
         By sending this you agree to our{" "}
         <Link href="/privacy-policy" className="text-brass-dark underline underline-offset-4 hover:text-ink">
           Privacy Policy

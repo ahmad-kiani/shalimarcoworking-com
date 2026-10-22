@@ -37,6 +37,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${instrumentSerif.variable} ${libreBaskerville.variable} antialiased`}>
       <body className="font-sans">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:rounded-sm focus:bg-ink focus:px-4 focus:py-3 focus:text-sm focus:font-medium focus:text-cream focus:shadow-lg focus:outline-2 focus:outline-offset-2 focus:outline-brass"
+        >
+          Skip to content
+        </a>
         {children}
         <WhatsAppButton />
       </body>

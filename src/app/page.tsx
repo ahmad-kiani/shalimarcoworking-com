@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main id="top">
+      <main id="content" tabIndex={-1} className="outline-none">
         {/* Hero */}
         <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 max-sm:portrait:pb-24 squat:pt-20 short:pt-20 short:pb-10 shorter:pt-[4.25rem] shorter:pb-4 text-cream">
           <HeroVideo />
