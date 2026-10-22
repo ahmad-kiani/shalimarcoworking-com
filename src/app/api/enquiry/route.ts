@@ -1,7 +1,8 @@
 import { after } from "next/server";
 import { Resend } from "resend";
 import { contact, site } from "@/content/site";
-import { enquiryReply } from "@/content/enquiry-reply";
+import { enquiryReply, enquiryReplyText } from "@/content/enquiry-reply";
+import { confirmationHtml, notificationEmail } from "./emails";
 
 // Sends the contact form to the Shalimar inbox through Resend, then a one-time
 // confirmation to the visitor. Replying to the enquiry in Gmail answers the visitor.
@@ -46,9 +47,6 @@ function mayAcknowledge(address: string) {
 
 const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 const oneLine = (v: unknown, max: number) => clean(v, max).replace(/\s+/g, " ");
-const escape = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
-
 export async function POST(req: Request) {
   if (Number(req.headers.get("content-length") ?? 0) > 16000) return Response.json({ error: "invalid" }, { status: 413 });
   const body = await req.json().catch(() => null);
@@ -84,23 +82,7 @@ export async function POST(req: Request) {
   }
   const resend = new Resend(key);
 
-  const rows: [string, string][] = [
-    ["Name", data.name],
-    ["Company", data.company || "–"],
-    ["Email", data.email],
-    ["Phone", data.phone || "–"],
-    ["Interested in", data.interest || "–"],
-  ];
-  const text = [...rows.map(([k, v]) => `${k}: ${v}`), "", data.note || "(no note)", "", "Reply to this email to answer them directly."].join("\n");
-  const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#1d211f;line-height:1.5">
-<p style="margin:0 0 16px">New enquiry from the Shalimar website.</p>
-<table cellpadding="6" style="border-collapse:collapse">${rows
-    .map(([k, v]) => `<tr><td style="color:#6b6f6b;padding-right:16px">${k}</td><td><strong>${escape(v)}</strong></td></tr>`)
-    .join("")}</table>
-<p style="margin:20px 0 4px;color:#6b6f6b">Note</p>
-<p style="margin:0;white-space:pre-wrap">${escape(data.note || "(no note)")}</p>
-<p style="margin:24px 0 0;color:#6b6f6b;font-size:13px">Reply to this email to answer ${escape(data.name)} directly.</p>
-</div>`;
+  const { text, html } = notificationEmail(data);
 
   const { error } = await resend.emails.send(
     {
@@ -127,7 +109,8 @@ export async function POST(req: Request) {
           to: data.email,
           bcc: site.email,
           subject: enquiryReply.subject,
-          text: enquiryReply.body,
+          text: enquiryReplyText,
+          html: confirmationHtml,
           headers: { "Auto-Submitted": "auto-generated" },
         },
         { idempotencyKey: `ack-${id}` },
