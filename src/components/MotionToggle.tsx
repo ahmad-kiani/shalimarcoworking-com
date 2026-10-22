@@ -2,42 +2,40 @@
 
 import { useEffect, useState } from "react";
 
-const KEY = "motion-paused";
+// Earlier versions remembered the choice across visits; that read as "the video doesn't start", so it's cleared.
+const OLD_KEY = "motion-paused";
+// The video fades in from black, so pausing in its first moments would hold a black frame. The still
+// (poster.webp) is taken at 2s, so a paused video shows that frame instead.
+const STILL_AT = 2;
 
 function apply(paused: boolean) {
   document.documentElement.dataset.motion = paused ? "paused" : "";
   const v = document.querySelector<HTMLVideoElement>("#hero-video");
   if (v?.getAttribute("src")) {
-    if (paused) v.pause();
-    else v.play().catch(() => {});
+    if (paused) {
+      v.pause();
+      if (v.currentTime < STILL_AT) v.currentTime = STILL_AT;
+    } else v.play().catch(() => {});
   }
 }
 
-// Pauses and resumes everything that moves on its own: the hero video and the scrolling banner.
-// The choice is kept on <html data-motion="paused"> (the banner's CSS and HeroVideo read it) and
-// remembered for later visits. Bottom-left of the hero; on short landscape screens, top-right under the header,
-// where the hero buttons and the WhatsApp button leave no room at the bottom. Hidden when the device asks for reduced motion, since nothing moves then,
-// and on phones held upright, which show a still instead of the video.
+// Pauses and resumes everything that moves on its own: the hero video and the scrolling banner, for this page
+// view (every visit starts playing). The state sits on <html data-motion="paused">, which the banner's CSS and
+// HeroVideo read. Bottom-left of the hero; on short landscape screens, top-right under the header, where the hero
+// buttons and the WhatsApp button leave no room at the bottom. Hidden when the device asks for reduced motion, since
+// nothing moves then, and on phones held upright, which show a still instead of the video.
 export default function MotionToggle() {
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    let saved = false;
     try {
-      saved = localStorage.getItem(KEY) === "1";
+      localStorage.removeItem(OLD_KEY);
     } catch {}
-    if (saved) apply(true);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync with the choice saved in the browser
-    setPaused(saved);
   }, []);
 
   const toggle = () => {
-    const p = !paused;
-    setPaused(p);
-    apply(p);
-    try {
-      localStorage.setItem(KEY, p ? "1" : "0");
-    } catch {}
+    setPaused(!paused);
+    apply(!paused);
   };
 
   return (
