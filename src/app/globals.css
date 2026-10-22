@@ -94,6 +94,19 @@ select:has(option[value=""]:checked) {
   animation: marquee 40s linear infinite;
 }
 
+/* Phones held upright have no pause button (the hero is a still there), so the banner doesn't move:
+   it sits still and can be swiped by hand instead. */
+@media (max-width: 39.9375rem) and (orientation: portrait) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Paused with the hero's pause button. */
+[data-motion="paused"] .animate-marquee {
+  animation-play-state: paused;
+}
+
 /* Soft lattice overlay on photo placeholders, a nod to Mughal jali screens.
    It sits on a pseudo-element so it doesn't replace the element's own gradient. */
 .jali {

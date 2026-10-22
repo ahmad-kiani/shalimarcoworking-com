@@ -7,6 +7,7 @@ import Pricing from "@/components/Pricing";
 import Icon from "@/components/Icon";
 import LocationMap from "@/components/LocationMap";
 import Mark from "@/components/Mark";
+import MotionToggle from "@/components/MotionToggle";
 import SpacesGrid from "@/components/SpacesGrid";
 import { btn, gutter } from "@/components/styles";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
@@ -27,6 +28,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/40 max-sm:portrait:hidden" aria-hidden="true" />
           {/* Phones held upright: the still is already dark, so the lamps under the header stay bright and the band
               behind the text (where the sign glows softly) is darkened. */}
+          <MotionToggle />
           <div className="absolute inset-0 hidden bg-[linear-gradient(180deg,rgb(29_33_31/0.5)_0%,rgb(29_33_31/0.15)_16%,rgb(29_33_31/0.6)_28%,rgb(29_33_31/0.6)_76%,rgb(29_33_31/0.1)_84%,rgb(29_33_31/0.3)_100%)] max-sm:portrait:block" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
             {/* On laptops the headline also shrinks with the window height, so short screens (e.g. 150% scaling) keep room around it. */}
@@ -53,12 +55,16 @@ export default function Home() {
         </section>
 
         {/* Marquee */}
-        <div className="overflow-hidden bg-sand py-5 text-garden">
+        <div className="overflow-hidden bg-sand py-5 text-garden max-sm:portrait:overflow-x-auto max-sm:portrait:overscroll-x-contain max-sm:portrait:[scrollbar-width:none] max-sm:portrait:[&::-webkit-scrollbar]:hidden">
           <p className="sr-only">{marquee.join(", ")}</p>
           <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="true">
             {/* Four copies: the strip slides by half, which must stay wider than the widest screen. */}
             {[...marquee, ...marquee, ...marquee, ...marquee].map((text, i) => (
-              <span key={i} className="flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl">
+              <span
+                key={i}
+                // Upright phones show one set to swipe through; the copies only exist to loop the animation.
+                className={`flex items-center font-serif text-2xl whitespace-nowrap italic sm:text-3xl ${i >= marquee.length ? "max-sm:portrait:hidden" : ""}`}
+              >
                 <span className="px-8">{text}</span>
                 <Mark className="h-6 w-auto shrink-0 text-brass-dark sm:h-7" />
               </span>

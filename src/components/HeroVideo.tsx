@@ -18,7 +18,8 @@ export default function HeroVideo() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     const phone = window.matchMedia(PHONE_PORTRAIT);
     const update = () => {
-      if (reduce.matches || phone.matches) {
+      // Also stay still if the visitor paused motion with the hero's pause button (MotionToggle).
+      if (reduce.matches || phone.matches || document.documentElement.dataset.motion === "paused") {
         v.pause();
       } else {
         // The source is only set here, so phones and reduced-motion visitors download nothing.
@@ -45,6 +46,7 @@ export default function HeroVideo() {
       </picture>
       <video
         ref={video}
+        id="hero-video"
         className="absolute inset-0 size-full object-cover max-sm:portrait:hidden"
         muted
         loop
