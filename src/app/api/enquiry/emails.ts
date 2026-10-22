@@ -14,18 +14,13 @@ export const escape = (s: string) =>
 const link = (href: string, text: string, color = c.brassDark) =>
   `<a href="${escape(href)}" style="color:${color};text-decoration:underline;text-underline-offset:3px">${escape(text)}</a>`;
 
-const button = (href: string, text: string) =>
-  `<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="background:${c.brass};border-radius:3px">
-<a href="${escape(href)}" style="display:inline-block;padding:14px 26px;font:bold 12px/1 ${sans};letter-spacing:2px;text-transform:uppercase;color:${c.ink};text-decoration:none">${escape(text)}</a>
-</td></tr></table>`;
-
 // Two buttons sharing one row at equal width.
 const buttonPair = (a: [string, string], b?: [string, string]) => {
   const cell = ([href, text]: [string, string]) =>
-    `<td width="48%" style="background:${c.brass};border-radius:3px;text-align:center">
+    `<td class="btn" width="48%" style="background:${c.brass};border-radius:3px;text-align:center">
 <a href="${escape(href)}" style="display:block;padding:14px 8px;font:bold 11px/1.3 ${sans};letter-spacing:1.5px;text-transform:uppercase;color:${c.ink};text-decoration:none">${escape(text)}</a></td>`;
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
-${cell(a)}<td width="4%" style="font-size:0;line-height:0">&nbsp;</td>${b ? cell(b) : `<td width="48%">&nbsp;</td>`}
+${cell(a)}<td class="btn-gap" width="4%" style="font-size:0;line-height:0">&nbsp;</td>${b ? cell(b) : `<td class="btn-gap" width="48%">&nbsp;</td>`}
 </tr></table>`;
 };
 
@@ -34,8 +29,8 @@ const rows = (items: { label: string; value: string; href?: string }[]) =>
   `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid ${c.sand}">${items
     .map(
       (d) => `<tr>
-<td valign="top" style="padding:12px 16px 12px 0;border-bottom:1px solid ${c.sand};font:bold 11px/20px ${sans};letter-spacing:2px;text-transform:uppercase;color:${c.brassDark};white-space:nowrap;width:1%">${escape(d.label)}</td>
-<td valign="top" style="padding:12px 0;border-bottom:1px solid ${c.sand};font:15px/20px ${sans};color:${c.ink}">${d.href ? link(d.href, d.value, c.ink) : escape(d.value)}</td>
+<td class="lbl" valign="top" style="padding:12px 16px 12px 0;border-bottom:1px solid ${c.sand};font:bold 11px/20px ${sans};letter-spacing:2px;text-transform:uppercase;color:${c.brassDark};white-space:nowrap;width:1%">${escape(d.label)}</td>
+<td valign="top" style="padding:12px 0;border-bottom:1px solid ${c.sand};font:15px/20px ${sans};color:${c.ink};overflow-wrap:anywhere;word-break:break-word">${d.href ? link(d.href, d.value, c.ink) : escape(d.value)}</td>
 </tr>`,
     )
     .join("")}</table>`;
@@ -44,10 +39,13 @@ function frame({ preheader, eyebrow, body, footer }: { preheader: string; eyebro
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light only"><meta name="supported-color-schemes" content="light only">
-<style>@media (max-width:480px){.px{padding-left:20px!important;padding-right:20px!important}}</style></head>
+<style>
+@media (max-width:480px){.px{padding-left:20px!important;padding-right:20px!important}}
+@media (max-width:359px){.outer{padding:16px 6px!important}.lbl{white-space:normal!important}.btn,.btn-gap{display:block!important;width:100%!important}.btn-gap{height:10px!important}}
+</style></head>
 <body style="margin:0;padding:0;background:${c.cream}">
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:${c.cream}">${escape(preheader)}</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${c.cream}"><tr><td align="center" style="padding:32px 12px">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${c.cream}"><tr><td class="outer" align="center" style="padding:32px 12px">
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px">
 <tr><td class="px" style="background:${c.ink};padding:28px 36px;border-radius:4px 4px 0 0">
   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td>
@@ -79,7 +77,7 @@ ${p(escape(r.intro))}
 ${p(escape(r.urgent), "margin-bottom:12px")}
 ${rows(r.details)}
 ${p(escape(r.visit), "margin:24px 0 16px")}
-${button(r.tour.href, r.tour.label)}
+${buttonPair([r.buttons[0].href, r.buttons[0].label], [r.buttons[1].href, r.buttons[1].label])}
 <p style="margin:28px 0 0;font:15px/24px ${sans};color:${c.ink}">${escape(r.signoff[0])}<br><span style="font:18px/28px ${serif}">${escape(r.signoff[1])}</span><br>${link(`https://www.${r.signoff[2]}`, r.signoff[2])}</p>`,
     footer: `${escape(site.address.join(", "))}<br>You're receiving this because you sent an enquiry on our website. If that wasn't you, you can ignore this email.`,
   });

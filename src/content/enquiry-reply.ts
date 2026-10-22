@@ -21,7 +21,13 @@ export const enquiryReply = {
     { label: "Hours", value: site.hours.join(", ") },
   ],
   visit: "You're also welcome to visit us for a tour of the space.",
-  tour: { label: "Book a tour on WhatsApp", href: tourLink },
+  buttons: [
+    { label: "Book a tour", href: tourLink },
+    {
+      label: "Get directions",
+      href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`,
+    },
+  ],
   signoff: ["Best regards,", "Shalimar Coworking", "shalimarcoworking.com"],
 };
 
