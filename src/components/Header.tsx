@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { nav, site, tourLink } from "@/content/site";
+import { nav, sale, saleUpTo, site, tourLink } from "@/content/site";
+import SaleCountdown from "./SaleCountdown";
 import Icon from "./Icon";
 import { gutter } from "./styles";
 import Logo from "./Logo";
 
 export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
-  const [scrolled, setScrolled] = useState(false);
   // The hero has its own Book a tour button, so the header one waits until the hero is scrolled past.
   const [pastHero, setPastHero] = useState(alwaysSolid);
   const [open, setOpen] = useState(false);
@@ -16,7 +16,6 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
       if (!alwaysSolid) setPastHero(window.scrollY > window.innerHeight * 0.8);
     };
     onScroll();
@@ -52,15 +51,26 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
     };
   }, [open]);
 
-  const solid = alwaysSolid || scrolled || open;
+  const solid = alwaysSolid || open;
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
+      className={`absolute inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
         // Fully opaque while the menu is open, so the bar matches the menu panel below it.
         open ? "bg-cream text-ink" : solid ? "bg-cream/95 text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)] backdrop-blur" : "text-cream"
       }`}
     >
+      {/* Sale banner across the top of every page. */}
+      <Link
+        href="/#pricing"
+        onClick={() => setOpen(false)}
+        className="flex h-10 items-center justify-center gap-2.5 bg-sale-bar px-4 text-[0.8125rem] tracking-[0.06em] text-white sm:px-10 sm:text-[0.9375rem] sm:tracking-[0.1em] lg:h-11"
+      >
+        <span>
+          <span className="max-sm:hidden">{sale.name} - </span>Up to {saleUpTo}% Off
+        </span>
+        <SaleCountdown />
+      </Link>
       <div className={`relative mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 ${gutter} lg:h-20`}>
         <Link href="/" className="flex min-h-11 items-center" aria-label={`${site.name} ${site.tagline}, home`}>
           <Logo />
@@ -112,7 +122,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
       <div
         id="mobile-menu"
         hidden={!open}
-        className={`h-[calc(100dvh-4rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain bg-cream ${gutter} pb-[calc(2rem+env(safe-area-inset-bottom))] lg:hidden`}
+        className={`h-[calc(100dvh-6.5rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain bg-cream ${gutter} pb-[calc(2rem+env(safe-area-inset-bottom))] lg:hidden`}
       >
         <ul className="divide-y divide-ink/10 border-b border-ink/10 short:grid short:grid-cols-2 short:gap-x-8 short:divide-y-0 short:border-b-0">
           {nav.map((item) => (

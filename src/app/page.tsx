@@ -22,7 +22,7 @@ export default function Home() {
       <Header />
       <main id="content" tabIndex={-1} className="outline-none">
         {/* Hero */}
-        <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-24 pb-16 max-sm:portrait:pb-24 squat:pt-20 short:pt-20 short:pb-10 shorter:pt-[4.25rem] shorter:pb-4 text-cream">
+        <section className="jali relative flex min-h-[100dvh] items-center overflow-hidden bg-linear-to-br from-garden-deep via-garden to-ink pt-32 pb-16 max-sm:portrait:pb-24 squat:pt-28 short:pt-[7rem] short:pb-6 shorter:pt-[6.75rem] shorter:pb-4 text-cream">
           <HeroVideo />
           {/* Darken the video evenly behind the text. */}
           <div className="absolute inset-0 bg-ink/55 max-sm:portrait:hidden" aria-hidden="true" />
@@ -33,7 +33,7 @@ export default function Home() {
           <div className="absolute inset-0 hidden bg-[linear-gradient(180deg,rgb(29_33_31/0.5)_0%,rgb(29_33_31/0.15)_16%,rgb(29_33_31/0.6)_28%,rgb(29_33_31/0.6)_76%,rgb(29_33_31/0.1)_84%,rgb(29_33_31/0.3)_100%)] max-sm:portrait:block" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
             {/* On laptops the headline also shrinks with the window height, so short screens (e.g. 150% scaling) keep room around it. */}
-            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[clamp(4rem,12.5svh,6.5rem)] short:text-5xl! shorter:text-4xl!">
+            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[clamp(4rem,12.5svh,6.5rem)] short:text-[2.6rem]! shorter:text-4xl!">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>

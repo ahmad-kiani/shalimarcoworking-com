@@ -24,6 +24,8 @@
   /* Brass dark enough for text on cream (4.9:1). */
   --color-brass-dark: #8a5f22;
   --color-muted: #5f665f;
+  /* Sale bar across the top of every page: near-black with white text. */
+  --color-sale-bar: #222222;
 
   /* Small labels never shrink below 11px on scaled laptops; unchanged (12px) at a 16px root. */
   --text-xs: max(0.75rem, 11px);
@@ -31,7 +33,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 0;
   -webkit-text-size-adjust: 100%;
 }
 

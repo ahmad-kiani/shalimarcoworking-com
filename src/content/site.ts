@@ -104,6 +104,13 @@ export const spaces = {
   ],
 };
 
+// Sale bar across the top of every page. Set endsAt to the real end date and time (Pakistan time, e.g.
+// "2026-12-31T23:59:59+05:00") to show a countdown next to the text; leave it empty for no countdown.
+export const sale = {
+  name: "Black Friday Sale",
+  endsAt: "2026-10-31T00:00:00+05:00",
+};
+
 export const pricing = {
   eyebrow: "Pricing",
   title: "Plans that grow with your",
@@ -164,6 +171,11 @@ export const pricing = {
     ],
   },
 };
+
+// Percent off the struck-through price, rounded down (72,500 → 40,000 is 44%, not 45%).
+const pctOff = (price: number, was: number) => Math.floor(((was - price) / was) * 100);
+// Biggest monthly saving on the plans, from the PKR prices, for the sale bar.
+export const saleUpTo = Math.max(...pricing.plans.map((p) => pctOff(p.price, p.was)));
 
 
 export const location = {
