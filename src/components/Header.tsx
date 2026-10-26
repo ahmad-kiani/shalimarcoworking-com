@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { nav, sale, saleUpTo, site, tourLink } from "@/content/site";
+import { nav, sale, site, tourLink } from "@/content/site";
 import SaleCountdown from "./SaleCountdown";
 import Icon from "./Icon";
 import { gutter } from "./styles";
@@ -67,7 +67,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
         className="flex h-10 items-center justify-center gap-2.5 bg-sale-bar px-4 text-[0.8125rem] tracking-[0.06em] text-white sm:px-10 sm:text-[0.9375rem] sm:tracking-[0.1em] lg:h-11"
       >
         <span>
-          <span className="max-sm:hidden">{sale.name} - </span>Up to {saleUpTo}% Off
+          <span className="max-sm:hidden">{sale.name} - </span>Up to {sale.upTo}% Off
         </span>
         <SaleCountdown />
       </Link>
