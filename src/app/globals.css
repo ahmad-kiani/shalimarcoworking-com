@@ -33,8 +33,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 0;
+  /* Clears the fixed sale bar and header when jumping to a section. */
+  scroll-padding-top: 6.5rem;
   -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 64rem) {
+  html {
+    scroll-padding-top: 7.75rem;
+  }
 }
 
 /* Laptops (mouse/trackpad only, so tablets keep full-size tap targets): look like

@@ -9,6 +9,7 @@ import { gutter } from "./styles";
 import Logo from "./Logo";
 
 export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
+  const [scrolled, setScrolled] = useState(false);
   // The hero has its own Book a tour button, so the header one waits until the hero is scrolled past.
   const [pastHero, setPastHero] = useState(alwaysSolid);
   const [open, setOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
 
   useEffect(() => {
     const onScroll = () => {
+      setScrolled(window.scrollY > 40);
       if (!alwaysSolid) setPastHero(window.scrollY > window.innerHeight * 0.8);
     };
     onScroll();
@@ -51,11 +53,11 @@ export default function Header({ alwaysSolid = false }: { alwaysSolid?: boolean 
     };
   }, [open]);
 
-  const solid = alwaysSolid || open;
+  const solid = alwaysSolid || scrolled || open;
 
   return (
     <header
-      className={`absolute inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
         // Fully opaque while the menu is open, so the bar matches the menu panel below it.
         open ? "bg-cream text-ink" : solid ? "bg-cream/95 text-ink shadow-[0_1px_0_rgb(0_0_0/0.08)] backdrop-blur" : "text-cream"
       }`}
