@@ -107,7 +107,7 @@ export const spaces = {
 // Sale bar across the top of every page. The countdown runs to the next endsEvery (Pakistan time,
 // hour 0-23) and starts over each week by itself. Remove the bar from Header.tsx when the sale ends.
 export const sale = {
-  name: "Black Friday Sale",
+  name: "Limited Time Offer",
   upTo: 55,
   endsEvery: { day: "Saturday", hour: 0 },
 };
