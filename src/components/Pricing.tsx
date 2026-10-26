@@ -31,6 +31,16 @@ const fit = ({ fixed, slope, whole }: Fit) => ({
 const wasLabel = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : fmt(pkr));
 const money = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : `PKR ${fmt(pkr)}`);
 
+// "Save $65" pill: the struck price minus the price shown beside it, in the currency on screen.
+function Save({ was, now, c }: { was: number; now: number; c: Currency }) {
+  const off = amount(was, c) - amount(now, c);
+  return (
+    <span className="shrink-0 rounded-full border border-ink bg-[#f2ebdf] px-3 py-1 text-[0.6875rem] leading-none font-semibold tracking-[0.14em] whitespace-nowrap text-ink uppercase">
+      Save {c === "USD" ? `$${fmt(off)}` : `PKR ${fmt(off)}`}
+    </span>
+  );
+}
+
 
 // Arrow keys, Home and End move the choice within a radio group (the standard ARIA pattern).
 // Only the checked option is in the Tab order, so Tab moves on to the next group.
@@ -184,11 +194,14 @@ export default function Pricing() {
               )}
               {/* The left column on tablets; dissolves into the card on laptops. Price rows measure against it. */}
               <div className="@container flex flex-col lg:contents">
-                <span
-                  className={`text-xs font-semibold tracking-[0.2em] uppercase ${featured ? "text-brass-dark" : "text-brass-light"}`}
-                >
-                  {plan.tag}
-                </span>
+                <div className="flex items-center justify-between gap-3">
+                  <span
+                    className={`text-xs font-semibold tracking-[0.2em] uppercase ${featured ? "text-brass-dark" : "text-brass-light"}`}
+                  >
+                    {plan.tag}
+                  </span>
+                  <Save was={plan.was} now={shown} c={currency} />
+                </div>
                 <h3 className="mt-2.5 font-serif text-[2.1rem] leading-tight">{plan.name}</h3>
                 <p className={`mt-2 text-[0.9375rem] leading-relaxed lg:min-h-[3.2em] ${featured ? "text-muted" : "text-cream/65"}`}>
                   {plan.body}
@@ -268,10 +281,14 @@ export default function Pricing() {
         {pricing.onDemand.items.map((item) => (
           <li
             key={item.name}
-            className="flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-start xl:flex-row xl:items-end"
+            className="relative flex flex-col gap-6 rounded-sm bg-ink-card/70 p-7 ring-1 ring-cream/10 sm:flex-row sm:items-end sm:justify-between lg:flex-col lg:items-start xl:flex-row xl:items-end"
           >
             <div className="@container min-w-0 flex-1 self-stretch">
-              <h3 className="font-serif text-3xl">{item.name}</h3>
+              {/* The pill sits beside the name on phones and in the card's top-right corner from sm up. */}
+              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 sm:pr-28 sm:[&>span]:absolute sm:[&>span]:top-[2.2rem] sm:[&>span]:right-7">
+                <h3 className="font-serif text-3xl">{item.name}</h3>
+                <Save was={item.was} now={item.price} c={currency} />
+              </div>
               <p className="mt-2 text-[0.9375rem] leading-relaxed text-cream/70">{item.body}</p>
               <p className="mt-4 flex flex-wrap items-baseline gap-x-[0.5em] gap-y-1 [&>*]:shrink-0" style={fit(roomFit[currency])}>
                 <span className="text-[1.875em] font-light whitespace-nowrap tabular-nums">{money(item.price, currency)}</span>
