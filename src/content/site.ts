@@ -42,6 +42,13 @@ export const hero = {
   body: `Hot desks, dedicated desks, private offices and conference rooms at ATS Centre, ${site.location}. Built for freelancers, remote professionals and teams working with clients around the world.`,
   primary: { label: "Book a tour", href: tourLink },
   secondary: { label: "See pricing", href: "/#pricing" },
+  // Offer pill above the headline. The longest wording that fits the headline's width is shown.
+  // If you change a wording, its width in page.tsx (the em figure) needs measuring again.
+  note: {
+    long: "Reserve your seat before the limited time offer ends",
+    medium: "Reserve your seat before the offer ends",
+    short: "Reserve before the offer ends",
+  },
 };
 
 export const marquee = [
@@ -130,6 +137,9 @@ export const pricing = {
       body: "Any open seat on the shared floor, whenever you need it.",
       price: 27000,
       was: 45000,
+      // "Only X seats left" under the price. Keep it to the real count; 0 hides the line.
+      left: 11,
+      leftUnit: "seat",
       unit: "month",
       features: ["Shared workstations", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
@@ -140,6 +150,8 @@ export const pricing = {
       body: "A fixed desk that's yours every working day, set up just the way you like.",
       price: 30000,
       was: 50000,
+      left: 7,
+      leftUnit: "seat",
       unit: "month",
       features: ["Your own fixed desk", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",
@@ -153,6 +165,8 @@ export const pricing = {
       body: "A seat in a private office for two to four people.",
       price: 40000,
       was: 72500,
+      left: 2,
+      leftUnit: "office",
       unit: "month",
       features: ["Private room for 2–4 people", "High-speed internet", "Complimentary tea & coffee", "Community areas"],
       cta: "Enquire",

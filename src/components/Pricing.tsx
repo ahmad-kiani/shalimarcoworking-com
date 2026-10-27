@@ -229,6 +229,13 @@ export default function Pricing() {
                     <>or {money(annual(plan.price), currency)} / {plan.unit} paid annually</>
                   )}
                 </p>
+                {plan.left > 0 && (
+                  <p className={`mt-1.5 flex items-center gap-2 text-[0.8125rem] font-semibold ${featured ? "text-brass-dark" : "text-brass-light"}`}>
+                    <span className="size-[7px] rounded-full bg-current" aria-hidden="true" />
+                    Only {plan.left} {plan.leftUnit}
+                    {plan.left === 1 ? "" : "s"} left
+                  </p>
+                )}
 
                 <a
                   href={whatsappLink(

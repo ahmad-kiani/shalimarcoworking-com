@@ -32,12 +32,28 @@ export default function Home() {
           <MotionToggle />
           <div className="absolute inset-0 hidden bg-[linear-gradient(180deg,rgb(29_33_31/0.5)_0%,rgb(29_33_31/0.15)_16%,rgb(29_33_31/0.6)_28%,rgb(29_33_31/0.6)_76%,rgb(29_33_31/0.1)_84%,rgb(29_33_31/0.3)_100%)] max-sm:portrait:block" aria-hidden="true" />
           <div className={`${container} relative w-full`}>
+            {/* Shrinks to the headline's width so the offer pill above can match "Room to think." */}
+            <div className="w-fit">
+            {/* Offer pill above the headline: glass background, gold rim and glow, and a gently pulsing dot. Its own width
+                is ignored (it's a size container), so it stretches to the headline's. It shows the longest wording that
+                fits, and the letter spacing fills the rest so the text ends at the pill's right edge. 1rem = dot + gap;
+                the em figures are each wording's width at zero letter spacing. Clicking it jumps to pricing. */}
+            <a href={hero.secondary.href} className="@container mb-5 flex w-full items-center gap-2 rounded-full border border-brass-light/60 bg-ink/55 transition-colors hover:border-brass-light hover:bg-ink/75 px-2.5 py-[7px] text-[0.5625rem] leading-none font-semibold whitespace-nowrap text-cream uppercase shadow-[0_0_24px_rgb(217_169_95/0.25)] backdrop-blur-md min-[360px]:px-3 min-[360px]:text-[0.625rem] sm:mb-6 sm:px-4 sm:py-2 sm:text-[0.6875rem] lg:text-xs squat:hidden short:hidden">
+              <span className="relative flex size-2 shrink-0" aria-hidden="true">
+                <span className="absolute inset-0 rounded-full bg-brass-light opacity-75 motion-safe:animate-ping" />
+                <span className="relative size-2 rounded-full bg-brass-light" />
+              </span>
+              <span className="hidden tracking-[clamp(0.04em,calc((100cqw_-_1rem_-_2px_-_30.21em)/52),0.3em)] @min-[37em]:inline">{hero.note.long}</span>
+              <span className="hidden tracking-[clamp(0.04em,calc((100cqw_-_1rem_-_2px_-_23.21em)/39),0.3em)] @min-[28.7em]:inline @min-[37em]:hidden">{hero.note.medium}</span>
+              <span className="tracking-[clamp(0.04em,calc((100cqw_-_1rem_-_2px_-_17.32em)/29),0.3em)] @min-[28.7em]:hidden">{hero.note.short}</span>
+            </a>
             {/* On laptops the headline also shrinks with the window height, so short screens (e.g. 150% scaling) keep room around it. */}
             <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.02] min-[360px]:text-[3.2rem] sm:text-7xl lg:text-[clamp(4rem,12.5svh,6.5rem)] short:text-[2.6rem]! shorter:text-4xl!">
               {hero.lead[0]}
               <br />
               {hero.lead[1]} <span className="text-brass-light italic">{hero.accent}</span>
             </h1>
+            </div>
             <p className="mt-6 max-w-2xl text-base leading-relaxed min-[360px]:mt-8 min-[360px]:text-lg text-cream/85 sm:text-xl short:mt-4! short:max-w-[30rem] short:text-base! shorter:mt-2! shorter:max-w-none shorter:text-[0.9375rem]! shorter:leading-normal">{hero.body}</p>
             <div className="mt-8 flex flex-col gap-3 min-[360px]:mt-10 min-[30rem]:flex-row min-[30rem]:gap-4 squat:mt-6! short:mt-6! short:flex-row shorter:mt-3!">
               <a
