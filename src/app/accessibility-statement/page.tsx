@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
-import { site, whatsapp, whatsappLink } from "@/content/site";
+import { chatLink, site, whatsapp } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement | Shalimar Coworking",
@@ -139,7 +139,7 @@ export default function AccessibilityStatement() {
           Phone: <Phone />
         </li>
         <li>
-          WhatsApp: <Ext href={whatsappLink()}>{whatsapp.display}</Ext>
+          WhatsApp: <Ext href={chatLink}>{whatsapp.display}</Ext>
         </li>
       </ul>
       <p>

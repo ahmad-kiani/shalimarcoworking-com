@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { site, whatsappLink } from "@/content/site";
+import { chatLink, site } from "@/content/site";
 import Icon from "./Icon";
 import InterestSelect from "./InterestSelect";
 
@@ -202,7 +202,7 @@ export default function ContactForm() {
       {status === "error" && (
         <p role="alert" className="mt-4 text-sm text-[#a33a2b]">
           Sorry, that didn&apos;t send. Please try again, or{" "}
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+          <a href={chatLink} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
             message us on WhatsApp
           </a>{" "}
           or email{" "}

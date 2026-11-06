@@ -1,5 +1,5 @@
 import "server-only";
-import { site, tourLink, whatsapp } from "./site";
+import { site, siteUrl, tourLink, whatsapp } from "./site";
 
 // The confirmation emailed to visitors who send the enquiry form.
 // Keep the wording in sync with the info@ Apps Script auto-reply.
@@ -22,7 +22,7 @@ export const enquiryReply = {
   ],
   visit: "You're also welcome to visit us for a tour of the space.",
   buttons: [
-    { label: "Book a tour", href: tourLink },
+    { label: "Book a tour", href: `${siteUrl}${tourLink}` },
     {
       label: "Get directions",
       href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`,

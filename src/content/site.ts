@@ -1,5 +1,8 @@
 // Every piece of copy on the page lives here.
 
+// The live domain; used for canonical links, the sitemap and robots.txt.
+export const siteUrl = "https://shalimarcoworking.com";
+
 export const site = {
   name: "Shalimar",
   tagline: "Coworking",
@@ -24,8 +27,10 @@ export const whatsapp = {
 export const whatsappLink = (message: string = whatsapp.message) =>
   `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(message)}`;
 
-// Every "Book a tour" button (header, mobile menu, hero) opens WhatsApp with this.
-export const tourLink = whatsappLink(whatsapp.tourMessage);
+// Short links on our own domain (shown on hover, and tidy in the Instagram bio). next.config.ts redirects them to
+// WhatsApp: /tour with the tour message typed in, /whatsapp with the general one.
+export const tourLink = "/tour";
+export const chatLink = "/whatsapp";
 
 export const nav = [
   { label: "About", href: "/#about" },

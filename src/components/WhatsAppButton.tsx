@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { whatsappLink } from "@/content/site";
+import { chatLink } from "@/content/site";
 
 // Official WhatsApp glyph (Simple Icons, CC0) in WhatsApp's brand green.
 // Says hello once per visit: on the first page view of a session it opens into a "Chat with us" pill for a few
@@ -11,7 +11,7 @@ import { whatsappLink } from "@/content/site";
 // covering it; on phones and tablets, where the footer is tall, it keeps its corner over the footer's
 // reserved bottom space.
 export default function WhatsAppButton() {
-  const href = whatsappLink();
+  const href = chatLink;
   const button = useRef<HTMLAnchorElement>(null);
   const [open, setOpen] = useState(false);
   const [pulse, setPulse] = useState(false);
