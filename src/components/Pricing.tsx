@@ -1,21 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { pricing, whatsappLink } from "@/content/site";
+import { annualPrice, pricing, usd, whatsappLink } from "@/content/site";
+import { radioKeys, Save } from "./PriceParts";
 import { btn, gutter } from "./styles";
 
 type Currency = "USD" | "PKR";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
 // Annual price in PKR, rounded down to the nearest 500.
-const annual = (n: number) => Math.floor((n * (1 - pricing.annualDiscount)) / 500) * 500;
-// USD rounded down to the nearest 10 (137 → 130). Under $100 it rounds down to the dollar instead,
-// so small prices like the conference room don't drop to $0.
-const usd = (pkr: number) => {
-  if (pricing.usdFixed[pkr]) return pricing.usdFixed[pkr];
-  const d = pkr / pricing.usdRate;
-  return d >= 100 ? Math.floor(d / 10) * 10 : Math.floor(d);
-};
 const amount = (pkr: number, c: Currency) => (c === "USD" ? usd(pkr) : pkr);
 // Price rows shrink with their column (container query units) so the price, old price and unit share one line
 // where they can. Each row takes the smallest of: full size (1rem), what fits once the small labels hit their
@@ -30,45 +23,6 @@ const fit = ({ fixed, slope, whole }: Fit) => ({
 // Struck-through price: the PKR label already sits next to the main price, so PKR shows just the number.
 const wasLabel = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : fmt(pkr));
 const money = (pkr: number, c: Currency) => (c === "USD" ? `$${fmt(usd(pkr))}` : `PKR ${fmt(pkr)}`);
-
-// "Save $65" pill: the struck price minus the price shown beside it, in the currency on screen.
-function Save({ was, now, c }: { was: number; now: number; c: Currency }) {
-  const off = amount(was, c) - amount(now, c);
-  return (
-    <span className="shrink-0 rounded-full border border-ink bg-[#f2ebdf] px-3 py-1 text-[0.6875rem] leading-none font-semibold tracking-[0.14em] whitespace-nowrap text-ink uppercase">
-      Save {c === "USD" ? `$${fmt(off)}` : `PKR ${fmt(off)}`}
-    </span>
-  );
-}
-
-
-// Arrow keys, Home and End move the choice within a radio group (the standard ARIA pattern).
-// Only the checked option is in the Tab order, so Tab moves on to the next group.
-function radioKeys<T>(
-  e: React.KeyboardEvent,
-  values: readonly T[],
-  current: T,
-  set: (v: T) => void,
-  refs: React.RefObject<(HTMLButtonElement | null)[]>,
-) {
-  {
-    const i = values.indexOf(current);
-    const next =
-      e.key === "ArrowRight" || e.key === "ArrowDown"
-        ? (i + 1) % values.length
-        : e.key === "ArrowLeft" || e.key === "ArrowUp"
-          ? (i - 1 + values.length) % values.length
-          : e.key === "Home"
-            ? 0
-            : e.key === "End"
-              ? values.length - 1
-              : -1;
-    if (next < 0) return;
-    e.preventDefault();
-    set(values[next]);
-    refs.current[next]?.focus();
-  }
-}
 
 function Tick() {
   return (
@@ -175,7 +129,7 @@ export default function Pricing() {
         {pricing.plans.map((plan) => {
           const featured = "featured" in plan && plan.featured;
           const ribbon = "ribbon" in plan ? plan.ribbon : "";
-          const shown = yearly ? annual(plan.price) : plan.price;
+          const shown = yearly ? annualPrice(plan.price) : plan.price;
           return (
             <li
               key={plan.name}
@@ -226,7 +180,7 @@ export default function Pricing() {
                   {yearly ? (
                     <>billed annually · {money(plan.price, currency)} if paid monthly</>
                   ) : (
-                    <>or {money(annual(plan.price), currency)} / {plan.unit} paid annually</>
+                    <>or {money(annualPrice(plan.price), currency)} / {plan.unit} paid annually</>
                   )}
                 </p>
                 {plan.left > 0 && (

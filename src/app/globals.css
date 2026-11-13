@@ -43,6 +43,24 @@ html {
   }
 }
 
+/* Listicle pages (/pages/...) only have the 44px sale bar on top, so jumps to #offer clear that instead of
+   the main site's taller header. More specific than the html rules above, so it wins at every width. */
+html:has([data-listicle]) {
+  scroll-padding-top: calc(3.5rem + env(safe-area-inset-top));
+}
+
+/* On listicle pages phones and tablets get the sticky deal bar (StickyDeal) instead of the floating
+   WhatsApp button; its button opens the same WhatsApp chat. Laptops keep the floating button. */
+@media (max-width: 63.9375rem) {
+  body:has([data-listicle]) #whatsapp-button {
+    display: none;
+  }
+  /* Keyboard focus and in-page jumps stop above the sticky deal bar (about 65px) instead of under it. */
+  html:has([data-listicle]) {
+    scroll-padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
+
 /* Laptops (mouse/trackpad only, so tablets keep full-size tap targets): look like
    ~85% browser zoom at 100%. 13.6px at 1280 wide, back to 16px from ~1506 wide. */
 @media (min-width: 1024px) and (max-width: 1919.98px) and (hover: hover) and (pointer: fine) {
@@ -154,4 +172,9 @@ select:has(option[value=""]:checked) {
     opacity: 0;
     scale: 1.9;
   }
+}
+
+/* Ad landing pages have their own Book a tour bar at the bottom, so the floating WhatsApp button stays out of the way. */
+body:has([data-landing]) #whatsapp-button {
+  display: none;
 }

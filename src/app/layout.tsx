@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif, Libre_Baskerville } from "next/font/google";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { siteUrl } from "@/content/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,6 +24,7 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Shalimar Coworking | Coworking Space in Blue Area, Islamabad",
   description:
     "Hot desks, dedicated desks, private offices, conference rooms and virtual offices at ATS Centre, Blue Area, Islamabad. Book a tour.",

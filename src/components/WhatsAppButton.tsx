@@ -17,6 +17,8 @@ export default function WhatsAppButton() {
   const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
+    // Hidden on this page (e.g. listicle pages on phones): skip the hello so it still greets on the next page.
+    if (button.current && getComputedStyle(button.current).display === "none") return;
     let seen = false;
     try {
       seen = sessionStorage.getItem("wa-hello") === "1";

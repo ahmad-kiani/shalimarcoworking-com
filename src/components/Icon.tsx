@@ -83,6 +83,20 @@ const paths: Record<string, React.ReactNode> = {
   close: <path d="M6 6l12 12M18 6L6 18" />,
   chevron: <path d="M6 9l6 6 6-6" />,
   check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
+  // A banknote: used for paying in dollars or rupees.
+  dollar: (
+    <>
+      <rect x="2.5" y="6" width="19" height="12" rx="1.5" />
+      <circle cx="12" cy="12" r="2.5" />
+      <path d="M6 9.5v5M18 9.5v5" />
+    </>
+  ),
+  thermometer: (
+    <>
+      <path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0Z" />
+      <path d="M12 9v7" />
+    </>
+  ),
   dots: (
     <>
       <circle cx="6" cy="12" r="1" fill="currentColor" />

@@ -20,7 +20,8 @@ function nextEnd(now: number) {
 
 // Time left until the next sale.endsEvery, as white boxes (DAYS, HRS, MIN, SEC) like a shop's sale bar.
 // Starts after the page loads, so the server and the browser render the same thing first.
-export default function SaleCountdown() {
+// variant "inline": plain digits (03 : 07 : 24) for use inside text, like a deal card's "Deal ending in".
+export default function SaleCountdown({ variant = "boxes" }: { variant?: "boxes" | "inline" }) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
@@ -39,9 +40,22 @@ export default function SaleCountdown() {
     { value: Math.floor(s / 60) % 60, label: "Min" },
     { value: s % 60, label: "Sec" },
   ].filter((p, i) => i > 0 || p.value > 0);
+  const label = `Sale ends in ${parts.map((p) => `${p.value} ${p.label}`).join(" ")}`;
+
+  if (variant === "inline") {
+    // "6d : 23h : 46m : 58s" while a day or more is left, then "23h : 46m : 58s".
+    const days = Math.floor(s / 86400);
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const units = [`${pad(Math.floor(s / 3600) % 24)}h`, `${pad(Math.floor(s / 60) % 60)}m`, `${pad(s % 60)}s`];
+    return (
+      <span role="timer" aria-label={label} className="font-semibold whitespace-nowrap tabular-nums">
+        <span aria-hidden="true">{(days > 0 ? [`${days}d`, ...units] : units).join(" : ")}</span>
+      </span>
+    );
+  }
 
   return (
-    <span className="flex items-center gap-1" role="timer" aria-label={`Sale ends in ${parts.map((p) => `${p.value} ${p.label}`).join(" ")}`}>
+    <span className="flex items-center gap-1" role="timer" aria-label={label}>
       {parts.map((p, i) => (
         <span key={p.label} className="flex items-center gap-1" aria-hidden="true">
           {i > 0 && <span className="font-semibold text-white">:</span>}

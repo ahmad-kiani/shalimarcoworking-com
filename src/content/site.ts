@@ -193,6 +193,16 @@ export const pricing = {
 };
 
 
+// The monthly price when paid for the year: the annual discount off, rounded down to the nearest 500.
+export const annualPrice = (n: number) => Math.floor((n * (1 - pricing.annualDiscount)) / 500) * 500;
+
+// A PKR price in US dollars: the hand-picked amount if there is one, otherwise worked out with usdRate and rounded
+// down to the nearest 10 (137 → 130). Under $100 it rounds down to the dollar instead, so small prices don't drop to $0.
+export const usd = (pkr: number) => {
+  if (pricing.usdFixed[pkr]) return pricing.usdFixed[pkr];
+  const d = pkr / pricing.usdRate;
+  return d >= 100 ? Math.floor(d / 10) * 10 : Math.floor(d);
+};
 
 export const location = {
   eyebrow: "Location",
