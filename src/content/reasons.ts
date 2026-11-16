@@ -127,7 +127,7 @@ const islamabad: ReasonsPage = {
     {
       tag: "High-speed internet",
       title: "Internet That Keeps Up With Your Calls",
-      body: "Café Wi-Fi drops the moment the room fills up. At Shalimar, **every desk and office runs on high-speed internet**, so client calls stay clear, uploads finish and nobody asks you to repeat yourself. It works the same at 9 AM as it does at 9 PM.",
+      body: "Café Wi-Fi drops the moment the room fills up. At Shalimar, **every desk and office runs on high-speed internet**, so client calls stay clear, uploads finish and nobody asks you to repeat yourself. It works the same at 9 AM as it does at midnight.",
       visual: {
         src: "/spaces/community-area.webp",
         alt: "The lounge at Shalimar Coworking",
@@ -245,7 +245,7 @@ const islamabad: ReasonsPage = {
     facts: [
       { icon: "shield", label: "CCTV & reception" },
       { icon: "wifi", label: "High-speed internet" },
-      { icon: "clock", label: "Open till 10 PM" },
+      { icon: "clock", label: "Open till 3 AM" },
     ],
   },
 };
@@ -271,8 +271,8 @@ const twinCities: ReasonsPage = {
 
 // LS4: for freelancers and remote workers whose clients are abroad (the angle of /lp/3). Same layout as LS2, with
 // its own copy: late hours in London and New York time, backup power for calls, paying in dollars, client rooms
-// and the address. Pakistan stays on UTC+5 all year, so 10 PM here is 5 PM London / noon New York in winter and
-// 6 PM / 1 PM in summer.
+// and the address. Pakistan stays on UTC+5 all year, so 3 AM here is 10 PM London / 5 PM New York in winter and
+// 11 PM / 6 PM in summer.
 const clientsAbroad: ReasonsPage = {
   slug: "5-reasons-freelancers-with-clients-abroad-work-from-shalimar",
   code: "LS4",
@@ -281,7 +281,7 @@ const clientsAbroad: ReasonsPage = {
   meta: {
     title: "5 Reasons Freelancers With Clients Abroad Are Working From Shalimar | Shalimar Coworking",
     description:
-      "Open until 10 PM, backup power for client calls, prices in US dollars or rupees and an address in Blue Area. Why freelancers and remote workers with clients abroad work from Shalimar Coworking at ATS Centre, Islamabad.",
+      "Open until 3 AM, backup power for client calls, prices in US dollars or rupees and an address in Blue Area. Why freelancers and remote workers with clients abroad work from Shalimar Coworking at ATS Centre, Islamabad.",
     image: "/hero/poster.webp",
   },
   eyebrow: "For freelancers & remote workers",
@@ -295,20 +295,20 @@ const clientsAbroad: ReasonsPage = {
     title: "Shalimar vs. Cafés & Home",
     them: "Cafés & home",
     rows: [
-      { label: "Late client calls", us: "Open till 10 PM", them: "Noise or closing time" },
+      { label: "Late client calls", us: "Open till 3 AM", them: "Noise or closing time" },
       { label: "Load-shedding", us: "Backup power", them: "Call drops" },
       { label: "Internet", us: "High-speed, every desk", them: "Hit and miss" },
       { label: "Paying", us: "USD or PKR", them: "Pay per cup" },
       { label: "Client meetings", us: `Rooms from ${price(onDemand("Conference Room").price)}/hr`, them: "A noisy table" },
       { label: "Your laptop", us: "CCTV & staffed reception", them: "Watch your laptop" },
     ],
-    summary: "One monthly price, in dollars or rupees, covers your desk, high-speed internet, backup power and tea and coffee until 10 PM, with a meeting room on hand when a client visits.",
+    summary: "One monthly price, in dollars or rupees, covers your desk, high-speed internet, backup power and tea and coffee until 3 AM, with a meeting room on hand when a client visits.",
   },
   reasons: [
     {
-      tag: "Open till 10 PM",
+      tag: "Open till 3 AM",
       title: "Hours That Match Your Clients",
-      body: `Shalimar is open **${site.hours[0]}, ${site.hours[1]}**. In winter, 10 PM here is 5 PM in London and noon in New York. In summer, it's 6 PM and 1 PM. So the evening call with a UK or US client happens at your desk, not on the sofa.`,
+      body: `Shalimar is open **${site.hours[0]}, ${site.hours[1]}**. In winter, 3 AM here is 10 PM in London and 5 PM in New York. In summer, it's 11 PM and 6 PM. So a whole New York working day, and every late call with a UK client, happens at your desk, not on the sofa.`,
       visual: { src: "/hero/poster.webp", alt: "The lit Shalimar sign on the brick wall at Shalimar Coworking" },
     },
     {
@@ -341,7 +341,7 @@ const clientsAbroad: ReasonsPage = {
     cta: `Claim ${sale.upTo}% off deal`,
     included: [
       { icon: "wifi", label: "High-speed internet" },
-      { icon: "clock", label: "Open till 10 PM" },
+      { icon: "clock", label: "Open till 3 AM" },
       { icon: "cup", label: "Tea & coffee" },
       { icon: "dollar", label: "Pay in USD or PKR" },
     ],
@@ -365,7 +365,7 @@ const clientsAbroad: ReasonsPage = {
     },
     {
       q: "How late are you open?",
-      a: `${hours}. In winter that's until 5 PM in London and noon in New York; in summer, until 6 PM and 1 PM.`,
+      a: `${hours}. In winter that's until 10 PM in London and 5 PM in New York; in summer, until 11 PM and 6 PM.`,
     },
     { q: "Are you open on Sundays?", a: "No. Shalimar is open Monday to Saturday." },
     { q: "What happens during load-shedding?", a: "Shalimar runs on backup power, so the lights, the desks and the internet keep going when the grid goes down." },
@@ -394,7 +394,7 @@ const clientsAbroad: ReasonsPage = {
     title: "Your Desk For The Late Client Call",
     body: `${site.address[0]}, ${site.location}. Open ${hours}.`,
     facts: [
-      { icon: "clock", label: "Open till 10 PM" },
+      { icon: "clock", label: "Open till 3 AM" },
       { icon: "dollar", label: "Pay in USD or PKR" },
       { icon: "shield", label: "CCTV & reception" },
     ],
@@ -514,7 +514,7 @@ const smallTeams: ReasonsPage = {
     facts: [
       { icon: "door", label: "Offices for 2–4" },
       { icon: "shield", label: "CCTV & reception" },
-      { icon: "clock", label: "Open till 10 PM" },
+      { icon: "clock", label: "Open till 3 AM" },
     ],
   },
 };

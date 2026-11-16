@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const PK = "Asia/Karachi";
 // Shalimar's hours in Pakistan time (24-hour) and its open days (0 = Sunday). Keep in step with site.hours.
 const OPEN = 9;
-const CLOSE = 22;
+const CLOSE = 27; // 3 AM the next morning
 const OPEN_DAYS = [1, 2, 3, 4, 5, 6];
 
 const cities = [
@@ -53,12 +53,13 @@ function useNow() {
 export function ClockCard() {
   const now = useNow();
   const pk = now ? local(PK, now) : null;
-  const open = pk ? OPEN_DAYS.includes(pk.day) && pk.hour >= OPEN && pk.hour < CLOSE : null;
+  // Before 3 AM it is still the previous day's opening (Saturday night runs into Sunday, Sunday night is closed).
+  const open = pk ? (pk.hour >= OPEN && OPEN_DAYS.includes(pk.day)) || (pk.hour < CLOSE - 24 && OPEN_DAYS.includes((pk.day + 6) % 7)) : null;
   return (
     <div className="rounded-md border border-cream/15 bg-cream/[0.06] p-5 backdrop-blur-sm sm:p-6">
       <p className="flex items-center gap-2 text-[0.75rem] font-semibold tracking-[0.14em] text-cream/85 uppercase" aria-live="polite">
         <span className={`size-2 rounded-full ${open === null ? "bg-cream/40" : open ? "bg-[#6fcf8a]" : "bg-brass-light"}`} aria-hidden="true" />
-        {open === null ? "Open 9 AM to 10 PM, Mon to Sat" : open ? "Shalimar is open now, until 10 PM" : "Shalimar is closed now, opens at 9 AM"}
+        {open === null ? "Open 9 AM to 3 AM, Mon to Sat" : open ? "Shalimar is open now, until 3 AM" : "Shalimar is closed now, opens at 9 AM"}
       </p>
       <ul className="mt-4 divide-y divide-cream/10 border-t border-cream/10">
         {[{ name: "Islamabad", tz: PK, home: true }, ...cities.map((c) => ({ ...c, home: false }))].map((c) => {
@@ -115,7 +116,7 @@ export function HoursTimeline() {
             <p className="mb-1 text-[0.75rem] font-semibold tracking-[0.08em] text-ink uppercase">Shalimar, Islamabad</p>
             <div className="relative h-9">
               <div className="absolute inset-y-0 flex items-center rounded-sm bg-brass px-2.5 text-[0.75rem] font-semibold text-ink" style={{ left: pct(OPEN), right: `calc(100% - ${pct(CLOSE)})` }}>
-                9 AM – 10 PM
+                9 AM – 3 AM
               </div>
             </div>
           </li>
@@ -144,7 +145,7 @@ export function HoursTimeline() {
         ))}
       </div>
       <p className="sr-only">
-        Shalimar is open 9 AM to 10 PM Islamabad time, Monday to Saturday.
+        Shalimar is open 9 AM to 3 AM Islamabad time, Monday to Saturday.
         {rows.map((r) => ` A 9 to 5 day in ${r.name} is ${label(r.start)} to ${label(r.end)} in Islamabad.`).join("")}
       </p>
     </div>

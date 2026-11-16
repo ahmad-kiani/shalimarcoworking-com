@@ -184,7 +184,7 @@ export const lp3 = {
   code: "LP3",
   meta: {
     title: "Working for clients abroad from Islamabad? | Shalimar Coworking",
-    description: `A desk in Blue Area that's open until 10 PM and can be paid for in US dollars or rupees. Shalimar Coworking, ATS Centre, ${site.location}.`,
+    description: `A desk in Blue Area that's open until 3 AM and can be paid for in US dollars or rupees. Shalimar Coworking, ATS Centre, ${site.location}.`,
   },
   kicker: "For freelancers and remote teams",
   title: "Working for clients abroad from Islamabad? Your desk should keep up.",
@@ -204,7 +204,7 @@ export const lp3 = {
     {
       heading: "Hours that match your clients",
       body: [
-        `Shalimar is open ${site.hours[0]}, ${site.hours[1]}. Closing at 10 PM in Islamabad means the whole UK working day and New York mornings fall inside opening hours.`,
+        `Shalimar is open ${site.hours[0]}, ${site.hours[1]}. Closing at 3 AM in Islamabad means the whole UK and New York working days fall inside opening hours.`,
         "So the late call with a client in London or New York can happen at your desk, not on the sofa.",
       ],
     },
