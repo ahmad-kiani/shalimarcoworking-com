@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-// Live clocks (Islamabad, London, Singapore, New York) and the hours timeline for the "clients abroad" page. Everything time-related runs only in the browser
+// Live clocks (Islamabad, London, Dubai, New York) and the hours timeline for the "clients abroad" page. Everything time-related runs only in the browser
 // (after mount), so the server-rendered page never disagrees with the visitor's clock: until then the clocks show
 // dashes and the timeline uses winter offsets. Daylight saving in London and New York is read from the
-// browser's time-zone data, so the bars move by themselves in March and October/November (Singapore has none).
+// browser's time-zone data, so the bars move by themselves in March and October/November (Dubai has none).
 
 const PK = "Asia/Karachi";
 // Shalimar's hours in Pakistan time (24-hour) and its open days (0 = Sunday). Keep in step with site.hours.
@@ -14,7 +14,7 @@ const CLOSE = 27; // 3 AM the next morning
 const OPEN_DAYS = [1, 2, 3, 4, 5, 6];
 
 const cities = [
-  { name: "Singapore", tz: "Asia/Singapore", winter: 8 },
+  { name: "Dubai", tz: "Asia/Dubai", winter: 4 },
   { name: "London", tz: "Europe/London", winter: 0 },
   { name: "New York", tz: "America/New_York", winter: -5 },
 ];
@@ -49,7 +49,7 @@ function useNow() {
   return now;
 }
 
-// Hero card: Islamabad, Singapore, London and New York right now, with whether Shalimar is open and who's at work.
+// Hero card: Islamabad, Dubai, London and New York right now, with whether Shalimar is open and who's at work.
 export function ClockCard() {
   const now = useNow();
   const pk = now ? local(PK, now) : null;

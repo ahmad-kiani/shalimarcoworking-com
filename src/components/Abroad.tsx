@@ -10,7 +10,7 @@ import AbroadPrices from "./AbroadPrices";
 import { bestDeal, type ReasonsPage } from "@/content/reasons";
 
 // The "clients abroad" page (LS4): same content model and colours as the reasons pages, its own layout.
-// A dark hero over the lit Shalimar sign with live clocks for Islamabad, London, Singapore and New York; a timeline of
+// A dark hero over the lit Shalimar sign with live clocks for Islamabad, London, Dubai and New York; a timeline of
 // their working day against Shalimar's hours; the reasons as a bento of photo cards; a dark full-width member quote;
 // prices with a USD / PKR switch then the same review cards as LS2, FAQ and the closing call to visit.
 

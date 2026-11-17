@@ -289,7 +289,7 @@ const clientsAbroad: ReasonsPage = {
   titleBreakAfter: "Abroad",
   titlePhoneLines: ["5 Reasons", "Freelancers With", "Clients Abroad Are", "Working From Shalimar"],
   intro:
-    "Your clients are in London, Singapore or New York. Your call starts as the café gets loud, or just as the power goes. Here's why freelancers and remote workers in Islamabad are taking a desk at ATS Centre, Blue Area instead...",
+    "Your clients are in London, Dubai or New York. Your call starts as the café gets loud, or just as the power goes. Here's why freelancers and remote workers in Islamabad are taking a desk at ATS Centre, Blue Area instead...",
   callout: verbatim(member.hafsa, member.hafsa.quote),
   compare: {
     title: "Shalimar vs. Cafés & Home",
