@@ -1,4 +1,5 @@
 import AmenitiesGrid from "@/components/AmenitiesGrid";
+import BusinessSchema from "@/components/BusinessSchema";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -19,6 +20,7 @@ const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${enc
 export default function Home() {
   return (
     <>
+      <BusinessSchema />
       <Header />
       <main id="content" tabIndex={-1} className="outline-none">
         {/* Hero */}
@@ -77,10 +79,8 @@ export default function Home() {
           region
           className="overflow-hidden bg-sand py-5 text-garden max-sm:portrait:overflow-x-auto max-sm:portrait:overscroll-x-contain max-sm:portrait:[scrollbar-width:none] max-sm:portrait:[&::-webkit-scrollbar]:hidden"
         >
-          {/* data-nosnippet (here and on pricing) keeps prices out of Google's snippets and AI Overviews,
-              so searchers open the site to see them. */}
-          <div className="sr-only" data-nosnippet>{marquee.join(", ")}</div>
-          <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="true" data-nosnippet>
+          <p className="sr-only">{marquee.join(", ")}</p>
+          <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="true">
             {/* Four copies: the strip slides by half, which must stay wider than the widest screen. */}
             {[...marquee, ...marquee, ...marquee, ...marquee].map((text, i) => (
               <span
@@ -162,7 +162,7 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="bg-ink py-20 text-cream sm:py-28 short:py-14" data-nosnippet>
+        <section id="pricing" className="bg-ink py-20 text-cream sm:py-28 short:py-14">
           <Pricing />
         </section>
 
