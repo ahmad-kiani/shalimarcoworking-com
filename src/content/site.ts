@@ -1,7 +1,8 @@
 // Every piece of copy on the page lives here.
 
-// The live domain; used for canonical links, the sitemap and robots.txt.
-export const siteUrl = "https://shalimarcoworking.com";
+// The live domain; used for canonical links, the sitemap and robots.txt. It's the www address because
+// Vercel serves the site there and redirects the bare domain, and Google wants addresses that don't redirect.
+export const siteUrl = "https://www.shalimarcoworking.com";
 
 export const site = {
   name: "Shalimar",
