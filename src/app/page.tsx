@@ -14,7 +14,7 @@ import { btn, gutter } from "@/components/styles";
 import { amenities, contact, hero, location, marquee, site, spaces, why } from "@/content/site";
 
 const container = `mx-auto max-w-7xl ${gutter}`;
-const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`;
+const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}&destination_place_id=${site.mapPlaceId}`;
 
 export default function Home() {
   return (
@@ -77,8 +77,10 @@ export default function Home() {
           region
           className="overflow-hidden bg-sand py-5 text-garden max-sm:portrait:overflow-x-auto max-sm:portrait:overscroll-x-contain max-sm:portrait:[scrollbar-width:none] max-sm:portrait:[&::-webkit-scrollbar]:hidden"
         >
-          <p className="sr-only">{marquee.join(", ")}</p>
-          <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="true">
+          {/* data-nosnippet (here and on pricing) keeps prices out of Google's snippets and AI Overviews,
+              so searchers open the site to see them. */}
+          <div className="sr-only" data-nosnippet>{marquee.join(", ")}</div>
+          <div className="animate-marquee flex w-max hover:[animation-play-state:paused]" aria-hidden="true" data-nosnippet>
             {/* Four copies: the strip slides by half, which must stay wider than the widest screen. */}
             {[...marquee, ...marquee, ...marquee, ...marquee].map((text, i) => (
               <span
@@ -160,7 +162,7 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="bg-ink py-20 text-cream sm:py-28 short:py-14">
+        <section id="pricing" className="bg-ink py-20 text-cream sm:py-28 short:py-14" data-nosnippet>
           <Pricing />
         </section>
 

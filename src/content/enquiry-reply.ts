@@ -16,7 +16,7 @@ export const enquiryReply = {
     {
       label: "Address",
       value: site.address.join(", "),
-      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`,
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}&query_place_id=${site.mapPlaceId}`,
     },
     { label: "Hours", value: site.hours.join(", ") },
   ],
@@ -25,7 +25,7 @@ export const enquiryReply = {
     { label: "Book a tour", href: `${siteUrl}${tourLink}` },
     {
       label: "Get directions",
-      href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}`,
+      href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapQuery)}&destination_place_id=${site.mapPlaceId}`,
     },
   ],
   signoff: ["Best regards,", "Shalimar Coworking", "shalimarcoworking.com"],

@@ -11,7 +11,10 @@ export const site = {
   email: "info@shalimarcoworking.com",
   phone: "+92 314 5323372",
   phoneHref: "+923145323372",
-  mapQuery: "ATS Centre, Blue Area, Islamabad",
+  // Our Google Business Profile listing. The query must match the listing's name so the embed opens it
+  // rather than the ATS Centre building; the place ID pins the "Open in Maps" and directions links to it.
+  mapQuery: "Shalimar Coworking, Blue Area, Islamabad",
+  mapPlaceId: "ChIJr2NjfgC_3zgRJVCvX8vPAQ8",
   hours: ["9 AM to 3 AM", "Monday to Saturday"],
 };
 
