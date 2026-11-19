@@ -24,7 +24,7 @@ ${cell(a)}<td class="btn-gap" width="4%" style="font-size:0;line-height:0">&nbsp
 </tr></table>`;
 };
 
-// Label/value rows, e.g. PHONE  +92 314 5323372
+// Label/value rows, e.g. PHONE  +92 310 5111622
 const rows = (items: { label: string; value: string; href?: string }[]) =>
   `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid ${c.sand}">${items
     .map(
